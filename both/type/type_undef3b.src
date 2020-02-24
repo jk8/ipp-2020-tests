@@ -1,0 +1,6 @@
+.IPPcode20
+
+CREATEFRAME
+PUSHFRAME
+
+TYPE LF@a string@abc

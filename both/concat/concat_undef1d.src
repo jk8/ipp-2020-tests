@@ -1,0 +1,5 @@
+.IPPcode20
+
+CREATEFRAME
+
+CONCAT TF@undefined string@abc string@def

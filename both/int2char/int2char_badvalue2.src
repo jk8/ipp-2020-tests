@@ -1,0 +1,5 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+INT2CHAR GF@a int@1114112

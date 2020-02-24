@@ -1,0 +1,45 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+LT GF@a int@40 int@2
+WRITE GF@a
+
+LT GF@a int@40 int@40
+WRITE GF@a
+
+LT GF@a int@40 int@150
+WRITE GF@a
+
+LT GF@a int@-10 int@-40
+WRITE GF@a
+
+LT GF@a string@abcd string@
+WRITE GF@a
+
+LT GF@a string@abcd string@bcde
+WRITE GF@a
+
+LT GF@a string@bcde string@abcd
+WRITE GF@a
+
+LT GF@a string@abcd string@abcd
+WRITE GF@a
+
+LT GF@a string@\065 string@A
+WRITE GF@a
+
+LT GF@a string@A string@\065
+WRITE GF@a
+
+LT GF@a bool@false bool@false
+WRITE GF@a
+
+LT GF@a bool@false bool@true
+WRITE GF@a
+
+LT GF@a bool@true bool@false
+WRITE GF@a
+
+LT GF@a bool@true bool@true
+WRITE GF@a

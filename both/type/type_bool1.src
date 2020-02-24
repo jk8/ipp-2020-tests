@@ -1,0 +1,7 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+TYPE GF@a bool@true
+
+WRITE GF@a

@@ -1,0 +1,6 @@
+.IPPcode20
+
+CREATEFRAME
+PUSHFRAME
+
+LT LF@undefined int@40 int@2

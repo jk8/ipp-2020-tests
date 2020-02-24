@@ -1,0 +1,7 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+LABEL aaa
+
+JUMPIFEQ aaa bool@true string@false

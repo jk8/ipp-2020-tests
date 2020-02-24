@@ -1,0 +1,63 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+EQ GF@a int@40 int@2
+WRITE GF@a
+
+EQ GF@a int@40 int@40
+WRITE GF@a
+
+EQ GF@a int@40 nil@nil
+WRITE GF@a
+
+EQ GF@a nil@nil int@40
+WRITE GF@a
+
+EQ GF@a int@0 nil@nil
+WRITE GF@a
+
+EQ GF@a string@abcd string@
+WRITE GF@a
+
+EQ GF@a string@abcd string@ab
+WRITE GF@a
+
+EQ GF@a string@abcd string@abcd
+WRITE GF@a
+
+EQ GF@a string@\065B string@A\066
+WRITE GF@a
+
+EQ GF@a string@abc nil@nil
+WRITE GF@a
+
+EQ GF@a nil@nil string@abc
+WRITE GF@a
+
+EQ GF@a bool@false bool@false
+WRITE GF@a
+
+EQ GF@a bool@false bool@true
+WRITE GF@a
+
+EQ GF@a bool@true bool@false
+WRITE GF@a
+
+EQ GF@a bool@true bool@true
+WRITE GF@a
+
+EQ GF@a bool@true nil@nil
+WRITE GF@a
+
+EQ GF@a bool@false nil@nil
+WRITE GF@a
+
+EQ GF@a nil@nil bool@true
+WRITE GF@a
+
+EQ GF@a nil@nil bool@false
+WRITE GF@a
+
+EQ GF@a nil@nil nil@nil
+WRITE GF@a

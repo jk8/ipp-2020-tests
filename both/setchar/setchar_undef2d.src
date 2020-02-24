@@ -1,0 +1,8 @@
+.IPPcode20
+
+DEFVAR GF@a
+MOVE GF@a string@abcdefg
+
+CREATEFRAME
+
+SETCHAR GF@a TF@undefined string@X

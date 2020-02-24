@@ -1,0 +1,81 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+JUMPIFEQ error int@40 int@2
+WRITE string@1
+
+JUMPIFEQ ok1 int@40 int@40
+JUMP error
+LABEL ok1
+WRITE string@1
+
+JUMPIFEQ error int@40 nil@nil
+WRITE string@1
+
+JUMPIFEQ error nil@nil int@40
+WRITE string@1
+
+JUMPIFEQ error int@0 nil@nil
+WRITE string@1
+
+JUMPIFEQ error string@abcd string@
+WRITE string@1
+
+JUMPIFEQ error string@abcd string@ab
+WRITE string@1
+
+JUMPIFEQ ok2 string@abcd string@abcd
+JUMP error
+LABEL ok2
+WRITE string@1
+
+JUMPIFEQ ok3 string@\065B string@A\066
+JUMP error
+LABEL ok3
+WRITE string@1
+
+JUMPIFEQ error string@abc nil@nil
+WRITE string@1
+
+JUMPIFEQ error nil@nil string@abc
+WRITE string@1
+
+JUMPIFEQ ok4 bool@false bool@false
+JUMP error
+LABEL ok4
+WRITE string@1
+
+JUMPIFEQ error bool@false bool@true
+WRITE string@1
+
+JUMPIFEQ error bool@true bool@false
+WRITE string@1
+
+JUMPIFEQ ok5 bool@true bool@true
+JUMP error
+LABEL ok5
+WRITE string@1
+
+JUMPIFEQ error bool@true nil@nil
+WRITE string@1
+
+JUMPIFEQ error bool@false nil@nil
+WRITE string@1
+
+JUMPIFEQ error nil@nil bool@true
+WRITE string@1
+
+JUMPIFEQ error nil@nil bool@false
+WRITE string@1
+
+JUMPIFEQ ok6 nil@nil nil@nil
+JUMP error
+LABEL ok6
+WRITE string@1
+
+JUMP end
+LABEL error
+WRITE string@error
+LABEL end
+

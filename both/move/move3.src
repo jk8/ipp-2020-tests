@@ -1,0 +1,18 @@
+.IPPcode20
+
+CREATEFRAME
+PUSHFRAME
+
+DEFVAR LF@a
+
+MOVE LF@a int@5
+WRITE LF@a
+
+MOVE LF@a string@abc
+WRITE LF@a
+
+MOVE LF@a bool@false
+WRITE LF@a
+
+MOVE LF@a nil@nil
+WRITE LF@a

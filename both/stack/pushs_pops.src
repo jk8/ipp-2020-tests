@@ -1,0 +1,17 @@
+.IPPcode20
+
+DEFVAR GF@a
+DEFVAR GF@b
+DEFVAR GF@c
+
+PUSHS string@a
+PUSHS string@b
+PUSHS string@c
+
+POPS GF@c
+POPS GF@b
+POPS GF@a
+
+WRITE GF@a
+WRITE GF@b
+WRITE GF@c

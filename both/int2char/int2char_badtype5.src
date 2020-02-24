@@ -1,0 +1,8 @@
+.IPPcode20
+
+DEFVAR GF@a
+DEFVAR GF@b
+
+MOVE GF@b bool@false
+
+INT2CHAR GF@a GF@b

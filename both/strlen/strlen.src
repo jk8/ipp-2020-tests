@@ -1,0 +1,7 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+STRLEN GF@a string@Ahoj
+
+WRITE GF@a

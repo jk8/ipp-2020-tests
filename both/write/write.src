@@ -1,0 +1,21 @@
+.IPPcode20
+
+DEFVAR GF@a
+MOVE GF@a string@abc
+WRITE GF@a
+WRITE string@efg
+
+CREATEFRAME
+DEFVAR TF@a
+MOVE TF@a int@123
+WRITE TF@a
+WRITE int@456
+
+PUSHFRAME
+MOVE LF@a bool@true
+WRITE LF@a
+WRITE bool@false
+
+WRITE nil@nil
+
+WRITE string@\010Hello\035World\010

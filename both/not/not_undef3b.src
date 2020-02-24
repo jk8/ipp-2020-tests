@@ -1,0 +1,6 @@
+.IPPcode20
+
+CREATEFRAME
+PUSHFRAME
+
+NOT LF@a bool@false

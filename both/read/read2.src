@@ -1,0 +1,21 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+# 0
+READ GF@a int
+WRITE GF@a
+TYPE GF@a GF@a
+WRITE GF@a
+
+# -50
+READ GF@a int
+WRITE GF@a
+TYPE GF@a GF@a
+WRITE GF@a
+
+# 1234567890
+READ GF@a int
+WRITE GF@a
+TYPE GF@a GF@a
+WRITE GF@a

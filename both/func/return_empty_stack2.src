@@ -1,0 +1,12 @@
+.IPPcode20
+
+CALL function
+
+RETURN
+
+JUMP end
+
+LABEL function
+RETURN
+
+LABEL end

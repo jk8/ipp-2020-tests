@@ -1,0 +1,5 @@
+.IPPcode20
+
+CREATEFRAME
+
+STRI2INT TF@undefined string@abc int@1

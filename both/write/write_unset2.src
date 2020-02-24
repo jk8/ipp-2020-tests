@@ -1,0 +1,6 @@
+.IPPcode20
+
+CREATEFRAME
+DEFVAR TF@a
+
+WRITE TF@a

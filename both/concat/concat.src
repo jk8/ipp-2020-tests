@@ -1,0 +1,7 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+CONCAT GF@a string@abc string@efg
+
+WRITE GF@a

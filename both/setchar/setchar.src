@@ -1,0 +1,16 @@
+.IPPcode20
+
+DEFVAR GF@a
+MOVE GF@a string@abcd
+
+SETCHAR GF@a int@2 string@C
+WRITE GF@a
+
+SETCHAR GF@a int@3 string@DEFVAR
+WRITE GF@a
+
+SETCHAR GF@a int@0 string@\065
+WRITE GF@a
+
+SETCHAR GF@a int@1 string@\066\067
+WRITE GF@a

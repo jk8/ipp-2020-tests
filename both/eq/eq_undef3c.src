@@ -1,0 +1,5 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+EQ GF@a int@40 LF@undefined

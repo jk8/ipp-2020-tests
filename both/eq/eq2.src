@@ -1,0 +1,106 @@
+.IPPcode20
+
+DEFVAR GF@a
+DEFVAR GF@x
+DEFVAR GF@y
+
+
+MOVE GF@x int@40
+MOVE GF@y int@2
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x int@40
+MOVE GF@y int@40
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x int@40
+MOVE GF@y nil@nil
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x nil@nil
+MOVE GF@y int@40
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x int@0
+MOVE GF@y nil@nil
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x string@abcd
+MOVE GF@y string@
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x string@abcd
+MOVE GF@y string@ab
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x string@abcd
+MOVE GF@y string@abcd
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x string@\065B
+MOVE GF@y string@A\066
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x string@abc
+MOVE GF@y nil@nil
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x nil@nil
+MOVE GF@y string@abc
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x bool@false
+MOVE GF@y bool@false
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x bool@false
+MOVE GF@y bool@true
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x bool@true
+MOVE GF@y bool@false
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x bool@true
+MOVE GF@y bool@true
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x bool@true
+MOVE GF@y nil@nil
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x bool@false
+MOVE GF@y nil@nil
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x nil@nil
+MOVE GF@y bool@true
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x nil@nil
+MOVE GF@y bool@false
+EQ GF@a GF@x GF@y
+WRITE GF@a
+
+MOVE GF@x nil@nil
+MOVE GF@y nil@nil
+EQ GF@a GF@x GF@y
+WRITE GF@a

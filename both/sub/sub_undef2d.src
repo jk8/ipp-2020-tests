@@ -1,0 +1,7 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+CREATEFRAME
+
+SUB GF@a TF@undefined int@2

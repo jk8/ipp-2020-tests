@@ -1,0 +1,17 @@
+.IPPcode20
+
+CREATEFRAME
+
+DEFVAR TF@a
+
+MOVE TF@a int@5
+WRITE TF@a
+
+MOVE TF@a string@abc
+WRITE TF@a
+
+MOVE TF@a bool@false
+WRITE TF@a
+
+MOVE TF@a nil@nil
+WRITE TF@a

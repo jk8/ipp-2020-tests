@@ -1,0 +1,9 @@
+.IPPcode20
+
+DEFVAR GF@a
+MOVE GF@a string@abcdefg
+
+CREATEFRAME
+PUSHFRAME
+
+GETCHAR GF@a int@2 LF@undefined

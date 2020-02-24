@@ -1,0 +1,7 @@
+.IPPcode20
+
+DEFVAR GF@b
+
+LABEL aaa
+
+JUMPIFEQ aaa GF@b int@2

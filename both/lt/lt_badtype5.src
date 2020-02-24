@@ -1,0 +1,5 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+LT GF@a bool@true int@2

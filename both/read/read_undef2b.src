@@ -1,0 +1,5 @@
+.IPPcode20
+
+CREATEFRAME
+
+READ TF@a bool

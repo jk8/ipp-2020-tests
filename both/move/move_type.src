@@ -1,0 +1,19 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+MOVE GF@a int@5
+TYPE GF@a GF@a
+WRITE GF@a
+
+MOVE GF@a string@abc
+TYPE GF@a GF@a
+WRITE GF@a
+
+MOVE GF@a bool@false
+TYPE GF@a GF@a
+WRITE GF@a
+
+MOVE GF@a nil@nil
+TYPE GF@a GF@a
+WRITE GF@a

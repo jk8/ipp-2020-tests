@@ -1,0 +1,12 @@
+.IPPcode20
+
+DEFVAR GF@a
+
+AND GF@a bool@false bool@false
+WRITE GF@a
+AND GF@a bool@false bool@true
+WRITE GF@a
+AND GF@a bool@true bool@false
+WRITE GF@a
+AND GF@a bool@true bool@true
+WRITE GF@a

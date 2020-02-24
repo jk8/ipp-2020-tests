@@ -1,0 +1,3 @@
+.IPPcode20
+
+JUMPIFNEQ aaa int@6 int@5

@@ -1,0 +1,8 @@
+.IPPcode20
+
+CREATEFRAME
+PUSHFRAME
+
+LABEL aaa
+
+JUMPIFEQ aaa int@40 LF@undefined
