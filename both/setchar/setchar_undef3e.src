@@ -6,4 +6,4 @@ MOVE GF@a string@abcdefg
 CREATEFRAME
 PUSHFRAME
 
-GETCHAR GF@a int@2 LF@undefined
+SETCHAR GF@a int@2 LF@undefined
