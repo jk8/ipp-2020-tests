@@ -1,0 +1,2 @@
+.IPPcode20
+JUMPIFEQ int@42 bool@true label

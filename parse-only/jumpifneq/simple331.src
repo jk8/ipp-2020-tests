@@ -1,0 +1,2 @@
+.IPPcode20
+JUMPIFNEQ bool@true GF@var string@a

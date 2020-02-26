@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+ <instruction order="1" opcode="READ">
+  <arg1 type="var">GF@var</arg1>
+  <arg2 type="type">int</arg2>
+ </instruction>
+</program>

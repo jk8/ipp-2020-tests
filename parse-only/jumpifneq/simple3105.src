@@ -1,0 +1,2 @@
+.IPPcode20
+JUMPIFNEQ int@42 GF@var nil@nil

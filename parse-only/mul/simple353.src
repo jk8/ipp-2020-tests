@@ -1,0 +1,2 @@
+.IPPcode20
+MUL string@a int@42 GF@var
