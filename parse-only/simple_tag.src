@@ -1,0 +1,8 @@
+# Ukazka kódu se sémantickou chybou (skript parse.php ale vrací 0 místo 54), která nemá být detekována už v parse.php. Obsahuje příklad elementu bez podelementů, který lze zapsat krátkým i dlouhým způsobem.
+.IPPcode20
+CREATEFRAME # příklad instrukce bez operandů, v XML možný zápis delším způsobem
+DEFVAR TF@x
+PUSHFRAME
+CREATEFRAME
+WRITE TF@x
+POPFRAME # tato instrukce bude pro ilustraci ve výstupním XML zapsána kratším způsobem
