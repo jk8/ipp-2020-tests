@@ -1,0 +1,2 @@
+.IPPcode20
+EQ string@a GF@var int@42

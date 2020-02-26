@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+ <instruction order="1" opcode="MOVE">
+  <arg1 type="var">GF@counter</arg1>
+  <arg2 type="string">řetězec\000\032lomítkem\032\092\032a\010novým\035řádkem</arg2>
+ </instruction>
+</program>

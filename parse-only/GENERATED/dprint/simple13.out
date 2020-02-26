@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+ <instruction order="1" opcode="DPRINT">
+  <arg1 type="nil">nil</arg1>
+ </instruction>
+</program>

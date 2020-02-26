@@ -1,0 +1,2 @@
+.IPPcode20
+JUMPIFEQ GF@var string@a string@a

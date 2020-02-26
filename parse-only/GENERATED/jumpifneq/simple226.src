@@ -1,0 +1,2 @@
+.IPPcode20
+JUMPIFNEQ label int@42

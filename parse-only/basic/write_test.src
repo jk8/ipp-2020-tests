@@ -1,0 +1,4 @@
+.IPPcode20
+# WRITE neprovádí za výstupem odřádkování, pokud to není diktováno argumenty
+WRITE int@0
+WRITE string@ábč
