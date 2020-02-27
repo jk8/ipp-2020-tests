@@ -1,0 +1,13 @@
+.IPPcode20
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@var
+MOVE LF@var int@1
+WRITE LF@var
+CALL main
+WRITE LF@var
+EXIT int@0
+LABEL main
+ADD LF@var LF@var int@1
+POPFRAME
+RETURN

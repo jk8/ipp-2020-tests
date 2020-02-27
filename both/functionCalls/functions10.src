@@ -1,0 +1,19 @@
+.IPPcode20
+CREATEFRAME
+PUSHFRAME
+DEFVAR GF@var
+DEFVAR LF@var
+MOVE LF@var string@hah
+MOVE GF@var int@1
+LABEL cycle
+CALL main
+WRITE GF@var
+ADD GF@var GF@var int@1
+WRITE GF@var
+JUMPIFNEQ cycle GF@var int@10
+WRITE LF@var
+EXIT int@0
+LABEL main
+CREATEFRAME
+POPFRAME
+RETURN

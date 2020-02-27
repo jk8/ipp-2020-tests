@@ -1,0 +1,19 @@
+.IPPcode20
+CREATEFRAME
+PUSHFRAME
+DEFVAR GF@var
+DEFVAR LF@var
+MOVE LF@var int@1
+MOVE GF@var int@5
+LABEL main
+CALL pseudo_fact
+WRITE LF@var
+EXIT int@0
+LABEL pseudo_fact
+MUL LF@var GF@var LF@var
+SUB GF@var GF@var int@1
+JUMPIFNEQ call GF@var int@0
+RETURN
+LABEL call
+CALL pseudo_fact
+RETURN
