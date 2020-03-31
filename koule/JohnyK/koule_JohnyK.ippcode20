@@ -1,0 +1,3474 @@
+.IPPcode20
+DEFVAR GF@%val1
+DEFVAR GF@%val2
+DEFVAR GF@%type1
+DEFVAR GF@%type2
+DEFVAR GF@%result
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 string@ifj-raytracer,\032vykresli\0323\032koule
+TYPE GF@%type1 TF@%1
+JUMPIFNEQ $print_30 GF@%type1 string@nil
+WRITE string@None
+JUMP $print_end_30
+LABEL $print_30
+WRITE TF@%1
+LABEL $print_end_30
+WRITE string@\010
+DEFVAR TF@%retval
+MOVE TF@%retval nil@nil
+DEFVAR GF@naaaaaa
+PUSHS float@0x1.18p+6
+POPS GF@naaaaaa
+DEFVAR GF@oaaaaaa
+PUSHS float@0x1.ep+5
+POPS GF@oaaaaaa
+DEFVAR GF@paaaaaa
+PUSHS float@0x0p+0
+POPS GF@paaaaaa
+DEFVAR GF@qaaaaaa
+PUSHS float@0x0p+0
+POPS GF@qaaaaaa
+DEFVAR GF@raaaaaa
+PUSHS int@0
+PUSHS float@0x1.4p+4
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_31 GF@%type1 string@int
+JUMPIFEQ $sub_float_31 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_31
+JUMPIFEQ $sub_ff_or_ii_31 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_31 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_31
+JUMPIFEQ $sub_float_int_31 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_31 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_31
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_31
+LABEL $sub_int_float_31
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_31
+LABEL $sub_float_int_31
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_31
+PUSHS GF@%result
+POPS GF@raaaaaa
+DEFVAR GF@saaaaaa
+PUSHS float@0x0p+0
+POPS GF@saaaaaa
+DEFVAR GF@taaaaaa
+PUSHS float@0x0p+0
+POPS GF@taaaaaa
+DEFVAR GF@uaaaaaa
+PUSHS float@0x0p+0
+POPS GF@uaaaaaa
+DEFVAR GF@vaaaaaa
+PUSHS float@0x1p+2
+POPS GF@vaaaaaa
+DEFVAR GF@waaaaaa
+PUSHS int@0
+PUSHS float@0x1.4p+2
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_32 GF@%type1 string@int
+JUMPIFEQ $sub_float_32 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_32
+JUMPIFEQ $sub_ff_or_ii_32 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_32 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_32
+JUMPIFEQ $sub_float_int_32 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_32 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_32
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_32
+LABEL $sub_int_float_32
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_32
+LABEL $sub_float_int_32
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_32
+PUSHS GF@%result
+POPS GF@waaaaaa
+DEFVAR GF@xaaaaaa
+PUSHS float@0x1.4p+2
+POPS GF@xaaaaaa
+DEFVAR GF@yaaaaaa
+PUSHS int@0
+PUSHS float@0x1.6p+3
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_33 GF@%type1 string@int
+JUMPIFEQ $sub_float_33 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_33
+JUMPIFEQ $sub_ff_or_ii_33 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_33 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_33
+JUMPIFEQ $sub_float_int_33 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_33 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_33
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_33
+LABEL $sub_int_float_33
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_33
+LABEL $sub_float_int_33
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_33
+PUSHS GF@%result
+POPS GF@yaaaaaa
+DEFVAR GF@zaaaaaa
+PUSHS string@+
+POPS GF@zaaaaaa
+DEFVAR GF@Aaaaaaa
+PUSHS float@0x0p+0
+POPS GF@Aaaaaaa
+DEFVAR GF@Baaaaaa
+PUSHS float@0x1.8p+1
+POPS GF@Baaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@naaaaaa
+CALL $iaaaaaa
+DEFVAR GF@Caaaaaa
+DEFVAR GF@Daaaaaa
+DEFVAR GF@Eaaaaaa
+DEFVAR GF@Faaaaaa
+DEFVAR GF@abaaaaa
+DEFVAR GF@bbaaaaa
+DEFVAR GF@cbaaaaa
+DEFVAR GF@dbaaaaa
+DEFVAR GF@ebaaaaa
+DEFVAR GF@fbaaaaa
+DEFVAR GF@gbaaaaa
+DEFVAR GF@hbaaaaa
+DEFVAR GF@ibaaaaa
+DEFVAR GF@jbaaaaa
+DEFVAR GF@kbaaaaa
+DEFVAR GF@lbaaaaa
+DEFVAR GF@mbaaaaa
+DEFVAR GF@nbaaaaa
+DEFVAR GF@obaaaaa
+DEFVAR GF@pbaaaaa
+DEFVAR GF@qbaaaaa
+DEFVAR GF@rbaaaaa
+DEFVAR GF@sbaaaaa
+DEFVAR GF@tbaaaaa
+DEFVAR GF@ubaaaaa
+DEFVAR GF@vbaaaaa
+DEFVAR GF@wbaaaaa
+DEFVAR GF@xbaaaaa
+DEFVAR GF@ybaaaaa
+LABEL $while_start_34
+PUSHS GF@Baaaaaa
+PUSHS GF@oaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_35 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_35 GF@%type1 string@int
+JUMPIFEQ $eq_float_35 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_35
+JUMPIFEQ $eq_int_float_35 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_35
+JUMPIFEQ $eq_float_int_35 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_35
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_35
+LABEL $eq_float_int_35
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_35
+PUSHS GF@%val2
+PUSHS GF@%val1
+LTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $while_int_34 GF@%type1 string@int
+JUMPIFEQ $while_string_34 GF@%type1 string@string
+JUMPIFEQ $while_do_34 GF@%type1 string@float
+JUMPIFEQ $while_end_34 GF@%val1 nil@nil
+JUMPIFEQ $while_end_34 GF@%val1 bool@false
+JUMP $while_do_34
+LABEL $while_int_34
+JUMPIFEQ $while_end_34 GF@%val1 int@0
+JUMP $while_do_34
+LABEL $while_string_34
+JUMPIFEQ $while_end_34 GF@%val1 string@
+LABEL $while_do_34
+PUSHS string@|
+POPS GF@zaaaaaa
+PUSHS float@0x0p+0
+POPS GF@Aaaaaaa
+LABEL $while_start_36
+PUSHS GF@Aaaaaaa
+PUSHS GF@naaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_37 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_37 GF@%type1 string@int
+JUMPIFEQ $eq_float_37 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_37
+JUMPIFEQ $eq_int_float_37 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_37
+JUMPIFEQ $eq_float_int_37 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_37
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_37
+LABEL $eq_float_int_37
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_37
+PUSHS GF@%val2
+PUSHS GF@%val1
+LTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $while_int_36 GF@%type1 string@int
+JUMPIFEQ $while_string_36 GF@%type1 string@string
+JUMPIFEQ $while_do_36 GF@%type1 string@float
+JUMPIFEQ $while_end_36 GF@%val1 nil@nil
+JUMPIFEQ $while_end_36 GF@%val1 bool@false
+JUMP $while_do_36
+LABEL $while_int_36
+JUMPIFEQ $while_end_36 GF@%val1 int@0
+JUMP $while_do_36
+LABEL $while_string_36
+JUMPIFEQ $while_end_36 GF@%val1 string@
+LABEL $while_do_36
+PUSHS float@0x1p+0
+PUSHS GF@Aaaaaaa
+PUSHS float@0x1p+1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_38 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_38 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_38
+JUMPIFEQ $mul_end_38 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_38 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_38
+JUMPIFEQ $mul_end_38 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_38 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_38
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_38
+LABEL $mul_int_float_38
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_38
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@naaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_39 GF@%type1 string@float
+JUMPIFEQ $div_first_int_39 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_39
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_39
+JUMPIFEQ $div_check_zero_39 GF@%type2 string@float
+JUMPIFEQ $div_float_int_39 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_39
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_39
+LABEL $div_int_float_39
+LABEL $div_check_zero_39
+JUMPIFNEQ $div_end_39 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_39
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_40 GF@%type1 string@int
+JUMPIFEQ $sub_float_40 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_40
+JUMPIFEQ $sub_ff_or_ii_40 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_40 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_40
+JUMPIFEQ $sub_float_int_40 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_40 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_40
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_40
+LABEL $sub_int_float_40
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_40
+LABEL $sub_float_int_40
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_40
+PUSHS GF@%result
+PUSHS float@0x1.cp+2
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_41 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_41 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_41
+JUMPIFEQ $mul_end_41 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_41 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_41
+JUMPIFEQ $mul_end_41 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_41 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_41
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_41
+LABEL $mul_int_float_41
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_41
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@Caaaaaa
+PUSHS float@0x1p+0
+PUSHS GF@Baaaaaa
+PUSHS float@0x1p+1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_42 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_42 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_42
+JUMPIFEQ $mul_end_42 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_42 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_42
+JUMPIFEQ $mul_end_42 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_42 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_42
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_42
+LABEL $mul_int_float_42
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_42
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@oaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_43 GF@%type1 string@float
+JUMPIFEQ $div_first_int_43 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_43
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_43
+JUMPIFEQ $div_check_zero_43 GF@%type2 string@float
+JUMPIFEQ $div_float_int_43 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_43
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_43
+LABEL $div_int_float_43
+LABEL $div_check_zero_43
+JUMPIFNEQ $div_end_43 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_43
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_44 GF@%type1 string@int
+JUMPIFEQ $sub_float_44 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_44
+JUMPIFEQ $sub_ff_or_ii_44 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_44 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_44
+JUMPIFEQ $sub_float_int_44 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_44 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_44
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_44
+LABEL $sub_int_float_44
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_44
+LABEL $sub_float_int_44
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_44
+PUSHS GF@%result
+PUSHS float@0x1.4p+2
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_45 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_45 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_45
+JUMPIFEQ $mul_end_45 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_45 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_45
+JUMPIFEQ $mul_end_45 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_45 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_45
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_45
+LABEL $mul_int_float_45
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_45
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@Daaaaaa
+PUSHS float@0x0p+0
+POPS GF@Eaaaaaa
+PUSHS GF@Caaaaaa
+PUSHS GF@paaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_46 GF@%type1 string@int
+JUMPIFEQ $sub_float_46 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_46
+JUMPIFEQ $sub_ff_or_ii_46 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_46 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_46
+JUMPIFEQ $sub_float_int_46 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_46 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_46
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_46
+LABEL $sub_int_float_46
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_46
+LABEL $sub_float_int_46
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_46
+PUSHS GF@%result
+POPS GF@Faaaaaa
+PUSHS GF@Daaaaaa
+PUSHS GF@qaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_47 GF@%type1 string@int
+JUMPIFEQ $sub_float_47 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_47
+JUMPIFEQ $sub_ff_or_ii_47 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_47 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_47
+JUMPIFEQ $sub_float_int_47 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_47 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_47
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_47
+LABEL $sub_int_float_47
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_47
+LABEL $sub_float_int_47
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_47
+PUSHS GF@%result
+POPS GF@abaaaaa
+PUSHS GF@Eaaaaaa
+PUSHS GF@raaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_48 GF@%type1 string@int
+JUMPIFEQ $sub_float_48 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_48
+JUMPIFEQ $sub_ff_or_ii_48 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_48 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_48
+JUMPIFEQ $sub_float_int_48 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_48 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_48
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_48
+LABEL $sub_int_float_48
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_48
+LABEL $sub_float_int_48
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_48
+PUSHS GF@%result
+POPS GF@bbaaaaa
+PUSHS int@0
+POPS GF@cbaaaaa
+PUSHS float@0x1.3878p+13
+POPS GF@dbaaaaa
+PUSHS string@\032
+POPS GF@ebaaaaa
+LABEL $while_start_49
+PUSHS GF@cbaaaaa
+PUSHS int@3
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_50 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_50 GF@%type1 string@int
+JUMPIFEQ $eq_float_50 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_50
+JUMPIFEQ $eq_int_float_50 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_50
+JUMPIFEQ $eq_float_int_50 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_50
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_50
+LABEL $eq_float_int_50
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_50
+PUSHS GF@%val2
+PUSHS GF@%val1
+LTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $while_int_49 GF@%type1 string@int
+JUMPIFEQ $while_string_49 GF@%type1 string@string
+JUMPIFEQ $while_do_49 GF@%type1 string@float
+JUMPIFEQ $while_end_49 GF@%val1 nil@nil
+JUMPIFEQ $while_end_49 GF@%val1 bool@false
+JUMP $while_do_49
+LABEL $while_int_49
+JUMPIFEQ $while_end_49 GF@%val1 int@0
+JUMP $while_do_49
+LABEL $while_string_49
+JUMPIFEQ $while_end_49 GF@%val1 string@
+LABEL $while_do_49
+PUSHS GF@cbaaaaa
+PUSHS int@0
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_52 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_52 GF@%type1 string@int
+JUMPIFEQ $eq_float_52 GF@%type1 string@float
+JUMPIFEQ $eq_cmp_52 GF@%type1 string@nil
+EXIT int@4
+LABEL $eq_int_52
+JUMPIFEQ $eq_int_float_52 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_52
+JUMPIFEQ $eq_float_int_52 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_52
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_52
+LABEL $eq_float_int_52
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_52
+PUSHS GF@%val2
+PUSHS GF@%val1
+EQS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_51 GF@%type1 string@int
+JUMPIFEQ $if_string_51 GF@%type1 string@string
+JUMPIFEQ $if_true_51 GF@%type1 string@float
+JUMPIFEQ $if_false_51 GF@%val1 nil@nil
+JUMPIFEQ $if_false_51 GF@%val1 bool@false
+JUMP $if_true_51
+LABEL $if_int_51
+JUMPIFEQ $if_false_51 GF@%val1 int@0
+JUMP $if_true_51
+LABEL $if_string_51
+JUMPIFEQ $if_false_51 GF@%val1 string@
+LABEL $if_true_51
+PUSHS int@0
+PUSHS float@0x1.4p+2
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_53 GF@%type1 string@int
+JUMPIFEQ $sub_float_53 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_53
+JUMPIFEQ $sub_ff_or_ii_53 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_53 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_53
+JUMPIFEQ $sub_float_int_53 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_53 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_53
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_53
+LABEL $sub_int_float_53
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_53
+LABEL $sub_float_int_53
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_53
+PUSHS GF@%result
+POPS GF@saaaaaa
+PUSHS int@0
+PUSHS float@0x1.8p+1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_54 GF@%type1 string@int
+JUMPIFEQ $sub_float_54 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_54
+JUMPIFEQ $sub_ff_or_ii_54 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_54 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_54
+JUMPIFEQ $sub_float_int_54 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_54 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_54
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_54
+LABEL $sub_int_float_54
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_54
+LABEL $sub_float_int_54
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_54
+PUSHS GF@%result
+POPS GF@taaaaaa
+PUSHS float@0x1.8p+2
+POPS GF@uaaaaaa
+PUSHS float@0x1.8p+1
+POPS GF@vaaaaaa
+JUMP $if_end_51
+LABEL $if_false_51
+PUSHS GF@cbaaaaa
+PUSHS int@1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_56 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_56 GF@%type1 string@int
+JUMPIFEQ $eq_float_56 GF@%type1 string@float
+JUMPIFEQ $eq_cmp_56 GF@%type1 string@nil
+EXIT int@4
+LABEL $eq_int_56
+JUMPIFEQ $eq_int_float_56 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_56
+JUMPIFEQ $eq_float_int_56 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_56
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_56
+LABEL $eq_float_int_56
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_56
+PUSHS GF@%val2
+PUSHS GF@%val1
+EQS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_55 GF@%type1 string@int
+JUMPIFEQ $if_string_55 GF@%type1 string@string
+JUMPIFEQ $if_true_55 GF@%type1 string@float
+JUMPIFEQ $if_false_55 GF@%val1 nil@nil
+JUMPIFEQ $if_false_55 GF@%val1 bool@false
+JUMP $if_true_55
+LABEL $if_int_55
+JUMPIFEQ $if_false_55 GF@%val1 int@0
+JUMP $if_true_55
+LABEL $if_string_55
+JUMPIFEQ $if_false_55 GF@%val1 string@
+LABEL $if_true_55
+PUSHS int@0
+PUSHS float@0x1p+0
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_57 GF@%type1 string@int
+JUMPIFEQ $sub_float_57 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_57
+JUMPIFEQ $sub_ff_or_ii_57 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_57 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_57
+JUMPIFEQ $sub_float_int_57 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_57 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_57
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_57
+LABEL $sub_int_float_57
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_57
+LABEL $sub_float_int_57
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_57
+PUSHS GF@%result
+POPS GF@saaaaaa
+PUSHS float@0x1p+0
+POPS GF@taaaaaa
+PUSHS float@0x1.4p+3
+POPS GF@uaaaaaa
+PUSHS float@0x1.4p+2
+POPS GF@vaaaaaa
+JUMP $if_end_55
+LABEL $if_false_55
+PUSHS float@0x1.4p+2
+POPS GF@saaaaaa
+PUSHS int@0
+PUSHS float@0x1.8p+1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_58 GF@%type1 string@int
+JUMPIFEQ $sub_float_58 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_58
+JUMPIFEQ $sub_ff_or_ii_58 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_58 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_58
+JUMPIFEQ $sub_float_int_58 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_58 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_58
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_58
+LABEL $sub_int_float_58
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_58
+LABEL $sub_float_int_58
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_58
+PUSHS GF@%result
+POPS GF@taaaaaa
+PUSHS float@0x1.4p+4
+POPS GF@uaaaaaa
+PUSHS float@0x1p+3
+POPS GF@vaaaaaa
+LABEL $if_end_55
+LABEL $if_end_51
+PUSHS GF@vaaaaaa
+PUSHS GF@vaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_59 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_59 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_59
+JUMPIFEQ $mul_end_59 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_59 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_59
+JUMPIFEQ $mul_end_59 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_59 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_59
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_59
+LABEL $mul_int_float_59
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_59
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@fbaaaaa
+PUSHS GF@paaaaaa
+PUSHS GF@saaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_60 GF@%type1 string@int
+JUMPIFEQ $sub_float_60 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_60
+JUMPIFEQ $sub_ff_or_ii_60 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_60 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_60
+JUMPIFEQ $sub_float_int_60 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_60 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_60
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_60
+LABEL $sub_int_float_60
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_60
+LABEL $sub_float_int_60
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_60
+PUSHS GF@%result
+POPS GF@gbaaaaa
+PUSHS GF@qaaaaaa
+PUSHS GF@taaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_61 GF@%type1 string@int
+JUMPIFEQ $sub_float_61 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_61
+JUMPIFEQ $sub_ff_or_ii_61 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_61 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_61
+JUMPIFEQ $sub_float_int_61 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_61 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_61
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_61
+LABEL $sub_int_float_61
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_61
+LABEL $sub_float_int_61
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_61
+PUSHS GF@%result
+POPS GF@hbaaaaa
+PUSHS GF@raaaaaa
+PUSHS GF@uaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_62 GF@%type1 string@int
+JUMPIFEQ $sub_float_62 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_62
+JUMPIFEQ $sub_ff_or_ii_62 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_62 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_62
+JUMPIFEQ $sub_float_int_62 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_62 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_62
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_62
+LABEL $sub_int_float_62
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_62
+LABEL $sub_float_int_62
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_62
+PUSHS GF@%result
+POPS GF@ibaaaaa
+PUSHS GF@Faaaaaa
+PUSHS GF@Faaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_63 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_63 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_63
+JUMPIFEQ $mul_end_63 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_63 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_63
+JUMPIFEQ $mul_end_63 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_63 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_63
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_63
+LABEL $mul_int_float_63
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_63
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@abaaaaa
+PUSHS GF@abaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_64 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_64 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_64
+JUMPIFEQ $mul_end_64 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_64 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_64
+JUMPIFEQ $mul_end_64 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_64 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_64
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_64
+LABEL $mul_int_float_64
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_64
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_65 GF@%type1 string@int
+JUMPIFEQ $add_float_65 GF@%type1 string@float
+JUMPIFEQ $add_string_65 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_65
+JUMPIFEQ $add_ff_or_ii_65 GF@%type2 string@int
+JUMPIFEQ $add_int_float_65 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_65
+JUMPIFEQ $add_float_int_65 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_65 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_65
+JUMPIFEQ $add_string_string_65 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_65
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_65
+LABEL $add_string_string_65
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_65
+LABEL $add_int_float_65
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_65
+LABEL $add_float_int_65
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_65
+PUSHS GF@%result
+PUSHS GF@bbaaaaa
+PUSHS GF@bbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_66 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_66 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_66
+JUMPIFEQ $mul_end_66 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_66 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_66
+JUMPIFEQ $mul_end_66 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_66 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_66
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_66
+LABEL $mul_int_float_66
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_66
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_67 GF@%type1 string@int
+JUMPIFEQ $add_float_67 GF@%type1 string@float
+JUMPIFEQ $add_string_67 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_67
+JUMPIFEQ $add_ff_or_ii_67 GF@%type2 string@int
+JUMPIFEQ $add_int_float_67 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_67
+JUMPIFEQ $add_float_int_67 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_67 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_67
+JUMPIFEQ $add_string_string_67 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_67
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_67
+LABEL $add_string_string_67
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_67
+LABEL $add_int_float_67
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_67
+LABEL $add_float_int_67
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_67
+PUSHS GF@%result
+POPS GF@jbaaaaa
+PUSHS float@0x1p+1
+PUSHS GF@Faaaaaa
+PUSHS GF@gbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_68 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_68 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_68
+JUMPIFEQ $mul_end_68 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_68 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_68
+JUMPIFEQ $mul_end_68 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_68 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_68
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_68
+LABEL $mul_int_float_68
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_68
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@abaaaaa
+PUSHS GF@hbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_69 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_69 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_69
+JUMPIFEQ $mul_end_69 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_69 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_69
+JUMPIFEQ $mul_end_69 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_69 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_69
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_69
+LABEL $mul_int_float_69
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_69
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_70 GF@%type1 string@int
+JUMPIFEQ $add_float_70 GF@%type1 string@float
+JUMPIFEQ $add_string_70 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_70
+JUMPIFEQ $add_ff_or_ii_70 GF@%type2 string@int
+JUMPIFEQ $add_int_float_70 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_70
+JUMPIFEQ $add_float_int_70 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_70 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_70
+JUMPIFEQ $add_string_string_70 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_70
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_70
+LABEL $add_string_string_70
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_70
+LABEL $add_int_float_70
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_70
+LABEL $add_float_int_70
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_70
+PUSHS GF@%result
+PUSHS GF@bbaaaaa
+PUSHS GF@ibaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_71 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_71 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_71
+JUMPIFEQ $mul_end_71 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_71 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_71
+JUMPIFEQ $mul_end_71 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_71 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_71
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_71
+LABEL $mul_int_float_71
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_71
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_72 GF@%type1 string@int
+JUMPIFEQ $add_float_72 GF@%type1 string@float
+JUMPIFEQ $add_string_72 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_72
+JUMPIFEQ $add_ff_or_ii_72 GF@%type2 string@int
+JUMPIFEQ $add_int_float_72 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_72
+JUMPIFEQ $add_float_int_72 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_72 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_72
+JUMPIFEQ $add_string_string_72 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_72
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_72
+LABEL $add_string_string_72
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_72
+LABEL $add_int_float_72
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_72
+LABEL $add_float_int_72
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_72
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_73 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_73 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_73
+JUMPIFEQ $mul_end_73 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_73 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_73
+JUMPIFEQ $mul_end_73 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_73 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_73
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_73
+LABEL $mul_int_float_73
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_73
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@kbaaaaa
+PUSHS GF@gbaaaaa
+PUSHS GF@gbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_74 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_74 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_74
+JUMPIFEQ $mul_end_74 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_74 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_74
+JUMPIFEQ $mul_end_74 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_74 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_74
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_74
+LABEL $mul_int_float_74
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_74
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@hbaaaaa
+PUSHS GF@hbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_75 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_75 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_75
+JUMPIFEQ $mul_end_75 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_75 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_75
+JUMPIFEQ $mul_end_75 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_75 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_75
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_75
+LABEL $mul_int_float_75
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_75
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_76 GF@%type1 string@int
+JUMPIFEQ $add_float_76 GF@%type1 string@float
+JUMPIFEQ $add_string_76 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_76
+JUMPIFEQ $add_ff_or_ii_76 GF@%type2 string@int
+JUMPIFEQ $add_int_float_76 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_76
+JUMPIFEQ $add_float_int_76 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_76 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_76
+JUMPIFEQ $add_string_string_76 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_76
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_76
+LABEL $add_string_string_76
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_76
+LABEL $add_int_float_76
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_76
+LABEL $add_float_int_76
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_76
+PUSHS GF@%result
+PUSHS GF@ibaaaaa
+PUSHS GF@ibaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_77 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_77 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_77
+JUMPIFEQ $mul_end_77 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_77 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_77
+JUMPIFEQ $mul_end_77 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_77 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_77
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_77
+LABEL $mul_int_float_77
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_77
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_78 GF@%type1 string@int
+JUMPIFEQ $add_float_78 GF@%type1 string@float
+JUMPIFEQ $add_string_78 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_78
+JUMPIFEQ $add_ff_or_ii_78 GF@%type2 string@int
+JUMPIFEQ $add_int_float_78 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_78
+JUMPIFEQ $add_float_int_78 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_78 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_78
+JUMPIFEQ $add_string_string_78 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_78
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_78
+LABEL $add_string_string_78
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_78
+LABEL $add_int_float_78
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_78
+LABEL $add_float_int_78
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_78
+PUSHS GF@%result
+PUSHS GF@fbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_79 GF@%type1 string@int
+JUMPIFEQ $sub_float_79 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_79
+JUMPIFEQ $sub_ff_or_ii_79 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_79 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_79
+JUMPIFEQ $sub_float_int_79 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_79 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_79
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_79
+LABEL $sub_int_float_79
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_79
+LABEL $sub_float_int_79
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_79
+PUSHS GF@%result
+POPS GF@lbaaaaa
+PUSHS GF@kbaaaaa
+PUSHS GF@kbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_80 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_80 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_80
+JUMPIFEQ $mul_end_80 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_80 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_80
+JUMPIFEQ $mul_end_80 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_80 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_80
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_80
+LABEL $mul_int_float_80
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_80
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS float@0x1p+2
+PUSHS GF@jbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_81 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_81 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_81
+JUMPIFEQ $mul_end_81 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_81 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_81
+JUMPIFEQ $mul_end_81 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_81 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_81
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_81
+LABEL $mul_int_float_81
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_81
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@lbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_82 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_82 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_82
+JUMPIFEQ $mul_end_82 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_82 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_82
+JUMPIFEQ $mul_end_82 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_82 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_82
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_82
+LABEL $mul_int_float_82
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_82
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_83 GF@%type1 string@int
+JUMPIFEQ $sub_float_83 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_83
+JUMPIFEQ $sub_ff_or_ii_83 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_83 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_83
+JUMPIFEQ $sub_float_int_83 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_83 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_83
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_83
+LABEL $sub_int_float_83
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_83
+LABEL $sub_float_int_83
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_83
+PUSHS GF@%result
+POPS GF@mbaaaaa
+PUSHS GF@mbaaaaa
+PUSHS float@0x0p+0
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_85 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_85 GF@%type1 string@int
+JUMPIFEQ $eq_float_85 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_85
+JUMPIFEQ $eq_int_float_85 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_85
+JUMPIFEQ $eq_float_int_85 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_85
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_85
+LABEL $eq_float_int_85
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_85
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_84 GF@%type1 string@int
+JUMPIFEQ $if_string_84 GF@%type1 string@string
+JUMPIFEQ $if_true_84 GF@%type1 string@float
+JUMPIFEQ $if_false_84 GF@%val1 nil@nil
+JUMPIFEQ $if_false_84 GF@%val1 bool@false
+JUMP $if_true_84
+LABEL $if_int_84
+JUMPIFEQ $if_false_84 GF@%val1 int@0
+JUMP $if_true_84
+LABEL $if_string_84
+JUMPIFEQ $if_false_84 GF@%val1 string@
+LABEL $if_true_84
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@mbaaaaa
+CALL $laaaaaa
+MOVE GF@mbaaaaa TF@%retval
+PUSHS float@0x0p+0
+PUSHS GF@kbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_86 GF@%type1 string@int
+JUMPIFEQ $sub_float_86 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_86
+JUMPIFEQ $sub_ff_or_ii_86 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_86 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_86
+JUMPIFEQ $sub_float_int_86 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_86 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_86
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_86
+LABEL $sub_int_float_86
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_86
+LABEL $sub_float_int_86
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_86
+PUSHS GF@%result
+PUSHS GF@mbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_87 GF@%type1 string@int
+JUMPIFEQ $sub_float_87 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_87
+JUMPIFEQ $sub_ff_or_ii_87 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_87 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_87
+JUMPIFEQ $sub_float_int_87 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_87 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_87
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_87
+LABEL $sub_int_float_87
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_87
+LABEL $sub_float_int_87
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_87
+PUSHS GF@%result
+PUSHS float@0x1p+1
+PUSHS GF@jbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_88 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_88 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_88
+JUMPIFEQ $mul_end_88 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_88 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_88
+JUMPIFEQ $mul_end_88 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_88 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_88
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_88
+LABEL $mul_int_float_88
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_88
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_89 GF@%type1 string@float
+JUMPIFEQ $div_first_int_89 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_89
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_89
+JUMPIFEQ $div_check_zero_89 GF@%type2 string@float
+JUMPIFEQ $div_float_int_89 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_89
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_89
+LABEL $div_int_float_89
+LABEL $div_check_zero_89
+JUMPIFNEQ $div_end_89 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_89
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@nbaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@nbaaaaa
+DEFVAR TF@%2
+MOVE TF@%2 int@0
+DEFVAR TF@%3
+MOVE TF@%3 GF@dbaaaaa
+CALL $maaaaaa
+MOVE GF@obaaaaa TF@%retval
+PUSHS GF@obaaaaa
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_90 GF@%type1 string@int
+JUMPIFEQ $if_string_90 GF@%type1 string@string
+JUMPIFEQ $if_true_90 GF@%type1 string@float
+JUMPIFEQ $if_false_90 GF@%val1 nil@nil
+JUMPIFEQ $if_false_90 GF@%val1 bool@false
+JUMP $if_true_90
+LABEL $if_int_90
+JUMPIFEQ $if_false_90 GF@%val1 int@0
+JUMP $if_true_90
+LABEL $if_string_90
+JUMPIFEQ $if_false_90 GF@%val1 string@
+LABEL $if_true_90
+PUSHS GF@nbaaaaa
+POPS GF@dbaaaaa
+PUSHS GF@Faaaaaa
+PUSHS GF@nbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_91 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_91 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_91
+JUMPIFEQ $mul_end_91 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_91 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_91
+JUMPIFEQ $mul_end_91 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_91 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_91
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_91
+LABEL $mul_int_float_91
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_91
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@paaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_92 GF@%type1 string@int
+JUMPIFEQ $add_float_92 GF@%type1 string@float
+JUMPIFEQ $add_string_92 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_92
+JUMPIFEQ $add_ff_or_ii_92 GF@%type2 string@int
+JUMPIFEQ $add_int_float_92 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_92
+JUMPIFEQ $add_float_int_92 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_92 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_92
+JUMPIFEQ $add_string_string_92 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_92
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_92
+LABEL $add_string_string_92
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_92
+LABEL $add_int_float_92
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_92
+LABEL $add_float_int_92
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_92
+PUSHS GF@%result
+POPS GF@pbaaaaa
+PUSHS GF@abaaaaa
+PUSHS GF@nbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_93 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_93 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_93
+JUMPIFEQ $mul_end_93 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_93 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_93
+JUMPIFEQ $mul_end_93 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_93 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_93
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_93
+LABEL $mul_int_float_93
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_93
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@qaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_94 GF@%type1 string@int
+JUMPIFEQ $add_float_94 GF@%type1 string@float
+JUMPIFEQ $add_string_94 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_94
+JUMPIFEQ $add_ff_or_ii_94 GF@%type2 string@int
+JUMPIFEQ $add_int_float_94 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_94
+JUMPIFEQ $add_float_int_94 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_94 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_94
+JUMPIFEQ $add_string_string_94 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_94
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_94
+LABEL $add_string_string_94
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_94
+LABEL $add_int_float_94
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_94
+LABEL $add_float_int_94
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_94
+PUSHS GF@%result
+POPS GF@qbaaaaa
+PUSHS GF@bbaaaaa
+PUSHS GF@nbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_95 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_95 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_95
+JUMPIFEQ $mul_end_95 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_95 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_95
+JUMPIFEQ $mul_end_95 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_95 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_95
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_95
+LABEL $mul_int_float_95
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_95
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@raaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_96 GF@%type1 string@int
+JUMPIFEQ $add_float_96 GF@%type1 string@float
+JUMPIFEQ $add_string_96 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_96
+JUMPIFEQ $add_ff_or_ii_96 GF@%type2 string@int
+JUMPIFEQ $add_int_float_96 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_96
+JUMPIFEQ $add_float_int_96 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_96 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_96
+JUMPIFEQ $add_string_string_96 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_96
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_96
+LABEL $add_string_string_96
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_96
+LABEL $add_int_float_96
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_96
+LABEL $add_float_int_96
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_96
+PUSHS GF@%result
+POPS GF@rbaaaaa
+PUSHS GF@pbaaaaa
+PUSHS GF@saaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_97 GF@%type1 string@int
+JUMPIFEQ $sub_float_97 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_97
+JUMPIFEQ $sub_ff_or_ii_97 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_97 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_97
+JUMPIFEQ $sub_float_int_97 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_97 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_97
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_97
+LABEL $sub_int_float_97
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_97
+LABEL $sub_float_int_97
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_97
+PUSHS GF@%result
+PUSHS GF@vaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_98 GF@%type1 string@float
+JUMPIFEQ $div_first_int_98 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_98
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_98
+JUMPIFEQ $div_check_zero_98 GF@%type2 string@float
+JUMPIFEQ $div_float_int_98 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_98
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_98
+LABEL $div_int_float_98
+LABEL $div_check_zero_98
+JUMPIFNEQ $div_end_98 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_98
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@sbaaaaa
+PUSHS GF@qbaaaaa
+PUSHS GF@taaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_99 GF@%type1 string@int
+JUMPIFEQ $sub_float_99 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_99
+JUMPIFEQ $sub_ff_or_ii_99 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_99 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_99
+JUMPIFEQ $sub_float_int_99 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_99 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_99
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_99
+LABEL $sub_int_float_99
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_99
+LABEL $sub_float_int_99
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_99
+PUSHS GF@%result
+PUSHS GF@vaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_100 GF@%type1 string@float
+JUMPIFEQ $div_first_int_100 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_100
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_100
+JUMPIFEQ $div_check_zero_100 GF@%type2 string@float
+JUMPIFEQ $div_float_int_100 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_100
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_100
+LABEL $div_int_float_100
+LABEL $div_check_zero_100
+JUMPIFNEQ $div_end_100 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_100
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@tbaaaaa
+PUSHS GF@rbaaaaa
+PUSHS GF@uaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_101 GF@%type1 string@int
+JUMPIFEQ $sub_float_101 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_101
+JUMPIFEQ $sub_ff_or_ii_101 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_101 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_101
+JUMPIFEQ $sub_float_int_101 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_101 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_101
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_101
+LABEL $sub_int_float_101
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_101
+LABEL $sub_float_int_101
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_101
+PUSHS GF@%result
+PUSHS GF@vaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_102 GF@%type1 string@float
+JUMPIFEQ $div_first_int_102 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_102
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_102
+JUMPIFEQ $div_check_zero_102 GF@%type2 string@float
+JUMPIFEQ $div_float_int_102 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_102
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_102
+LABEL $div_int_float_102
+LABEL $div_check_zero_102
+JUMPIFNEQ $div_end_102 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_102
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@ubaaaaa
+PUSHS GF@waaaaaa
+PUSHS GF@pbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_103 GF@%type1 string@int
+JUMPIFEQ $sub_float_103 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_103
+JUMPIFEQ $sub_ff_or_ii_103 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_103 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_103
+JUMPIFEQ $sub_float_int_103 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_103 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_103
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_103
+LABEL $sub_int_float_103
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_103
+LABEL $sub_float_int_103
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_103
+PUSHS GF@%result
+POPS GF@vbaaaaa
+PUSHS GF@xaaaaaa
+PUSHS GF@qbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_104 GF@%type1 string@int
+JUMPIFEQ $sub_float_104 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_104
+JUMPIFEQ $sub_ff_or_ii_104 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_104 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_104
+JUMPIFEQ $sub_float_int_104 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_104 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_104
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_104
+LABEL $sub_int_float_104
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_104
+LABEL $sub_float_int_104
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_104
+PUSHS GF@%result
+POPS GF@wbaaaaa
+PUSHS GF@yaaaaaa
+PUSHS GF@rbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_105 GF@%type1 string@int
+JUMPIFEQ $sub_float_105 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_105
+JUMPIFEQ $sub_ff_or_ii_105 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_105 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_105
+JUMPIFEQ $sub_float_int_105 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_105 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_105
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_105
+LABEL $sub_int_float_105
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_105
+LABEL $sub_float_int_105
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_105
+PUSHS GF@%result
+POPS GF@xbaaaaa
+PUSHS GF@vbaaaaa
+PUSHS GF@vbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_106 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_106 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_106
+JUMPIFEQ $mul_end_106 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_106 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_106
+JUMPIFEQ $mul_end_106 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_106 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_106
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_106
+LABEL $mul_int_float_106
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_106
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@wbaaaaa
+PUSHS GF@wbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_107 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_107 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_107
+JUMPIFEQ $mul_end_107 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_107 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_107
+JUMPIFEQ $mul_end_107 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_107 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_107
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_107
+LABEL $mul_int_float_107
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_107
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_108 GF@%type1 string@int
+JUMPIFEQ $add_float_108 GF@%type1 string@float
+JUMPIFEQ $add_string_108 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_108
+JUMPIFEQ $add_ff_or_ii_108 GF@%type2 string@int
+JUMPIFEQ $add_int_float_108 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_108
+JUMPIFEQ $add_float_int_108 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_108 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_108
+JUMPIFEQ $add_string_string_108 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_108
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_108
+LABEL $add_string_string_108
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_108
+LABEL $add_int_float_108
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_108
+LABEL $add_float_int_108
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_108
+PUSHS GF@%result
+PUSHS GF@xbaaaaa
+PUSHS GF@xbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_109 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_109 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_109
+JUMPIFEQ $mul_end_109 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_109 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_109
+JUMPIFEQ $mul_end_109 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_109 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_109
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_109
+LABEL $mul_int_float_109
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_109
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_110 GF@%type1 string@int
+JUMPIFEQ $add_float_110 GF@%type1 string@float
+JUMPIFEQ $add_string_110 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_110
+JUMPIFEQ $add_ff_or_ii_110 GF@%type2 string@int
+JUMPIFEQ $add_int_float_110 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_110
+JUMPIFEQ $add_float_int_110 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_110 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_110
+JUMPIFEQ $add_string_string_110 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_110
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_110
+LABEL $add_string_string_110
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_110
+LABEL $add_int_float_110
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_110
+LABEL $add_float_int_110
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_110
+PUSHS GF@%result
+POPS GF@mbaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@mbaaaaa
+CALL $laaaaaa
+MOVE GF@mbaaaaa TF@%retval
+PUSHS GF@sbaaaaa
+PUSHS GF@vbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_111 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_111 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_111
+JUMPIFEQ $mul_end_111 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_111 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_111
+JUMPIFEQ $mul_end_111 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_111 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_111
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_111
+LABEL $mul_int_float_111
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_111
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+PUSHS GF@tbaaaaa
+PUSHS GF@wbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_112 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_112 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_112
+JUMPIFEQ $mul_end_112 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_112 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_112
+JUMPIFEQ $mul_end_112 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_112 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_112
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_112
+LABEL $mul_int_float_112
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_112
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_113 GF@%type1 string@int
+JUMPIFEQ $add_float_113 GF@%type1 string@float
+JUMPIFEQ $add_string_113 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_113
+JUMPIFEQ $add_ff_or_ii_113 GF@%type2 string@int
+JUMPIFEQ $add_int_float_113 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_113
+JUMPIFEQ $add_float_int_113 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_113 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_113
+JUMPIFEQ $add_string_string_113 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_113
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_113
+LABEL $add_string_string_113
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_113
+LABEL $add_int_float_113
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_113
+LABEL $add_float_int_113
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_113
+PUSHS GF@%result
+PUSHS GF@ubaaaaa
+PUSHS GF@xbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_114 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_114 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_114
+JUMPIFEQ $mul_end_114 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_114 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_114
+JUMPIFEQ $mul_end_114 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_114 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_114
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_114
+LABEL $mul_int_float_114
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_114
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_115 GF@%type1 string@int
+JUMPIFEQ $add_float_115 GF@%type1 string@float
+JUMPIFEQ $add_string_115 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_115
+JUMPIFEQ $add_ff_or_ii_115 GF@%type2 string@int
+JUMPIFEQ $add_int_float_115 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_115
+JUMPIFEQ $add_float_int_115 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_115 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_115
+JUMPIFEQ $add_string_string_115 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_115
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_115
+LABEL $add_string_string_115
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_115
+LABEL $add_int_float_115
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_115
+LABEL $add_float_int_115
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_115
+PUSHS GF@%result
+PUSHS GF@mbaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_116 GF@%type1 string@float
+JUMPIFEQ $div_first_int_116 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_116
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_116
+JUMPIFEQ $div_check_zero_116 GF@%type2 string@float
+JUMPIFEQ $div_float_int_116 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_116
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_116
+LABEL $div_int_float_116
+LABEL $div_check_zero_116
+JUMPIFNEQ $div_end_116 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_116
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+POPS GF@ybaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@ybaaaaa
+CALL $jaaaaaa
+MOVE GF@ebaaaaa TF@%retval
+JUMP $if_end_90
+LABEL $if_false_90
+LABEL $if_end_90
+JUMP $if_end_84
+LABEL $if_false_84
+LABEL $if_end_84
+PUSHS GF@cbaaaaa
+PUSHS int@1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_117 GF@%type1 string@int
+JUMPIFEQ $add_float_117 GF@%type1 string@float
+JUMPIFEQ $add_string_117 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_117
+JUMPIFEQ $add_ff_or_ii_117 GF@%type2 string@int
+JUMPIFEQ $add_int_float_117 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_117
+JUMPIFEQ $add_float_int_117 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_117 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_117
+JUMPIFEQ $add_string_string_117 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_117
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_117
+LABEL $add_string_string_117
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_117
+LABEL $add_int_float_117
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_117
+LABEL $add_float_int_117
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_117
+PUSHS GF@%result
+POPS GF@cbaaaaa
+JUMP $while_start_49
+LABEL $while_end_49
+PUSHS GF@zaaaaaa
+PUSHS GF@ebaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_118 GF@%type1 string@int
+JUMPIFEQ $add_float_118 GF@%type1 string@float
+JUMPIFEQ $add_string_118 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_118
+JUMPIFEQ $add_ff_or_ii_118 GF@%type2 string@int
+JUMPIFEQ $add_int_float_118 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_118
+JUMPIFEQ $add_float_int_118 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_118 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_118
+JUMPIFEQ $add_string_string_118 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_118
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_118
+LABEL $add_string_string_118
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_118
+LABEL $add_int_float_118
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_118
+LABEL $add_float_int_118
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_118
+PUSHS GF@%result
+POPS GF@zaaaaaa
+PUSHS GF@Aaaaaaa
+PUSHS float@0x1p+0
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_119 GF@%type1 string@int
+JUMPIFEQ $add_float_119 GF@%type1 string@float
+JUMPIFEQ $add_string_119 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_119
+JUMPIFEQ $add_ff_or_ii_119 GF@%type2 string@int
+JUMPIFEQ $add_int_float_119 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_119
+JUMPIFEQ $add_float_int_119 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_119 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_119
+JUMPIFEQ $add_string_string_119 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_119
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_119
+LABEL $add_string_string_119
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_119
+LABEL $add_int_float_119
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_119
+LABEL $add_float_int_119
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_119
+PUSHS GF@%result
+POPS GF@Aaaaaaa
+JUMP $while_start_36
+LABEL $while_end_36
+PUSHS GF@zaaaaaa
+PUSHS string@|
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_120 GF@%type1 string@int
+JUMPIFEQ $add_float_120 GF@%type1 string@float
+JUMPIFEQ $add_string_120 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_120
+JUMPIFEQ $add_ff_or_ii_120 GF@%type2 string@int
+JUMPIFEQ $add_int_float_120 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_120
+JUMPIFEQ $add_float_int_120 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_120 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_120
+JUMPIFEQ $add_string_string_120 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_120
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_120
+LABEL $add_string_string_120
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_120
+LABEL $add_int_float_120
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_120
+LABEL $add_float_int_120
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_120
+PUSHS GF@%result
+POPS GF@zaaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@zaaaaaa
+TYPE GF@%type1 TF@%1
+JUMPIFNEQ $print_121 GF@%type1 string@nil
+WRITE string@None
+JUMP $print_end_121
+LABEL $print_121
+WRITE TF@%1
+LABEL $print_end_121
+WRITE string@\010
+DEFVAR TF@%retval
+MOVE TF@%retval nil@nil
+PUSHS GF@Baaaaaa
+PUSHS float@0x1p+0
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_122 GF@%type1 string@int
+JUMPIFEQ $add_float_122 GF@%type1 string@float
+JUMPIFEQ $add_string_122 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_122
+JUMPIFEQ $add_ff_or_ii_122 GF@%type2 string@int
+JUMPIFEQ $add_int_float_122 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_122
+JUMPIFEQ $add_float_int_122 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_122 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_122
+JUMPIFEQ $add_string_string_122 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_122
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_122
+LABEL $add_string_string_122
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_122
+LABEL $add_int_float_122
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_122
+LABEL $add_float_int_122
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_122
+PUSHS GF@%result
+POPS GF@Baaaaaa
+JUMP $while_start_34
+LABEL $while_end_34
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 GF@naaaaaa
+CALL $iaaaaaa
+EXIT int@0
+LABEL $kaaaaaa
+PUSHFRAME
+DEFVAR LF@%retval
+MOVE LF@%retval nil@nil
+DEFVAR LF@aaaaaaa
+MOVE LF@aaaaaaa LF@%1
+PUSHS LF@aaaaaaa
+PUSHS int@0
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_18 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_18 GF@%type1 string@int
+JUMPIFEQ $eq_float_18 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_18
+JUMPIFEQ $eq_int_float_18 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_18
+JUMPIFEQ $eq_float_int_18 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_18
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_18
+LABEL $eq_float_int_18
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_18
+PUSHS GF@%val2
+PUSHS GF@%val1
+LTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_17 GF@%type1 string@int
+JUMPIFEQ $if_string_17 GF@%type1 string@string
+JUMPIFEQ $if_true_17 GF@%type1 string@float
+JUMPIFEQ $if_false_17 GF@%val1 nil@nil
+JUMPIFEQ $if_false_17 GF@%val1 bool@false
+JUMP $if_true_17
+LABEL $if_int_17
+JUMPIFEQ $if_false_17 GF@%val1 int@0
+JUMP $if_true_17
+LABEL $if_string_17
+JUMPIFEQ $if_false_17 GF@%val1 string@
+LABEL $if_true_17
+PUSHS int@0
+PUSHS LF@aaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_19 GF@%type1 string@int
+JUMPIFEQ $sub_float_19 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_19
+JUMPIFEQ $sub_ff_or_ii_19 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_19 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_19
+JUMPIFEQ $sub_float_int_19 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_19 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_19
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_19
+LABEL $sub_int_float_19
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_19
+LABEL $sub_float_int_19
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_19
+PUSHS GF@%result
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_17
+LABEL $if_false_17
+PUSHS LF@aaaaaaa
+POPS LF@%retval
+POPFRAME
+RETURN
+LABEL $if_end_17
+POPFRAME
+RETURN
+LABEL $maaaaaa
+PUSHFRAME
+DEFVAR LF@%retval
+MOVE LF@%retval nil@nil
+DEFVAR LF@aaaaaaa
+MOVE LF@aaaaaaa LF@%1
+DEFVAR LF@baaaaaa
+MOVE LF@baaaaaa LF@%2
+DEFVAR LF@caaaaaa
+MOVE LF@caaaaaa LF@%3
+PUSHS LF@aaaaaaa
+PUSHS LF@baaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_27 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_27 GF@%type1 string@int
+JUMPIFEQ $eq_float_27 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_27
+JUMPIFEQ $eq_int_float_27 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_27
+JUMPIFEQ $eq_float_int_27 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_27
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_27
+LABEL $eq_float_int_27
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_27
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_26 GF@%type1 string@int
+JUMPIFEQ $if_string_26 GF@%type1 string@string
+JUMPIFEQ $if_true_26 GF@%type1 string@float
+JUMPIFEQ $if_false_26 GF@%val1 nil@nil
+JUMPIFEQ $if_false_26 GF@%val1 bool@false
+JUMP $if_true_26
+LABEL $if_int_26
+JUMPIFEQ $if_false_26 GF@%val1 int@0
+JUMP $if_true_26
+LABEL $if_string_26
+JUMPIFEQ $if_false_26 GF@%val1 string@
+LABEL $if_true_26
+PUSHS LF@aaaaaaa
+PUSHS LF@caaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_29 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_29 GF@%type1 string@int
+JUMPIFEQ $eq_float_29 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_29
+JUMPIFEQ $eq_int_float_29 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_29
+JUMPIFEQ $eq_float_int_29 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_29
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_29
+LABEL $eq_float_int_29
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_29
+PUSHS GF@%val2
+PUSHS GF@%val1
+LTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_28 GF@%type1 string@int
+JUMPIFEQ $if_string_28 GF@%type1 string@string
+JUMPIFEQ $if_true_28 GF@%type1 string@float
+JUMPIFEQ $if_false_28 GF@%val1 nil@nil
+JUMPIFEQ $if_false_28 GF@%val1 bool@false
+JUMP $if_true_28
+LABEL $if_int_28
+JUMPIFEQ $if_false_28 GF@%val1 int@0
+JUMP $if_true_28
+LABEL $if_string_28
+JUMPIFEQ $if_false_28 GF@%val1 string@
+LABEL $if_true_28
+PUSHS int@1
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_28
+LABEL $if_false_28
+LABEL $if_end_28
+JUMP $if_end_26
+LABEL $if_false_26
+LABEL $if_end_26
+PUSHS int@0
+POPS LF@%retval
+POPFRAME
+RETURN
+POPFRAME
+RETURN
+LABEL $jaaaaaa
+PUSHFRAME
+DEFVAR LF@%retval
+MOVE LF@%retval nil@nil
+DEFVAR LF@aaaaaaa
+MOVE LF@aaaaaaa LF@%1
+PUSHS LF@aaaaaaa
+PUSHS float@0x1.ccccccccccccdp-1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_8 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_8 GF@%type1 string@int
+JUMPIFEQ $eq_float_8 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_8
+JUMPIFEQ $eq_int_float_8 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_8
+JUMPIFEQ $eq_float_int_8 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_8
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_8
+LABEL $eq_float_int_8
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_8
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_7 GF@%type1 string@int
+JUMPIFEQ $if_string_7 GF@%type1 string@string
+JUMPIFEQ $if_true_7 GF@%type1 string@float
+JUMPIFEQ $if_false_7 GF@%val1 nil@nil
+JUMPIFEQ $if_false_7 GF@%val1 bool@false
+JUMP $if_true_7
+LABEL $if_int_7
+JUMPIFEQ $if_false_7 GF@%val1 int@0
+JUMP $if_true_7
+LABEL $if_string_7
+JUMPIFEQ $if_false_7 GF@%val1 string@
+LABEL $if_true_7
+PUSHS string@\035
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_7
+LABEL $if_false_7
+PUSHS LF@aaaaaaa
+PUSHS float@0x1.6666666666666p-1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_10 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_10 GF@%type1 string@int
+JUMPIFEQ $eq_float_10 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_10
+JUMPIFEQ $eq_int_float_10 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_10
+JUMPIFEQ $eq_float_int_10 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_10
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_10
+LABEL $eq_float_int_10
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_10
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_9 GF@%type1 string@int
+JUMPIFEQ $if_string_9 GF@%type1 string@string
+JUMPIFEQ $if_true_9 GF@%type1 string@float
+JUMPIFEQ $if_false_9 GF@%val1 nil@nil
+JUMPIFEQ $if_false_9 GF@%val1 bool@false
+JUMP $if_true_9
+LABEL $if_int_9
+JUMPIFEQ $if_false_9 GF@%val1 int@0
+JUMP $if_true_9
+LABEL $if_string_9
+JUMPIFEQ $if_false_9 GF@%val1 string@
+LABEL $if_true_9
+PUSHS string@*
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_9
+LABEL $if_false_9
+PUSHS LF@aaaaaaa
+PUSHS float@0x1p-1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_12 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_12 GF@%type1 string@int
+JUMPIFEQ $eq_float_12 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_12
+JUMPIFEQ $eq_int_float_12 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_12
+JUMPIFEQ $eq_float_int_12 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_12
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_12
+LABEL $eq_float_int_12
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_12
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_11 GF@%type1 string@int
+JUMPIFEQ $if_string_11 GF@%type1 string@string
+JUMPIFEQ $if_true_11 GF@%type1 string@float
+JUMPIFEQ $if_false_11 GF@%val1 nil@nil
+JUMPIFEQ $if_false_11 GF@%val1 bool@false
+JUMP $if_true_11
+LABEL $if_int_11
+JUMPIFEQ $if_false_11 GF@%val1 int@0
+JUMP $if_true_11
+LABEL $if_string_11
+JUMPIFEQ $if_false_11 GF@%val1 string@
+LABEL $if_true_11
+PUSHS string@+
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_11
+LABEL $if_false_11
+PUSHS LF@aaaaaaa
+PUSHS float@0x1.3333333333333p-2
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_14 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_14 GF@%type1 string@int
+JUMPIFEQ $eq_float_14 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_14
+JUMPIFEQ $eq_int_float_14 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_14
+JUMPIFEQ $eq_float_int_14 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_14
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_14
+LABEL $eq_float_int_14
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_14
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_13 GF@%type1 string@int
+JUMPIFEQ $if_string_13 GF@%type1 string@string
+JUMPIFEQ $if_true_13 GF@%type1 string@float
+JUMPIFEQ $if_false_13 GF@%val1 nil@nil
+JUMPIFEQ $if_false_13 GF@%val1 bool@false
+JUMP $if_true_13
+LABEL $if_int_13
+JUMPIFEQ $if_false_13 GF@%val1 int@0
+JUMP $if_true_13
+LABEL $if_string_13
+JUMPIFEQ $if_false_13 GF@%val1 string@
+LABEL $if_true_13
+PUSHS string@-
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_13
+LABEL $if_false_13
+PUSHS LF@aaaaaaa
+PUSHS float@0x1.999999999999ap-4
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_16 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_16 GF@%type1 string@int
+JUMPIFEQ $eq_float_16 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_16
+JUMPIFEQ $eq_int_float_16 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_16
+JUMPIFEQ $eq_float_int_16 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_16
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_16
+LABEL $eq_float_int_16
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_16
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $if_int_15 GF@%type1 string@int
+JUMPIFEQ $if_string_15 GF@%type1 string@string
+JUMPIFEQ $if_true_15 GF@%type1 string@float
+JUMPIFEQ $if_false_15 GF@%val1 nil@nil
+JUMPIFEQ $if_false_15 GF@%val1 bool@false
+JUMP $if_true_15
+LABEL $if_int_15
+JUMPIFEQ $if_false_15 GF@%val1 int@0
+JUMP $if_true_15
+LABEL $if_string_15
+JUMPIFEQ $if_false_15 GF@%val1 string@
+LABEL $if_true_15
+PUSHS string@.
+POPS LF@%retval
+POPFRAME
+RETURN
+JUMP $if_end_15
+LABEL $if_false_15
+PUSHS string@\032
+POPS LF@%retval
+POPFRAME
+RETURN
+LABEL $if_end_15
+LABEL $if_end_13
+LABEL $if_end_11
+LABEL $if_end_9
+LABEL $if_end_7
+POPFRAME
+RETURN
+LABEL $iaaaaaa
+PUSHFRAME
+DEFVAR LF@%retval
+MOVE LF@%retval nil@nil
+DEFVAR LF@aaaaaaa
+MOVE LF@aaaaaaa LF@%1
+DEFVAR LF@baaaaaa
+PUSHS string@+
+POPS LF@baaaaaa
+DEFVAR LF@caaaaaa
+PUSHS int@0
+POPS LF@caaaaaa
+LABEL $while_start_1
+PUSHS LF@caaaaaa
+PUSHS LF@aaaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_2 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_2 GF@%type1 string@int
+JUMPIFEQ $eq_float_2 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_2
+JUMPIFEQ $eq_int_float_2 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_2
+JUMPIFEQ $eq_float_int_2 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_2
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_2
+LABEL $eq_float_int_2
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_2
+PUSHS GF@%val2
+PUSHS GF@%val1
+LTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $while_int_1 GF@%type1 string@int
+JUMPIFEQ $while_string_1 GF@%type1 string@string
+JUMPIFEQ $while_do_1 GF@%type1 string@float
+JUMPIFEQ $while_end_1 GF@%val1 nil@nil
+JUMPIFEQ $while_end_1 GF@%val1 bool@false
+JUMP $while_do_1
+LABEL $while_int_1
+JUMPIFEQ $while_end_1 GF@%val1 int@0
+JUMP $while_do_1
+LABEL $while_string_1
+JUMPIFEQ $while_end_1 GF@%val1 string@
+LABEL $while_do_1
+PUSHS LF@baaaaaa
+PUSHS string@-
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_3 GF@%type1 string@int
+JUMPIFEQ $add_float_3 GF@%type1 string@float
+JUMPIFEQ $add_string_3 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_3
+JUMPIFEQ $add_ff_or_ii_3 GF@%type2 string@int
+JUMPIFEQ $add_int_float_3 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_3
+JUMPIFEQ $add_float_int_3 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_3 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_3
+JUMPIFEQ $add_string_string_3 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_3
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_3
+LABEL $add_string_string_3
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_3
+LABEL $add_int_float_3
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_3
+LABEL $add_float_int_3
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_3
+PUSHS GF@%result
+POPS LF@baaaaaa
+PUSHS LF@caaaaaa
+PUSHS int@1
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_4 GF@%type1 string@int
+JUMPIFEQ $add_float_4 GF@%type1 string@float
+JUMPIFEQ $add_string_4 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_4
+JUMPIFEQ $add_ff_or_ii_4 GF@%type2 string@int
+JUMPIFEQ $add_int_float_4 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_4
+JUMPIFEQ $add_float_int_4 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_4 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_4
+JUMPIFEQ $add_string_string_4 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_4
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_4
+LABEL $add_string_string_4
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_4
+LABEL $add_int_float_4
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_4
+LABEL $add_float_int_4
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_4
+PUSHS GF@%result
+POPS LF@caaaaaa
+JUMP $while_start_1
+LABEL $while_end_1
+PUSHS LF@baaaaaa
+PUSHS string@+
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_5 GF@%type1 string@int
+JUMPIFEQ $add_float_5 GF@%type1 string@float
+JUMPIFEQ $add_string_5 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_5
+JUMPIFEQ $add_ff_or_ii_5 GF@%type2 string@int
+JUMPIFEQ $add_int_float_5 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_5
+JUMPIFEQ $add_float_int_5 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_5 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_5
+JUMPIFEQ $add_string_string_5 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_5
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_5
+LABEL $add_string_string_5
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_5
+LABEL $add_int_float_5
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_5
+LABEL $add_float_int_5
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_5
+PUSHS GF@%result
+POPS LF@baaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 LF@baaaaaa
+TYPE GF@%type1 TF@%1
+JUMPIFNEQ $print_6 GF@%type1 string@nil
+WRITE string@None
+JUMP $print_end_6
+LABEL $print_6
+WRITE TF@%1
+LABEL $print_end_6
+WRITE string@\010
+DEFVAR TF@%retval
+MOVE TF@%retval nil@nil
+POPFRAME
+RETURN
+LABEL $laaaaaa
+PUSHFRAME
+DEFVAR LF@%retval
+MOVE LF@%retval nil@nil
+DEFVAR LF@aaaaaaa
+MOVE LF@aaaaaaa LF@%1
+DEFVAR LF@baaaaaa
+PUSHS LF@aaaaaaa
+POPS LF@baaaaaa
+DEFVAR LF@caaaaaa
+PUSHS int@1
+POPS LF@caaaaaa
+DEFVAR LF@daaaaaa
+LABEL $while_start_20
+PUSHS LF@caaaaaa
+PUSHS float@0x1.a36e2eb1c432dp-14
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $eq_cmp_21 GF@%type1 GF@%type2
+JUMPIFEQ $eq_int_21 GF@%type1 string@int
+JUMPIFEQ $eq_float_21 GF@%type1 string@float
+EXIT int@4
+LABEL $eq_int_21
+JUMPIFEQ $eq_int_float_21 GF@%type2 string@float
+EXIT int@4
+LABEL $eq_float_21
+JUMPIFEQ $eq_float_int_21 GF@%type2 string@int
+EXIT int@4
+LABEL $eq_int_float_21
+INT2FLOAT GF@%val1 GF@%val1
+JUMP $eq_cmp_21
+LABEL $eq_float_int_21
+INT2FLOAT GF@%val2 GF@%val2
+LABEL $eq_cmp_21
+PUSHS GF@%val2
+PUSHS GF@%val1
+GTS
+POPS GF@%val1
+TYPE GF@%type1 GF@%val1
+JUMPIFEQ $while_int_20 GF@%type1 string@int
+JUMPIFEQ $while_string_20 GF@%type1 string@string
+JUMPIFEQ $while_do_20 GF@%type1 string@float
+JUMPIFEQ $while_end_20 GF@%val1 nil@nil
+JUMPIFEQ $while_end_20 GF@%val1 bool@false
+JUMP $while_do_20
+LABEL $while_int_20
+JUMPIFEQ $while_end_20 GF@%val1 int@0
+JUMP $while_do_20
+LABEL $while_string_20
+JUMPIFEQ $while_end_20 GF@%val1 string@
+LABEL $while_do_20
+PUSHS float@0x1p-1
+PUSHS LF@aaaaaaa
+PUSHS LF@baaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $div_first_float_22 GF@%type1 string@float
+JUMPIFEQ $div_first_int_22 GF@%type1 string@int
+EXIT int@4
+LABEL $div_first_int_22
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $div_first_float_22
+JUMPIFEQ $div_check_zero_22 GF@%type2 string@float
+JUMPIFEQ $div_float_int_22 GF@%type2 string@int
+EXIT int@4
+LABEL $div_float_int_22
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $div_check_zero_22
+LABEL $div_int_float_22
+LABEL $div_check_zero_22
+JUMPIFNEQ $div_end_22 GF@%val1 float@0x0.0p+0
+EXIT int@9
+LABEL $div_end_22
+DIV GF@%result GF@%val2 GF@%val1
+PUSHS GF@%result
+PUSHS LF@baaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $add_int_23 GF@%type1 string@int
+JUMPIFEQ $add_float_23 GF@%type1 string@float
+JUMPIFEQ $add_string_23 GF@%type1 string@string
+EXIT int@4
+LABEL $add_int_23
+JUMPIFEQ $add_ff_or_ii_23 GF@%type2 string@int
+JUMPIFEQ $add_int_float_23 GF@%type2 string@float
+EXIT int@4
+LABEL $add_float_23
+JUMPIFEQ $add_float_int_23 GF@%type2 string@int
+JUMPIFEQ $add_ff_or_ii_23 GF@%type2 string@float
+EXIT int@4
+LABEL $add_string_23
+JUMPIFEQ $add_string_string_23 GF@%type2 string@string
+EXIT int@4
+LABEL $add_ff_or_ii_23
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_23
+LABEL $add_string_string_23
+CONCAT GF@%result GF@%val2 GF@%val1
+JUMP $add_end_23
+LABEL $add_int_float_23
+INT2FLOAT GF@%val1 GF@%val1
+ADD GF@%result GF@%val1 GF@%val2
+JUMP $add_end_23
+LABEL $add_float_int_23
+INT2FLOAT GF@%val2 GF@%val2
+ADD GF@%result GF@%val1 GF@%val2
+LABEL $add_end_23
+PUSHS GF@%result
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $mul_first_int_24 GF@%type1 string@int
+JUMPIFEQ $mul_first_float_24 GF@%type1 string@float
+EXIT int@4
+LABEL $mul_first_int_24
+JUMPIFEQ $mul_end_24 GF@%type2 string@int
+JUMPIFEQ $mul_int_float_24 GF@%type2 string@float
+EXIT int@4
+LABEL $mul_first_float_24
+JUMPIFEQ $mul_end_24 GF@%type2 string@float
+JUMPIFEQ $mul_float_int_24 GF@%type2 string@int
+EXIT int@4
+LABEL $mul_float_int_24
+INT2FLOAT GF@%val2 GF@%val2
+JUMP $mul_end_24
+LABEL $mul_int_float_24
+INT2FLOAT GF@%val1 GF@%val1
+LABEL $mul_end_24
+MUL GF@%result GF@%val1 GF@%val2
+PUSHS GF@%result
+POPS LF@daaaaaa
+PUSHS LF@daaaaaa
+PUSHS LF@baaaaaa
+POPS GF@%val1
+POPS GF@%val2
+TYPE GF@%type1 GF@%val1
+TYPE GF@%type2 GF@%val2
+JUMPIFEQ $sub_int_25 GF@%type1 string@int
+JUMPIFEQ $sub_float_25 GF@%type1 string@float
+EXIT int@4
+LABEL $sub_int_25
+JUMPIFEQ $sub_ff_or_ii_25 GF@%type2 string@int
+JUMPIFEQ $sub_int_float_25 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_float_25
+JUMPIFEQ $sub_float_int_25 GF@%type2 string@int
+JUMPIFEQ $sub_ff_or_ii_25 GF@%type2 string@float
+EXIT int@4
+LABEL $sub_ff_or_ii_25
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_25
+LABEL $sub_int_float_25
+INT2FLOAT GF@%val1 GF@%val1
+SUB GF@%result GF@%val2 GF@%val1
+JUMP $sub_end_25
+LABEL $sub_float_int_25
+INT2FLOAT GF@%val2 GF@%val2
+SUB GF@%result GF@%val2 GF@%val1
+LABEL $sub_end_25
+PUSHS GF@%result
+POPS LF@caaaaaa
+CREATEFRAME
+DEFVAR TF@%1
+MOVE TF@%1 LF@caaaaaa
+CALL $kaaaaaa
+MOVE LF@caaaaaa TF@%retval
+PUSHS LF@daaaaaa
+POPS LF@baaaaaa
+JUMP $while_start_20
+LABEL $while_end_20
+PUSHS LF@baaaaaa
+POPS LF@%retval
+POPFRAME
+RETURN
+POPFRAME
+RETURN

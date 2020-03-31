@@ -1,0 +1,2447 @@
+#Start of the program
+.IPPcode20
+JUMP _$main
+LABEL _$inputi
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+READ LF@$return int
+POPFRAME
+RETURN
+LABEL _$inputf
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+READ LF@$return float
+POPFRAME
+RETURN
+LABEL _$inputs
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+READ LF@$return string
+POPFRAME
+RETURN
+LABEL _$len
+PUSHFRAME
+DEFVAR LF@s
+POPS LF@s
+DEFVAR LF@$type
+TYPE LF@$type LF@s
+JUMPIFEQ _$lenOK LF@$type string@string
+EXIT int@4
+LABEL _$lenOK
+DEFVAR LF@$return
+STRLEN LF@$return LF@s
+POPFRAME
+RETURN
+LABEL _$substr
+PUSHFRAME
+DEFVAR LF@n
+POPS LF@n
+DEFVAR LF@i
+POPS LF@i
+DEFVAR LF@s
+POPS LF@s
+TYPE GF@$type1 LF@i
+TYPE GF@$type2 LF@n
+JUMPIFNEQ _$typeError GF@$type1 string@int
+JUMPIFNEQ _$typeError GF@$type2 string@int
+DEFVAR LF@$bool
+DEFVAR LF@$return
+DEFVAR LF@$length
+LT LF@$bool LF@i int@0
+JUMPIFEQ _$substrNone LF@$bool bool@true
+PUSHS LF@s
+CREATEFRAME
+CALL _$len
+MOVE LF@$length TF@$return
+SUB LF@$length LF@$length int@1
+GT LF@$bool LF@i LF@$length
+JUMPIFEQ _$substrNone LF@$bool bool@true
+LT LF@$bool LF@n int@0
+JUMPIFEQ _$substrNone LF@$bool bool@true
+DEFVAR LF@$tmp
+SUB LF@$tmp LF@$length LF@i
+GT LF@$bool LF@$tmp LF@n
+JUMPIFEQ _$substrOk LF@$bool bool@true
+SUB LF@n LF@n LF@$tmp
+LABEL _$substrOk
+DEFVAR LF@$char
+DEFVAR LF@$index
+DEFVAR LF@$counter
+MOVE LF@$index LF@i
+MOVE LF@$return string@
+MOVE LF@$counter LF@n
+LABEL _$getAndSet
+GETCHAR LF@$char LF@s LF@$index
+CONCAT LF@$return LF@$return LF@$char
+ADD LF@$index LF@$index int@1
+SUB LF@$counter LF@$counter int@1
+JUMPIFEQ _$substrEnd LF@$counter int@0
+JUMP _$getAndSet
+LABEL _$substrNone
+MOVE LF@$return string@None
+POPFRAME
+RETURN
+LABEL _$substrEnd
+POPFRAME
+RETURN
+LABEL _$ord
+PUSHFRAME
+DEFVAR LF@i
+POPS LF@i
+DEFVAR LF@s
+POPS LF@s
+TYPE GF@$type1 LF@i
+JUMPIFNEQ _$typeError GF@$type1 string@int
+DEFVAR LF@$length
+PUSHS LF@s
+CREATEFRAME
+CALL _$len
+MOVE LF@$length TF@$return
+SUB LF@$length LF@$length int@1
+DEFVAR LF@$bool
+GT LF@$bool LF@i LF@$length
+JUMPIFEQ _$notInString LF@$bool bool@true
+DEFVAR LF@$return
+STRI2INT LF@$return LF@s LF@i
+POPFRAME
+RETURN
+LABEL _$notInString
+DEFVAR LF@$return
+MOVE LF@$return string@None
+POPFRAME
+RETURN
+LABEL _$chr
+PUSHFRAME
+DEFVAR LF@i
+POPS LF@i
+TYPE GF@$type1 LF@i
+JUMPIFNEQ _$chrFail GF@$type1 string@int
+DEFVAR LF@$bool
+GT LF@$bool LF@i int@255
+JUMPIFEQ _$chrFail LF@$bool bool@true
+LT LF@$bool LF@i int@0
+JUMPIFEQ _$chrFail LF@$bool bool@true
+DEFVAR LF@$return
+INT2CHAR LF@$return LF@i
+POPFRAME
+RETURN
+LABEL _$chrFail
+EXIT int@4
+LABEL _$checkOneParameter
+TYPE GF@$type1 GF@$left
+JUMPIFEQ _$string GF@$type1 string@string
+JUMPIFEQ _$int GF@$type1 string@int
+JUMPIFEQ _$nil GF@$type1 string@nil
+JUMPIFEQ _$float GF@$type1 string@float
+MOVE GF@$bool bool@false
+JUMP _$endOfComparison
+LABEL _$string
+EQ GF@$bool string@ GF@$left
+NOT GF@$bool GF@$bool
+JUMP _$endOfComparison
+LABEL _$int
+EQ GF@$bool int@0 GF@$left
+NOT GF@$bool GF@$bool
+JUMP _$endOfComparison
+LABEL _$float
+EQ GF@$bool float@0x0p+0 GF@$left
+NOT GF@$bool GF@$bool
+JUMP _$endOfComparison
+LABEL _$nil
+MOVE GF@$bool bool@true
+LABEL _$endOfComparison
+RETURN
+LABEL _$changeNoneString
+JUMPIFNEQ _$changeNoneStringEnd GF@$bool bool@true
+MOVE GF@$temp1 string@None
+LABEL _$changeNoneStringEnd
+RETURN
+#Start of the main
+LABEL _$main
+CREATEFRAME
+PUSHFRAME
+DEFVAR GF@$temp1
+DEFVAR GF@$temp2
+DEFVAR GF@$temp3
+DEFVAR GF@$number
+DEFVAR GF@$bool
+DEFVAR GF@$bool1
+DEFVAR GF@$bool2
+DEFVAR GF@$left
+DEFVAR GF@$right
+DEFVAR GF@$type1
+DEFVAR GF@$type2
+JUMP _$endOfprint_line
+LABEL _print_line
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+DEFVAR LF@width
+POPS LF@width
+DEFVAR LF@line
+MOVE LF@line string@+
+DEFVAR LF@x
+MOVE LF@x int@0
+LABEL _$preWhileprint_line0
+MOVE GF@$left LF@x
+MOVE GF@$right LF@width
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0whileprint_linefirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0whileprint_linefirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0whileprint_linesecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0whileprint_linesecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+LT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$endOf$whileprint_line0 GF@$bool bool@true
+LABEL _$whileprint_line0
+MOVE LF@line LF@line
+CONCAT LF@line LF@line string@-
+MOVE GF@$number int@1
+TYPE GF@$type1 LF@x
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE0UNIQUEfirst GF@$bool bool@true
+INT2FLOAT LF@x LF@x
+LABEL _$retypeFirstUNIQUE0UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE0UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE0UNIQUEsecond
+TYPE GF@$type1 LF@x
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp1 LF@x GF@$number
+MOVE LF@x GF@$temp1
+JUMP _$preWhileprint_line0
+LABEL _$endOf$whileprint_line0
+MOVE LF@line LF@line
+CONCAT LF@line LF@line string@+
+EQ GF@$bool nil@nil LF@line
+MOVE GF@$temp1 LF@line
+CALL _$changeNoneString
+MOVE LF@line GF@$temp1
+WRITE LF@line
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+POPFRAME
+WRITE string@\010
+POPFRAME
+RETURN
+LABEL _$endOfprint_line
+JUMP _$endOfpixel_color
+LABEL _pixel_color
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+DEFVAR LF@lightness
+POPS LF@lightness
+MOVE GF@$left LF@lightness
+MOVE GF@$right float@0x1.ccccccp-1
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0ifpixel_colorfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0ifpixel_colorfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0ifpixel_colorsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0ifpixel_colorsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elsepixel_color0 GF@$bool bool@true
+LABEL _$ifpixel_color0
+MOVE LF@$return string@\035
+POPFRAME
+RETURN
+JUMP _$endOf$ifpixel_color0
+LABEL _$elsepixel_color0
+MOVE GF@$left LF@lightness
+MOVE GF@$right float@0x1.666666p-1
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst1ifpixel_colorfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst1ifpixel_colorfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond1ifpixel_colorsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond1ifpixel_colorsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elsepixel_color1 GF@$bool bool@true
+LABEL _$ifpixel_color1
+MOVE LF@$return string@*
+POPFRAME
+RETURN
+JUMP _$endOf$ifpixel_color1
+LABEL _$elsepixel_color1
+MOVE GF@$left LF@lightness
+MOVE GF@$right float@0x1p-1
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst2ifpixel_colorfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst2ifpixel_colorfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond2ifpixel_colorsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond2ifpixel_colorsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elsepixel_color2 GF@$bool bool@true
+LABEL _$ifpixel_color2
+MOVE LF@$return string@+
+POPFRAME
+RETURN
+JUMP _$endOf$ifpixel_color2
+LABEL _$elsepixel_color2
+MOVE GF@$left LF@lightness
+MOVE GF@$right float@0x1.333334p-2
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst3ifpixel_colorfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst3ifpixel_colorfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond3ifpixel_colorsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond3ifpixel_colorsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elsepixel_color3 GF@$bool bool@true
+LABEL _$ifpixel_color3
+MOVE LF@$return string@-
+POPFRAME
+RETURN
+JUMP _$endOf$ifpixel_color3
+LABEL _$elsepixel_color3
+MOVE GF@$left LF@lightness
+MOVE GF@$right float@0x1.99999ap-4
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst4ifpixel_colorfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst4ifpixel_colorfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond4ifpixel_colorsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond4ifpixel_colorsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elsepixel_color4 GF@$bool bool@true
+LABEL _$ifpixel_color4
+MOVE LF@$return string@.
+POPFRAME
+RETURN
+JUMP _$endOf$ifpixel_color4
+LABEL _$elsepixel_color4
+MOVE LF@$return string@\032
+POPFRAME
+RETURN
+LABEL _$endOf$ifpixel_color4
+LABEL _$endOf$ifpixel_color3
+LABEL _$endOf$ifpixel_color2
+LABEL _$endOf$ifpixel_color1
+LABEL _$endOf$ifpixel_color0
+POPFRAME
+RETURN
+LABEL _$endOfpixel_color
+JUMP _$endOfabs
+LABEL _abs
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+DEFVAR LF@val
+POPS LF@val
+MOVE GF@$left LF@val
+MOVE GF@$right int@0
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0ifabsfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0ifabsfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0ifabssecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0ifabssecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+LT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elseabs0 GF@$bool bool@true
+LABEL _$ifabs0
+MOVE GF@$number int@0
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 LF@val
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE1UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE1UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE1UNIQUEsecond GF@$bool bool@true
+INT2FLOAT LF@val LF@val
+LABEL _$retypeSecondUNIQUE1UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 LF@val
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@$number LF@val
+MOVE LF@$return GF@$temp1
+POPFRAME
+RETURN
+JUMP _$endOf$ifabs0
+LABEL _$elseabs0
+MOVE LF@$return LF@val
+POPFRAME
+RETURN
+LABEL _$endOf$ifabs0
+POPFRAME
+RETURN
+LABEL _$endOfabs
+JUMP _$endOfyiplus1
+LABEL _yiplus1
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+DEFVAR LF@d
+POPS LF@d
+DEFVAR LF@yi
+MOVE LF@yi LF@d
+DEFVAR LF@delta
+MOVE LF@delta int@1
+DEFVAR LF@yip1
+LABEL _$preWhileyiplus10
+MOVE GF@$left LF@delta
+MOVE GF@$right float@0x1.a36e2ep-14
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0whileyiplus1first GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0whileyiplus1first
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0whileyiplus1second GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0whileyiplus1second
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$endOf$whileyiplus10 GF@$bool bool@true
+LABEL _$whileyiplus10
+TYPE GF@$type1 LF@d
+TYPE GF@$type2 LF@yi
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE2UNIQUEfirst GF@$bool bool@true
+INT2FLOAT LF@d LF@d
+LABEL _$retypeFirstUNIQUE2UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE2UNIQUEsecond GF@$bool bool@true
+INT2FLOAT LF@yi LF@yi
+LABEL _$retypeSecondUNIQUE2UNIQUEsecond
+TYPE GF@$type1 LF@d
+TYPE GF@$type2 LF@yi
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 LF@yi
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp1 LF@d LF@yi
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 LF@yi
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE3UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE3UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE3UNIQUEsecond GF@$bool bool@true
+INT2FLOAT LF@yi LF@yi
+LABEL _$retypeSecondUNIQUE3UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 LF@yi
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp1 LF@yi
+MOVE GF@$number float@0x1p-1
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE4UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE4UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE4UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE4UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@$number GF@$temp2
+MOVE LF@yip1 GF@$temp1
+TYPE GF@$type1 LF@yip1
+TYPE GF@$type2 LF@yi
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE5UNIQUEfirst GF@$bool bool@true
+INT2FLOAT LF@yip1 LF@yip1
+LABEL _$retypeFirstUNIQUE5UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE5UNIQUEsecond GF@$bool bool@true
+INT2FLOAT LF@yi LF@yi
+LABEL _$retypeSecondUNIQUE5UNIQUEsecond
+TYPE GF@$type1 LF@yip1
+TYPE GF@$type2 LF@yi
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 LF@yip1 LF@yi
+MOVE LF@delta GF@$temp1
+CREATEFRAME
+PUSHS LF@delta
+CALL _abs
+MOVE LF@delta TF@$return
+MOVE LF@yi LF@yip1
+JUMP _$preWhileyiplus10
+LABEL _$endOf$whileyiplus10
+MOVE LF@$return LF@yi
+POPFRAME
+RETURN
+POPFRAME
+RETURN
+LABEL _$endOfyiplus1
+JUMP _$endOfis_in_range
+LABEL _is_in_range
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+DEFVAR LF@max
+POPS LF@max
+DEFVAR LF@min
+POPS LF@min
+DEFVAR LF@val
+POPS LF@val
+MOVE GF@$left LF@val
+MOVE GF@$right LF@min
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0ifis_in_rangefirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0ifis_in_rangefirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0ifis_in_rangesecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0ifis_in_rangesecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elseis_in_range0 GF@$bool bool@true
+LABEL _$ifis_in_range0
+MOVE GF@$left LF@val
+MOVE GF@$right LF@max
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst1ifis_in_rangefirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst1ifis_in_rangefirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond1ifis_in_rangesecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond1ifis_in_rangesecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+LT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$elseis_in_range1 GF@$bool bool@true
+LABEL _$ifis_in_range1
+MOVE LF@$return int@1
+POPFRAME
+RETURN
+JUMP _$endOf$ifis_in_range1
+LABEL _$elseis_in_range1
+LABEL _$endOf$ifis_in_range1
+JUMP _$endOf$ifis_in_range0
+LABEL _$elseis_in_range0
+LABEL _$endOf$ifis_in_range0
+MOVE LF@$return int@0
+POPFRAME
+RETURN
+POPFRAME
+RETURN
+LABEL _$endOfis_in_range
+WRITE string@ifj-raytracer,\032vykresli\0323\032koule
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+POPFRAME
+WRITE string@\010
+DEFVAR GF@resx
+MOVE GF@resx float@0x1.18p+6
+DEFVAR GF@resy
+MOVE GF@resy float@0x1.ep+5
+DEFVAR GF@posx
+MOVE GF@posx float@0x0p+0
+DEFVAR GF@posy
+MOVE GF@posy float@0x0p+0
+DEFVAR GF@posz
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1.4p+4
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1.4p+4
+MOVE GF@posz GF@$temp1
+DEFVAR GF@spherex
+MOVE GF@spherex float@0x0p+0
+DEFVAR GF@spherey
+MOVE GF@spherey float@0x0p+0
+DEFVAR GF@spherez
+MOVE GF@spherez float@0x0p+0
+DEFVAR GF@sphereradius
+MOVE GF@sphereradius float@0x1p+2
+DEFVAR GF@lightx
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1.4p+2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1.4p+2
+MOVE GF@lightx GF@$temp1
+DEFVAR GF@lighty
+MOVE GF@lighty float@0x1.4p+2
+DEFVAR GF@lightz
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1.6p+3
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1.6p+3
+MOVE GF@lightz GF@$temp1
+DEFVAR GF@line
+MOVE GF@line string@+
+DEFVAR GF@x
+MOVE GF@x float@0x0p+0
+DEFVAR GF@y
+MOVE GF@y float@0x1.8p+1
+CREATEFRAME
+PUSHS GF@resx
+CALL _print_line
+DEFVAR GF@tarx
+DEFVAR GF@tary
+DEFVAR GF@tarz
+DEFVAR GF@rayx
+DEFVAR GF@rayy
+DEFVAR GF@rayz
+DEFVAR GF@n
+DEFVAR GF@z
+DEFVAR GF@pixel
+DEFVAR GF@sphereradius2
+DEFVAR GF@ocx
+DEFVAR GF@ocy
+DEFVAR GF@ocz
+DEFVAR GF@a
+DEFVAR GF@b
+DEFVAR GF@c
+DEFVAR GF@d
+DEFVAR GF@t
+DEFVAR GF@in_range
+DEFVAR GF@intersectionx
+DEFVAR GF@intersectiony
+DEFVAR GF@intersectionz
+DEFVAR GF@normalx
+DEFVAR GF@normaly
+DEFVAR GF@normalz
+DEFVAR GF@tolightx
+DEFVAR GF@tolighty
+DEFVAR GF@tolightz
+DEFVAR GF@lightness
+LABEL _$preWhile$main0
+MOVE GF@$left GF@y
+MOVE GF@$right GF@resy
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0while$mainfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0while$mainfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0while$mainsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0while$mainsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+LT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$endOf$while$main0 GF@$bool bool@true
+LABEL _$while$main0
+MOVE GF@line string@|
+MOVE GF@x float@0x0p+0
+LABEL _$preWhile$main1
+MOVE GF@$left GF@x
+MOVE GF@$right GF@resx
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst1while$mainfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst1while$mainfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond1while$mainsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond1while$mainsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+LT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$endOf$while$main1 GF@$bool bool@true
+LABEL _$while$main1
+MOVE GF@$number float@0x1p+1
+TYPE GF@$type1 GF@x
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE6UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@x GF@x
+LABEL _$retypeFirstUNIQUE6UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE6UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE6UNIQUEsecond
+TYPE GF@$type1 GF@x
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@x GF@$number
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@resx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE7UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE7UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE7UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@resx GF@resx
+LABEL _$retypeSecondUNIQUE7UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@resx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@resx
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp2 GF@$temp1 GF@resx
+MOVE GF@$number float@0x1p+0
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE8UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE8UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE8UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE8UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@$number GF@$temp2
+MOVE GF@$number float@0x1.cp+2
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE9UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE9UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE9UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE9UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@$temp1 GF@$number
+MOVE GF@tarx GF@$temp2
+MOVE GF@$number float@0x1p+1
+TYPE GF@$type1 GF@y
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE10UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@y GF@y
+LABEL _$retypeFirstUNIQUE10UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE10UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE10UNIQUEsecond
+TYPE GF@$type1 GF@y
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@y GF@$number
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@resy
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE11UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE11UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE11UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@resy GF@resy
+LABEL _$retypeSecondUNIQUE11UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@resy
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@resy
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp2 GF@$temp1 GF@resy
+MOVE GF@$number float@0x1p+0
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE12UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE12UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE12UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE12UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@$number GF@$temp2
+MOVE GF@$number float@0x1.4p+2
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE13UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE13UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE13UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE13UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@$temp1 GF@$number
+MOVE GF@tary GF@$temp2
+MOVE GF@tarz float@0x0p+0
+TYPE GF@$type1 GF@tarx
+TYPE GF@$type2 GF@posx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE14UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@tarx GF@tarx
+LABEL _$retypeFirstUNIQUE14UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE14UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@posx GF@posx
+LABEL _$retypeSecondUNIQUE14UNIQUEsecond
+TYPE GF@$type1 GF@tarx
+TYPE GF@$type2 GF@posx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@tarx GF@posx
+MOVE GF@rayx GF@$temp1
+TYPE GF@$type1 GF@tary
+TYPE GF@$type2 GF@posy
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE15UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@tary GF@tary
+LABEL _$retypeFirstUNIQUE15UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE15UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@posy GF@posy
+LABEL _$retypeSecondUNIQUE15UNIQUEsecond
+TYPE GF@$type1 GF@tary
+TYPE GF@$type2 GF@posy
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@tary GF@posy
+MOVE GF@rayy GF@$temp1
+TYPE GF@$type1 GF@tarz
+TYPE GF@$type2 GF@posz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE16UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@tarz GF@tarz
+LABEL _$retypeFirstUNIQUE16UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE16UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@posz GF@posz
+LABEL _$retypeSecondUNIQUE16UNIQUEsecond
+TYPE GF@$type1 GF@tarz
+TYPE GF@$type2 GF@posz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@tarz GF@posz
+MOVE GF@rayz GF@$temp1
+MOVE GF@n int@0
+MOVE GF@z float@0x1.3878p+13
+MOVE GF@pixel string@\032
+LABEL _$preWhile$main2
+MOVE GF@$left GF@n
+MOVE GF@$right int@3
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst2while$mainfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst2while$mainfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond2while$mainsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond2while$mainsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+LT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$endOf$while$main2 GF@$bool bool@true
+LABEL _$while$main2
+MOVE GF@$left GF@n
+MOVE GF@$right int@0
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst0if$mainfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst0if$mainfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond0if$mainsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond0if$mainsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$temp1 string@nil GF@$type1
+EQ GF@$temp2 string@nil GF@$type2
+EQ GF@$temp3 GF@$type1 GF@$type2
+OR GF@$bool GF@$temp1 GF@$temp2
+OR GF@$bool GF@$bool GF@$temp3
+JUMPIFNEQ _$typeError GF@$bool bool@true
+EQ GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$else$main0 GF@$bool bool@true
+LABEL _$if$main0
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1.4p+2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1.4p+2
+MOVE GF@spherex GF@$temp1
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1.8p+1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1.8p+1
+MOVE GF@spherey GF@$temp1
+MOVE GF@spherez float@0x1.8p+2
+MOVE GF@sphereradius float@0x1.8p+1
+JUMP _$endOf$if$main0
+LABEL _$else$main0
+MOVE GF@$left GF@n
+MOVE GF@$right int@1
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst1if$mainfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst1if$mainfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond1if$mainsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond1if$mainsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$temp1 string@nil GF@$type1
+EQ GF@$temp2 string@nil GF@$type2
+EQ GF@$temp3 GF@$type1 GF@$type2
+OR GF@$bool GF@$temp1 GF@$temp2
+OR GF@$bool GF@$bool GF@$temp3
+JUMPIFNEQ _$typeError GF@$bool bool@true
+EQ GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$else$main1 GF@$bool bool@true
+LABEL _$if$main1
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1p+0
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1p+0
+MOVE GF@spherex GF@$temp1
+MOVE GF@spherey float@0x1p+0
+MOVE GF@spherez float@0x1.4p+3
+MOVE GF@sphereradius float@0x1.4p+2
+JUMP _$endOf$if$main1
+LABEL _$else$main1
+MOVE GF@spherex float@0x1.4p+2
+TYPE GF@$type1 float@0x0p+0
+TYPE GF@$type2 float@0x1.8p+1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 float@0x0p+0 float@0x1.8p+1
+MOVE GF@spherey GF@$temp1
+MOVE GF@spherez float@0x1.4p+4
+MOVE GF@sphereradius float@0x1p+3
+LABEL _$endOf$if$main1
+LABEL _$endOf$if$main0
+TYPE GF@$type1 GF@sphereradius
+TYPE GF@$type2 GF@sphereradius
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE17UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@sphereradius GF@sphereradius
+LABEL _$retypeFirstUNIQUE17UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE17UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@sphereradius GF@sphereradius
+LABEL _$retypeSecondUNIQUE17UNIQUEsecond
+TYPE GF@$type1 GF@sphereradius
+TYPE GF@$type2 GF@sphereradius
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@sphereradius GF@sphereradius
+MOVE GF@sphereradius2 GF@$temp1
+TYPE GF@$type1 GF@posx
+TYPE GF@$type2 GF@spherex
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE18UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@posx GF@posx
+LABEL _$retypeFirstUNIQUE18UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE18UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@spherex GF@spherex
+LABEL _$retypeSecondUNIQUE18UNIQUEsecond
+TYPE GF@$type1 GF@posx
+TYPE GF@$type2 GF@spherex
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@posx GF@spherex
+MOVE GF@ocx GF@$temp1
+TYPE GF@$type1 GF@posy
+TYPE GF@$type2 GF@spherey
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE19UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@posy GF@posy
+LABEL _$retypeFirstUNIQUE19UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE19UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@spherey GF@spherey
+LABEL _$retypeSecondUNIQUE19UNIQUEsecond
+TYPE GF@$type1 GF@posy
+TYPE GF@$type2 GF@spherey
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@posy GF@spherey
+MOVE GF@ocy GF@$temp1
+TYPE GF@$type1 GF@posz
+TYPE GF@$type2 GF@spherez
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE20UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@posz GF@posz
+LABEL _$retypeFirstUNIQUE20UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE20UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@spherez GF@spherez
+LABEL _$retypeSecondUNIQUE20UNIQUEsecond
+TYPE GF@$type1 GF@posz
+TYPE GF@$type2 GF@spherez
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@posz GF@spherez
+MOVE GF@ocz GF@$temp1
+TYPE GF@$type1 GF@rayx
+TYPE GF@$type2 GF@rayx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE21UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayx GF@rayx
+LABEL _$retypeFirstUNIQUE21UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE21UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@rayx GF@rayx
+LABEL _$retypeSecondUNIQUE21UNIQUEsecond
+TYPE GF@$type1 GF@rayx
+TYPE GF@$type2 GF@rayx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayx GF@rayx
+TYPE GF@$type1 GF@rayy
+TYPE GF@$type2 GF@rayy
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE22UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayy GF@rayy
+LABEL _$retypeFirstUNIQUE22UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE22UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@rayy GF@rayy
+LABEL _$retypeSecondUNIQUE22UNIQUEsecond
+TYPE GF@$type1 GF@rayy
+TYPE GF@$type2 GF@rayy
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@rayy GF@rayy
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE23UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE23UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE23UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE23UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp3 GF@$temp1 GF@$temp2
+TYPE GF@$type1 GF@rayz
+TYPE GF@$type2 GF@rayz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE24UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayz GF@rayz
+LABEL _$retypeFirstUNIQUE24UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE24UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@rayz GF@rayz
+LABEL _$retypeSecondUNIQUE24UNIQUEsecond
+TYPE GF@$type1 GF@rayz
+TYPE GF@$type2 GF@rayz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayz GF@rayz
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE25UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp3 GF@$temp3
+LABEL _$retypeFirstUNIQUE25UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE25UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeSecondUNIQUE25UNIQUEsecond
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp3 GF@$temp1
+MOVE GF@a GF@$temp2
+TYPE GF@$type1 GF@rayx
+TYPE GF@$type2 GF@ocx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE26UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayx GF@rayx
+LABEL _$retypeFirstUNIQUE26UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE26UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@ocx GF@ocx
+LABEL _$retypeSecondUNIQUE26UNIQUEsecond
+TYPE GF@$type1 GF@rayx
+TYPE GF@$type2 GF@ocx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayx GF@ocx
+TYPE GF@$type1 GF@rayy
+TYPE GF@$type2 GF@ocy
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE27UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayy GF@rayy
+LABEL _$retypeFirstUNIQUE27UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE27UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@ocy GF@ocy
+LABEL _$retypeSecondUNIQUE27UNIQUEsecond
+TYPE GF@$type1 GF@rayy
+TYPE GF@$type2 GF@ocy
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@rayy GF@ocy
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE28UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE28UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE28UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE28UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp3 GF@$temp1 GF@$temp2
+TYPE GF@$type1 GF@rayz
+TYPE GF@$type2 GF@ocz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE29UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayz GF@rayz
+LABEL _$retypeFirstUNIQUE29UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE29UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@ocz GF@ocz
+LABEL _$retypeSecondUNIQUE29UNIQUEsecond
+TYPE GF@$type1 GF@rayz
+TYPE GF@$type2 GF@ocz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayz GF@ocz
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE30UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp3 GF@$temp3
+LABEL _$retypeFirstUNIQUE30UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE30UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeSecondUNIQUE30UNIQUEsecond
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp3 GF@$temp1
+MOVE GF@$number float@0x1p+1
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE31UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE31UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE31UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE31UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@$number GF@$temp2
+MOVE GF@b GF@$temp1
+TYPE GF@$type1 GF@ocx
+TYPE GF@$type2 GF@ocx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE32UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@ocx GF@ocx
+LABEL _$retypeFirstUNIQUE32UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE32UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@ocx GF@ocx
+LABEL _$retypeSecondUNIQUE32UNIQUEsecond
+TYPE GF@$type1 GF@ocx
+TYPE GF@$type2 GF@ocx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@ocx GF@ocx
+TYPE GF@$type1 GF@ocy
+TYPE GF@$type2 GF@ocy
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE33UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@ocy GF@ocy
+LABEL _$retypeFirstUNIQUE33UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE33UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@ocy GF@ocy
+LABEL _$retypeSecondUNIQUE33UNIQUEsecond
+TYPE GF@$type1 GF@ocy
+TYPE GF@$type2 GF@ocy
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@ocy GF@ocy
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE34UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE34UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE34UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE34UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp3 GF@$temp1 GF@$temp2
+TYPE GF@$type1 GF@ocz
+TYPE GF@$type2 GF@ocz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE35UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@ocz GF@ocz
+LABEL _$retypeFirstUNIQUE35UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE35UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@ocz GF@ocz
+LABEL _$retypeSecondUNIQUE35UNIQUEsecond
+TYPE GF@$type1 GF@ocz
+TYPE GF@$type2 GF@ocz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@ocz GF@ocz
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE36UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp3 GF@$temp3
+LABEL _$retypeFirstUNIQUE36UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE36UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeSecondUNIQUE36UNIQUEsecond
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp3 GF@$temp1
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@sphereradius2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE37UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeFirstUNIQUE37UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE37UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@sphereradius2 GF@sphereradius2
+LABEL _$retypeSecondUNIQUE37UNIQUEsecond
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@sphereradius2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@$temp2 GF@sphereradius2
+MOVE GF@c GF@$temp1
+TYPE GF@$type1 GF@b
+TYPE GF@$type2 GF@b
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE38UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@b GF@b
+LABEL _$retypeFirstUNIQUE38UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE38UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@b GF@b
+LABEL _$retypeSecondUNIQUE38UNIQUEsecond
+TYPE GF@$type1 GF@b
+TYPE GF@$type2 GF@b
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@b GF@b
+MOVE GF@$number float@0x1p+2
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@a
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE39UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE39UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE39UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@a GF@a
+LABEL _$retypeSecondUNIQUE39UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@a
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@$number GF@a
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@c
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE40UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeFirstUNIQUE40UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE40UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@c GF@c
+LABEL _$retypeSecondUNIQUE40UNIQUEsecond
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@c
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp3 GF@$temp2 GF@c
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp3
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE41UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE41UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE41UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp3 GF@$temp3
+LABEL _$retypeSecondUNIQUE41UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp3
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp2 GF@$temp1 GF@$temp3
+MOVE GF@d GF@$temp2
+MOVE GF@$left GF@d
+MOVE GF@$right float@0x0p+0
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirst2if$mainfirst GF@$bool bool@true
+INT2FLOAT GF@$left GF@$left
+LABEL _$retypeFirst2if$mainfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecond2if$mainsecond GF@$bool bool@true
+INT2FLOAT GF@$right GF@$right
+LABEL _$retypeSecond2if$mainsecond
+TYPE GF@$type1 GF@$left
+TYPE GF@$type2 GF@$right
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+GT GF@$bool GF@$left GF@$right
+JUMPIFNEQ _$else$main2 GF@$bool bool@true
+LABEL _$if$main2
+CREATEFRAME
+PUSHS GF@d
+CALL _yiplus1
+MOVE GF@d TF@$return
+MOVE GF@$number float@0x0p+0
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@b
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE42UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE42UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE42UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@b GF@b
+LABEL _$retypeSecondUNIQUE42UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@b
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@$number GF@b
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@d
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE43UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE43UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE43UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@d GF@d
+LABEL _$retypeSecondUNIQUE43UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@d
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp2 GF@$temp1 GF@d
+MOVE GF@$number float@0x1p+1
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@a
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE44UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeFirstUNIQUE44UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE44UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@a GF@a
+LABEL _$retypeSecondUNIQUE44UNIQUEsecond
+TYPE GF@$type1 GF@$number
+TYPE GF@$type2 GF@a
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@$number GF@a
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@$temp1
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE45UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeFirstUNIQUE45UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE45UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeSecondUNIQUE45UNIQUEsecond
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@$temp1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@$temp1
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp3 GF@$temp2 GF@$temp1
+MOVE GF@t GF@$temp3
+CREATEFRAME
+PUSHS GF@t
+PUSHS int@0
+PUSHS GF@z
+CALL _is_in_range
+MOVE GF@in_range TF@$return
+MOVE GF@$left GF@in_range
+CALL _$checkOneParameter
+JUMPIFNEQ _$else$main3 GF@$bool bool@true
+LABEL _$if$main3
+MOVE GF@z GF@t
+TYPE GF@$type1 GF@rayx
+TYPE GF@$type2 GF@t
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE46UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayx GF@rayx
+LABEL _$retypeFirstUNIQUE46UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE46UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@t GF@t
+LABEL _$retypeSecondUNIQUE46UNIQUEsecond
+TYPE GF@$type1 GF@rayx
+TYPE GF@$type2 GF@t
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayx GF@t
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@posx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE47UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE47UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE47UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@posx GF@posx
+LABEL _$retypeSecondUNIQUE47UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@posx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp1 GF@posx
+MOVE GF@intersectionx GF@$temp2
+TYPE GF@$type1 GF@rayy
+TYPE GF@$type2 GF@t
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE48UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayy GF@rayy
+LABEL _$retypeFirstUNIQUE48UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE48UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@t GF@t
+LABEL _$retypeSecondUNIQUE48UNIQUEsecond
+TYPE GF@$type1 GF@rayy
+TYPE GF@$type2 GF@t
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayy GF@t
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@posy
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE49UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE49UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE49UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@posy GF@posy
+LABEL _$retypeSecondUNIQUE49UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@posy
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp1 GF@posy
+MOVE GF@intersectiony GF@$temp2
+TYPE GF@$type1 GF@rayz
+TYPE GF@$type2 GF@t
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE50UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@rayz GF@rayz
+LABEL _$retypeFirstUNIQUE50UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE50UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@t GF@t
+LABEL _$retypeSecondUNIQUE50UNIQUEsecond
+TYPE GF@$type1 GF@rayz
+TYPE GF@$type2 GF@t
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@rayz GF@t
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@posz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE51UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE51UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE51UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@posz GF@posz
+LABEL _$retypeSecondUNIQUE51UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@posz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp1 GF@posz
+MOVE GF@intersectionz GF@$temp2
+TYPE GF@$type1 GF@intersectionx
+TYPE GF@$type2 GF@spherex
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE52UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@intersectionx GF@intersectionx
+LABEL _$retypeFirstUNIQUE52UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE52UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@spherex GF@spherex
+LABEL _$retypeSecondUNIQUE52UNIQUEsecond
+TYPE GF@$type1 GF@intersectionx
+TYPE GF@$type2 GF@spherex
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@intersectionx GF@spherex
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@sphereradius
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE53UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE53UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE53UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@sphereradius GF@sphereradius
+LABEL _$retypeSecondUNIQUE53UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@sphereradius
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@sphereradius
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp2 GF@$temp1 GF@sphereradius
+MOVE GF@normalx GF@$temp2
+TYPE GF@$type1 GF@intersectiony
+TYPE GF@$type2 GF@spherey
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE54UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@intersectiony GF@intersectiony
+LABEL _$retypeFirstUNIQUE54UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE54UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@spherey GF@spherey
+LABEL _$retypeSecondUNIQUE54UNIQUEsecond
+TYPE GF@$type1 GF@intersectiony
+TYPE GF@$type2 GF@spherey
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@intersectiony GF@spherey
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@sphereradius
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE55UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE55UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE55UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@sphereradius GF@sphereradius
+LABEL _$retypeSecondUNIQUE55UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@sphereradius
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@sphereradius
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp2 GF@$temp1 GF@sphereradius
+MOVE GF@normaly GF@$temp2
+TYPE GF@$type1 GF@intersectionz
+TYPE GF@$type2 GF@spherez
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE56UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@intersectionz GF@intersectionz
+LABEL _$retypeFirstUNIQUE56UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE56UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@spherez GF@spherez
+LABEL _$retypeSecondUNIQUE56UNIQUEsecond
+TYPE GF@$type1 GF@intersectionz
+TYPE GF@$type2 GF@spherez
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@intersectionz GF@spherez
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@sphereradius
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE57UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE57UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE57UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@sphereradius GF@sphereradius
+LABEL _$retypeSecondUNIQUE57UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@sphereradius
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@sphereradius
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp2 GF@$temp1 GF@sphereradius
+MOVE GF@normalz GF@$temp2
+TYPE GF@$type1 GF@lightx
+TYPE GF@$type2 GF@intersectionx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE58UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@lightx GF@lightx
+LABEL _$retypeFirstUNIQUE58UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE58UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@intersectionx GF@intersectionx
+LABEL _$retypeSecondUNIQUE58UNIQUEsecond
+TYPE GF@$type1 GF@lightx
+TYPE GF@$type2 GF@intersectionx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@lightx GF@intersectionx
+MOVE GF@tolightx GF@$temp1
+TYPE GF@$type1 GF@lighty
+TYPE GF@$type2 GF@intersectiony
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE59UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@lighty GF@lighty
+LABEL _$retypeFirstUNIQUE59UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE59UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@intersectiony GF@intersectiony
+LABEL _$retypeSecondUNIQUE59UNIQUEsecond
+TYPE GF@$type1 GF@lighty
+TYPE GF@$type2 GF@intersectiony
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@lighty GF@intersectiony
+MOVE GF@tolighty GF@$temp1
+TYPE GF@$type1 GF@lightz
+TYPE GF@$type2 GF@intersectionz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE60UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@lightz GF@lightz
+LABEL _$retypeFirstUNIQUE60UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE60UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@intersectionz GF@intersectionz
+LABEL _$retypeSecondUNIQUE60UNIQUEsecond
+TYPE GF@$type1 GF@lightz
+TYPE GF@$type2 GF@intersectionz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+SUB GF@$temp1 GF@lightz GF@intersectionz
+MOVE GF@tolightz GF@$temp1
+TYPE GF@$type1 GF@tolightx
+TYPE GF@$type2 GF@tolightx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE61UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@tolightx GF@tolightx
+LABEL _$retypeFirstUNIQUE61UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE61UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@tolightx GF@tolightx
+LABEL _$retypeSecondUNIQUE61UNIQUEsecond
+TYPE GF@$type1 GF@tolightx
+TYPE GF@$type2 GF@tolightx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@tolightx GF@tolightx
+TYPE GF@$type1 GF@tolighty
+TYPE GF@$type2 GF@tolighty
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE62UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@tolighty GF@tolighty
+LABEL _$retypeFirstUNIQUE62UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE62UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@tolighty GF@tolighty
+LABEL _$retypeSecondUNIQUE62UNIQUEsecond
+TYPE GF@$type1 GF@tolighty
+TYPE GF@$type2 GF@tolighty
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@tolighty GF@tolighty
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE63UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE63UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE63UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE63UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp3 GF@$temp1 GF@$temp2
+TYPE GF@$type1 GF@tolightz
+TYPE GF@$type2 GF@tolightz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE64UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@tolightz GF@tolightz
+LABEL _$retypeFirstUNIQUE64UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE64UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@tolightz GF@tolightz
+LABEL _$retypeSecondUNIQUE64UNIQUEsecond
+TYPE GF@$type1 GF@tolightz
+TYPE GF@$type2 GF@tolightz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@tolightz GF@tolightz
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE65UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp3 GF@$temp3
+LABEL _$retypeFirstUNIQUE65UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE65UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeSecondUNIQUE65UNIQUEsecond
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp3 GF@$temp1
+MOVE GF@d GF@$temp2
+CREATEFRAME
+PUSHS GF@d
+CALL _yiplus1
+MOVE GF@d TF@$return
+TYPE GF@$type1 GF@normalx
+TYPE GF@$type2 GF@tolightx
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE66UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@normalx GF@normalx
+LABEL _$retypeFirstUNIQUE66UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE66UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@tolightx GF@tolightx
+LABEL _$retypeSecondUNIQUE66UNIQUEsecond
+TYPE GF@$type1 GF@normalx
+TYPE GF@$type2 GF@tolightx
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@normalx GF@tolightx
+TYPE GF@$type1 GF@normaly
+TYPE GF@$type2 GF@tolighty
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE67UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@normaly GF@normaly
+LABEL _$retypeFirstUNIQUE67UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE67UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@tolighty GF@tolighty
+LABEL _$retypeSecondUNIQUE67UNIQUEsecond
+TYPE GF@$type1 GF@normaly
+TYPE GF@$type2 GF@tolighty
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp2 GF@normaly GF@tolighty
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE68UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeFirstUNIQUE68UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE68UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeSecondUNIQUE68UNIQUEsecond
+TYPE GF@$type1 GF@$temp1
+TYPE GF@$type2 GF@$temp2
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp3 GF@$temp1 GF@$temp2
+TYPE GF@$type1 GF@normalz
+TYPE GF@$type2 GF@tolightz
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE69UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@normalz GF@normalz
+LABEL _$retypeFirstUNIQUE69UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE69UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@tolightz GF@tolightz
+LABEL _$retypeSecondUNIQUE69UNIQUEsecond
+TYPE GF@$type1 GF@normalz
+TYPE GF@$type2 GF@tolightz
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+MUL GF@$temp1 GF@normalz GF@tolightz
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE70UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp3 GF@$temp3
+LABEL _$retypeFirstUNIQUE70UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE70UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$temp1 GF@$temp1
+LABEL _$retypeSecondUNIQUE70UNIQUEsecond
+TYPE GF@$type1 GF@$temp3
+TYPE GF@$type2 GF@$temp1
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp2 GF@$temp3 GF@$temp1
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@d
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE71UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@$temp2 GF@$temp2
+LABEL _$retypeFirstUNIQUE71UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE71UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@d GF@d
+LABEL _$retypeSecondUNIQUE71UNIQUEsecond
+TYPE GF@$type1 GF@$temp2
+TYPE GF@$type2 GF@d
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+EQ GF@$bool float@0x0p+0 GF@d
+JUMPIFEQ _$divisionByZero GF@$bool bool@true
+DIV GF@$temp1 GF@$temp2 GF@d
+MOVE GF@lightness GF@$temp1
+CREATEFRAME
+PUSHS GF@lightness
+CALL _pixel_color
+MOVE GF@pixel TF@$return
+JUMP _$endOf$if$main3
+LABEL _$else$main3
+LABEL _$endOf$if$main3
+JUMP _$endOf$if$main2
+LABEL _$else$main2
+LABEL _$endOf$if$main2
+MOVE GF@$number int@1
+TYPE GF@$type1 GF@n
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE72UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@n GF@n
+LABEL _$retypeFirstUNIQUE72UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE72UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE72UNIQUEsecond
+TYPE GF@$type1 GF@n
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp1 GF@n GF@$number
+MOVE GF@n GF@$temp1
+JUMP _$preWhile$main2
+LABEL _$endOf$while$main2
+MOVE GF@line GF@line
+CONCAT GF@line GF@line GF@pixel
+MOVE GF@$number float@0x1p+0
+TYPE GF@$type1 GF@x
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE73UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@x GF@x
+LABEL _$retypeFirstUNIQUE73UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE73UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE73UNIQUEsecond
+TYPE GF@$type1 GF@x
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp1 GF@x GF@$number
+MOVE GF@x GF@$temp1
+JUMP _$preWhile$main1
+LABEL _$endOf$while$main1
+MOVE GF@line GF@line
+CONCAT GF@line GF@line string@|
+EQ GF@$bool nil@nil GF@line
+MOVE GF@$temp1 GF@line
+CALL _$changeNoneString
+MOVE GF@line GF@$temp1
+WRITE GF@line
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@$return
+MOVE LF@$return nil@nil
+POPFRAME
+WRITE string@\010
+MOVE GF@$number float@0x1p+0
+TYPE GF@$type1 GF@y
+TYPE GF@$type2 GF@$number
+EQ GF@$bool1 string@int GF@$type1
+EQ GF@$bool2 string@float GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeFirstUNIQUE74UNIQUEfirst GF@$bool bool@true
+INT2FLOAT GF@y GF@y
+LABEL _$retypeFirstUNIQUE74UNIQUEfirst
+EQ GF@$bool1 string@float GF@$type1
+EQ GF@$bool2 string@int GF@$type2
+AND GF@$bool GF@$bool1 GF@$bool2
+JUMPIFNEQ _$retypeSecondUNIQUE74UNIQUEsecond GF@$bool bool@true
+INT2FLOAT GF@$number GF@$number
+LABEL _$retypeSecondUNIQUE74UNIQUEsecond
+TYPE GF@$type1 GF@y
+TYPE GF@$type2 GF@$number
+JUMPIFNEQ _$typeError GF@$type1 GF@$type2
+JUMPIFEQ _$typeError string@nil GF@$type1
+JUMPIFEQ _$typeError string@nil GF@$type2
+ADD GF@$temp1 GF@y GF@$number
+MOVE GF@y GF@$temp1
+JUMP _$preWhile$main0
+LABEL _$endOf$while$main0
+CREATEFRAME
+PUSHS GF@resx
+CALL _print_line
+#End of the main
+POPFRAME
+CLEARS
+JUMP _$ok
+Label _$typeError
+EXIT int@4
+Label _$divisionByZero
+EXIT int@9
+Label _$ok

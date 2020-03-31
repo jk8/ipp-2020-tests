@@ -1,0 +1,6800 @@
+.IPPcode20
+DEFVAR GF@%%operand1
+DEFVAR GF@%%operand2
+CREATEFRAME
+CALL _main
+EXIT int@0
+LABEL inputs
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+READ LF@%%retval string
+POPFRAME
+RETURN
+LABEL inputi
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+READ LF@%%retval int
+POPFRAME
+RETURN
+LABEL inputf
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+READ LF@%%retval float
+POPFRAME
+RETURN
+LABEL len
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@s
+POPS LF@s
+PUSHS LF@s
+TYPE LF@s LF@s
+PUSHS LF@s
+PUSHS string@string
+JUMPIFEQS $typeCheck0_OK
+EXIT int@4
+LABEL $typeCheck0_OK
+POPS LF@s
+STRLEN LF@%%retval LF@s
+POPFRAME
+RETURN
+LABEL ord
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@s
+DEFVAR LF@i
+POPS LF@s
+PUSHS LF@s
+TYPE LF@s LF@s
+PUSHS LF@s
+PUSHS string@string
+JUMPIFEQS $typeCheck1_OK
+EXIT int@4
+LABEL $typeCheck1_OK
+POPS LF@s
+POPS LF@i
+PUSHS LF@i
+TYPE LF@i LF@i
+PUSHS LF@i
+PUSHS string@int
+JUMPIFEQS $typeCheck2_OK
+EXIT int@4
+LABEL $typeCheck2_OK
+POPS LF@i
+DEFVAR LF@len
+PUSHS LF@s
+CREATEFRAME
+CALL len
+MOVE LF@len TF@%%retval
+PUSHS LF@i
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck0_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck0_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck0_1STR
+EXIT int@4
+LABEL $opCheck0_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck0_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck0_1INT2FLT
+EXIT int@4
+LABEL $opCheck0_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck0_End
+EXIT int@4
+LABEL $opCheck0_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck0_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck0_1FLT2INT
+EXIT int@4
+LABEL $opCheck0_1INT2FLT
+INT2FLOATS
+JUMP $opCheck0_End
+LABEL $opCheck0_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck0_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck0_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck0_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck0_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck0_1BOOL
+PUSHS bool@true
+JUMP $ifCheck0_END
+LABEL $ifCheck0_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck0_END
+LABEL $ifCheck0_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck0_FALSE
+PUSHS bool@true
+JUMP $ifCheck0_END
+LABEL $ifCheck0_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck0_FALSE
+PUSHS bool@true
+JUMP $ifCheck0_END
+LABEL $ifCheck0_FALSE
+PUSHS bool@false
+LABEL $ifCheck0_END
+PUSHS bool@false
+JUMPIFEQS $if1_else
+MOVE LF@%%retval nil@nil
+POPFRAME
+RETURN
+JUMP $if1_end
+LABEL $if1_else
+LABEL $if1_end
+PUSHS LF@i
+PUSHS LF@len
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck1_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck1_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck1_1STR
+EXIT int@4
+LABEL $opCheck1_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck1_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck1_1INT2FLT
+EXIT int@4
+LABEL $opCheck1_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck1_End
+EXIT int@4
+LABEL $opCheck1_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck1_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck1_1FLT2INT
+EXIT int@4
+LABEL $opCheck1_1INT2FLT
+INT2FLOATS
+JUMP $opCheck1_End
+LABEL $opCheck1_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck1_End
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+GTS
+PUSHS bool@true
+JUMPIFEQS $opCheck1_LOE1
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+EQS
+JUMP $opCheck1_LOEEnd
+LABEL $opCheck1_LOE1
+PUSHS bool@true
+LABEL $opCheck1_LOEEnd
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck1_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck1_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck1_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck1_1BOOL
+PUSHS bool@true
+JUMP $ifCheck1_END
+LABEL $ifCheck1_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck1_END
+LABEL $ifCheck1_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck1_FALSE
+PUSHS bool@true
+JUMP $ifCheck1_END
+LABEL $ifCheck1_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck1_FALSE
+PUSHS bool@true
+JUMP $ifCheck1_END
+LABEL $ifCheck1_FALSE
+PUSHS bool@false
+LABEL $ifCheck1_END
+PUSHS bool@false
+JUMPIFEQS $if2_else
+MOVE LF@%%retval nil@nil
+POPFRAME
+RETURN
+JUMP $if2_end
+LABEL $if2_else
+LABEL $if2_end
+PUSHS LF@%%retval
+PUSHS LF@s
+PUSHS LF@i
+STRI2INTS
+POPS LF@%%retval
+POPFRAME
+RETURN
+LABEL chr
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@i
+POPS LF@i
+PUSHS LF@i
+TYPE LF@i LF@i
+PUSHS LF@i
+PUSHS string@int
+JUMPIFEQS $typeCheck3_OK
+EXIT int@4
+LABEL $typeCheck3_OK
+POPS LF@i
+PUSHS LF@i
+PUSHS int@255
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck2_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck2_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck2_1STR
+EXIT int@4
+LABEL $opCheck2_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck2_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck2_1INT2FLT
+EXIT int@4
+LABEL $opCheck2_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck2_End
+EXIT int@4
+LABEL $opCheck2_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck2_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck2_1FLT2INT
+EXIT int@4
+LABEL $opCheck2_1INT2FLT
+INT2FLOATS
+JUMP $opCheck2_End
+LABEL $opCheck2_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck2_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck2_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck2_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck2_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck2_1BOOL
+PUSHS bool@true
+JUMP $ifCheck2_END
+LABEL $ifCheck2_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck2_END
+LABEL $ifCheck2_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck2_FALSE
+PUSHS bool@true
+JUMP $ifCheck2_END
+LABEL $ifCheck2_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck2_FALSE
+PUSHS bool@true
+JUMP $ifCheck2_END
+LABEL $ifCheck2_FALSE
+PUSHS bool@false
+LABEL $ifCheck2_END
+PUSHS bool@false
+JUMPIFEQS $if3_else
+EXIT int@4
+JUMP $if3_end
+LABEL $if3_else
+PUSHS LF@i
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck3_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck3_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck3_1STR
+EXIT int@4
+LABEL $opCheck3_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck3_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck3_1INT2FLT
+EXIT int@4
+LABEL $opCheck3_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck3_End
+EXIT int@4
+LABEL $opCheck3_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck3_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck3_1FLT2INT
+EXIT int@4
+LABEL $opCheck3_1INT2FLT
+INT2FLOATS
+JUMP $opCheck3_End
+LABEL $opCheck3_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck3_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck3_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck3_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck3_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck3_1BOOL
+PUSHS bool@true
+JUMP $ifCheck3_END
+LABEL $ifCheck3_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck3_END
+LABEL $ifCheck3_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck3_FALSE
+PUSHS bool@true
+JUMP $ifCheck3_END
+LABEL $ifCheck3_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck3_FALSE
+PUSHS bool@true
+JUMP $ifCheck3_END
+LABEL $ifCheck3_FALSE
+PUSHS bool@false
+LABEL $ifCheck3_END
+PUSHS bool@false
+JUMPIFEQS $if4_else
+EXIT int@4
+JUMP $if4_end
+LABEL $if4_else
+PUSHS LF@%%retval
+PUSHS LF@i
+INT2CHARS
+POPS LF@%%retval
+LABEL $if4_end
+LABEL $if3_end
+POPFRAME
+RETURN
+LABEL substr
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@s
+DEFVAR LF@i
+DEFVAR LF@n
+DEFVAR LF@len
+DEFVAR LF@r
+POPS LF@s
+POPS LF@i
+POPS LF@n
+PUSHS LF@s
+TYPE LF@s LF@s
+PUSHS LF@s
+PUSHS string@string
+JUMPIFEQS $typeCheck4_OK
+EXIT int@4
+LABEL $typeCheck4_OK
+POPS LF@s
+PUSHS LF@i
+TYPE LF@i LF@i
+PUSHS LF@i
+PUSHS string@int
+JUMPIFEQS $typeCheck5_OK
+EXIT int@4
+LABEL $typeCheck5_OK
+POPS LF@i
+PUSHS LF@n
+TYPE LF@n LF@n
+PUSHS LF@n
+PUSHS string@int
+JUMPIFEQS $typeCheck6_OK
+EXIT int@4
+LABEL $typeCheck6_OK
+POPS LF@n
+MOVE LF@%%retval string@
+PUSHS LF@n
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck4_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck4_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck4_1STR
+EXIT int@4
+LABEL $opCheck4_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck4_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck4_1INT2FLT
+EXIT int@4
+LABEL $opCheck4_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck4_End
+EXIT int@4
+LABEL $opCheck4_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck4_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck4_1FLT2INT
+EXIT int@4
+LABEL $opCheck4_1INT2FLT
+INT2FLOATS
+JUMP $opCheck4_End
+LABEL $opCheck4_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck4_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck4_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck4_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck4_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck4_1BOOL
+PUSHS bool@true
+JUMP $ifCheck4_END
+LABEL $ifCheck4_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck4_END
+LABEL $ifCheck4_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck4_FALSE
+PUSHS bool@true
+JUMP $ifCheck4_END
+LABEL $ifCheck4_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck4_FALSE
+PUSHS bool@true
+JUMP $ifCheck4_END
+LABEL $ifCheck4_FALSE
+PUSHS bool@false
+LABEL $ifCheck4_END
+PUSHS bool@false
+JUMPIFEQS $if5_else
+MOVE LF@%%retval nil@nil
+POPFRAME
+RETURN
+JUMP $if5_end
+LABEL $if5_else
+LABEL $if5_end
+PUSHS LF@i
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck5_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck5_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck5_1STR
+EXIT int@4
+LABEL $opCheck5_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck5_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck5_1INT2FLT
+EXIT int@4
+LABEL $opCheck5_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck5_End
+EXIT int@4
+LABEL $opCheck5_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck5_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck5_1FLT2INT
+EXIT int@4
+LABEL $opCheck5_1INT2FLT
+INT2FLOATS
+JUMP $opCheck5_End
+LABEL $opCheck5_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck5_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck5_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck5_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck5_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck5_1BOOL
+PUSHS bool@true
+JUMP $ifCheck5_END
+LABEL $ifCheck5_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck5_END
+LABEL $ifCheck5_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck5_FALSE
+PUSHS bool@true
+JUMP $ifCheck5_END
+LABEL $ifCheck5_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck5_FALSE
+PUSHS bool@true
+JUMP $ifCheck5_END
+LABEL $ifCheck5_FALSE
+PUSHS bool@false
+LABEL $ifCheck5_END
+PUSHS bool@false
+JUMPIFEQS $if6_else
+MOVE LF@%%retval nil@nil
+POPFRAME
+RETURN
+JUMP $if6_end
+LABEL $if6_else
+LABEL $if6_end
+PUSHS LF@s
+CREATEFRAME
+CALL len
+MOVE LF@len TF@%%retval
+PUSHS LF@i
+PUSHS LF@len
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck6_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck6_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck6_1STR
+EXIT int@4
+LABEL $opCheck6_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck6_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck6_1INT2FLT
+EXIT int@4
+LABEL $opCheck6_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck6_End
+EXIT int@4
+LABEL $opCheck6_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck6_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck6_1FLT2INT
+EXIT int@4
+LABEL $opCheck6_1INT2FLT
+INT2FLOATS
+JUMP $opCheck6_End
+LABEL $opCheck6_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck6_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck6_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck6_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck6_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck6_1BOOL
+PUSHS bool@true
+JUMP $ifCheck6_END
+LABEL $ifCheck6_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck6_END
+LABEL $ifCheck6_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck6_FALSE
+PUSHS bool@true
+JUMP $ifCheck6_END
+LABEL $ifCheck6_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck6_FALSE
+PUSHS bool@true
+JUMP $ifCheck6_END
+LABEL $ifCheck6_FALSE
+PUSHS bool@false
+LABEL $ifCheck6_END
+PUSHS bool@false
+JUMPIFEQS $if7_else
+MOVE LF@%%retval nil@nil
+POPFRAME
+RETURN
+JUMP $if7_end
+LABEL $if7_else
+LABEL $if7_end
+PUSHS LF@len
+PUSHS LF@i
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck7_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck7_1FLT
+EXIT int@4
+LABEL $opCheck7_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck7_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck7_1INT2FLT
+EXIT int@4
+LABEL $opCheck7_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck7_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck7_1FLT2INT
+EXIT int@4
+LABEL $opCheck7_1INT2FLT
+INT2FLOATS
+JUMP $opCheck7_End
+LABEL $opCheck7_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck7_End
+SUBS
+POPS LF@r
+PUSHS LF@n
+PUSHS LF@r
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck8_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck8_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck8_1STR
+EXIT int@4
+LABEL $opCheck8_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck8_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck8_1INT2FLT
+EXIT int@4
+LABEL $opCheck8_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck8_End
+EXIT int@4
+LABEL $opCheck8_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck8_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck8_1FLT2INT
+EXIT int@4
+LABEL $opCheck8_1INT2FLT
+INT2FLOATS
+JUMP $opCheck8_End
+LABEL $opCheck8_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck8_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck7_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck7_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck7_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck7_1BOOL
+PUSHS bool@true
+JUMP $ifCheck7_END
+LABEL $ifCheck7_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck7_END
+LABEL $ifCheck7_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck7_FALSE
+PUSHS bool@true
+JUMP $ifCheck7_END
+LABEL $ifCheck7_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck7_FALSE
+PUSHS bool@true
+JUMP $ifCheck7_END
+LABEL $ifCheck7_FALSE
+PUSHS bool@false
+LABEL $ifCheck7_END
+PUSHS bool@false
+JUMPIFEQS $if8_else
+MOVE LF@n LF@r
+JUMP $if8_end
+LABEL $if8_else
+LABEL $if8_end
+LABEL $while9_beg
+PUSHS LF@n
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck9_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck9_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck9_1STR
+EXIT int@4
+LABEL $opCheck9_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck9_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck9_1INT2FLT
+EXIT int@4
+LABEL $opCheck9_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck9_End
+EXIT int@4
+LABEL $opCheck9_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck9_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck9_1FLT2INT
+EXIT int@4
+LABEL $opCheck9_1INT2FLT
+INT2FLOATS
+JUMP $opCheck9_End
+LABEL $opCheck9_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck9_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $whileCheck0_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $whileCheck0_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $whileCheck0_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $whileCheck0_1BOOL
+PUSHS bool@true
+JUMP $whileCheck0_END
+LABEL $whileCheck0_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $whileCheck0_END
+LABEL $whileCheck0_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $whileCheck0_FALSE
+PUSHS bool@true
+JUMP $whileCheck0_END
+LABEL $whileCheck0_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $whileCheck0_FALSE
+PUSHS bool@true
+JUMP $whileCheck0_END
+LABEL $whileCheck0_FALSE
+PUSHS bool@false
+LABEL $whileCheck0_END
+PUSHS bool@false
+JUMPIFEQS $while9_end
+GETCHAR GF@%%operand1 LF@s LF@i
+CONCAT LF@%%retval LF@%%retval GF@%%operand1
+PUSHS LF@n
+PUSHS int@1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck10_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck10_1FLT
+EXIT int@4
+LABEL $opCheck10_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck10_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck10_1INT2FLT
+EXIT int@4
+LABEL $opCheck10_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck10_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck10_1FLT2INT
+EXIT int@4
+LABEL $opCheck10_1INT2FLT
+INT2FLOATS
+JUMP $opCheck10_End
+LABEL $opCheck10_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck10_End
+SUBS
+POPS LF@n
+PUSHS LF@i
+PUSHS int@1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck11_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck11_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck11_1STR
+EXIT int@4
+LABEL $opCheck11_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck11_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck11_1INT2FLT
+EXIT int@4
+LABEL $opCheck11_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck11_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck11_1FLT2INT
+EXIT int@4
+LABEL $opCheck11_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck11_STRS
+EXIT int@4
+LABEL $opCheck11_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck11_End
+LABEL $opCheck11_1INT2FLT
+INT2FLOATS
+JUMP $opCheck11_NUMS
+LABEL $opCheck11_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck11_NUMS
+ADDS
+LABEL $opCheck11_End
+POPS LF@i
+JUMP $while9_beg
+LABEL $while9_end
+POPFRAME
+RETURN
+LABEL print_line
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@line
+DEFVAR LF@width
+DEFVAR LF@x
+POPS LF@width
+PUSHS string@+
+POPS LF@line
+PUSHS int@0
+POPS LF@x
+LABEL $while10_beg
+PUSHS LF@x
+PUSHS LF@width
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck12_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck12_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck12_1STR
+EXIT int@4
+LABEL $opCheck12_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck12_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck12_1INT2FLT
+EXIT int@4
+LABEL $opCheck12_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck12_End
+EXIT int@4
+LABEL $opCheck12_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck12_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck12_1FLT2INT
+EXIT int@4
+LABEL $opCheck12_1INT2FLT
+INT2FLOATS
+JUMP $opCheck12_End
+LABEL $opCheck12_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck12_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $whileCheck1_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $whileCheck1_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $whileCheck1_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $whileCheck1_1BOOL
+PUSHS bool@true
+JUMP $whileCheck1_END
+LABEL $whileCheck1_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $whileCheck1_END
+LABEL $whileCheck1_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $whileCheck1_FALSE
+PUSHS bool@true
+JUMP $whileCheck1_END
+LABEL $whileCheck1_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $whileCheck1_FALSE
+PUSHS bool@true
+JUMP $whileCheck1_END
+LABEL $whileCheck1_FALSE
+PUSHS bool@false
+LABEL $whileCheck1_END
+PUSHS bool@false
+JUMPIFEQS $while10_end
+PUSHS LF@line
+PUSHS string@-
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck13_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck13_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck13_1STR
+EXIT int@4
+LABEL $opCheck13_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck13_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck13_1INT2FLT
+EXIT int@4
+LABEL $opCheck13_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck13_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck13_1FLT2INT
+EXIT int@4
+LABEL $opCheck13_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck13_STRS
+EXIT int@4
+LABEL $opCheck13_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck13_End
+LABEL $opCheck13_1INT2FLT
+INT2FLOATS
+JUMP $opCheck13_NUMS
+LABEL $opCheck13_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck13_NUMS
+ADDS
+LABEL $opCheck13_End
+POPS LF@line
+PUSHS LF@x
+PUSHS int@1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck14_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck14_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck14_1STR
+EXIT int@4
+LABEL $opCheck14_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck14_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck14_1INT2FLT
+EXIT int@4
+LABEL $opCheck14_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck14_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck14_1FLT2INT
+EXIT int@4
+LABEL $opCheck14_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck14_STRS
+EXIT int@4
+LABEL $opCheck14_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck14_End
+LABEL $opCheck14_1INT2FLT
+INT2FLOATS
+JUMP $opCheck14_NUMS
+LABEL $opCheck14_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck14_NUMS
+ADDS
+LABEL $opCheck14_End
+POPS LF@x
+JUMP $while10_beg
+LABEL $while10_end
+PUSHS LF@line
+PUSHS string@+
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck15_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck15_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck15_1STR
+EXIT int@4
+LABEL $opCheck15_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck15_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck15_1INT2FLT
+EXIT int@4
+LABEL $opCheck15_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck15_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck15_1FLT2INT
+EXIT int@4
+LABEL $opCheck15_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck15_STRS
+EXIT int@4
+LABEL $opCheck15_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck15_End
+LABEL $opCheck15_1INT2FLT
+INT2FLOATS
+JUMP $opCheck15_NUMS
+LABEL $opCheck15_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck15_NUMS
+ADDS
+LABEL $opCheck15_End
+POPS LF@line
+PUSHS LF@line
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@%%retval
+POPS LF@%%retval
+PUSHS LF@%%retval
+PUSHS nil@nil
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck16_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck16_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck16_1STR
+JUMP $opCheck16_End
+LABEL $opCheck16_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck16_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck16_1INT2FLT
+PUSHS bool@false
+JUMP $opCheck16_EndResult
+LABEL $opCheck16_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck16_End
+PUSHS bool@false
+JUMP $opCheck16_EndResult
+LABEL $opCheck16_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck16_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck16_1FLT2INT
+PUSHS bool@false
+JUMP $opCheck16_EndResult
+LABEL $opCheck16_1INT2FLT
+INT2FLOATS
+JUMP $opCheck16_End
+LABEL $opCheck16_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck16_End
+EQS
+LABEL $opCheck16_EndResult
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck8_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck8_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck8_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck8_1BOOL
+PUSHS bool@true
+JUMP $ifCheck8_END
+LABEL $ifCheck8_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck8_END
+LABEL $ifCheck8_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck8_FALSE
+PUSHS bool@true
+JUMP $ifCheck8_END
+LABEL $ifCheck8_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck8_FALSE
+PUSHS bool@true
+JUMP $ifCheck8_END
+LABEL $ifCheck8_FALSE
+PUSHS bool@false
+LABEL $ifCheck8_END
+PUSHS bool@false
+JUMPIFEQS $if11_else
+WRITE string@None
+JUMP $if11_end
+LABEL $if11_else
+WRITE LF@%%retval
+LABEL $if11_end
+WRITE string@\010
+MOVE LF@%%retval nil@nil
+POPFRAME
+PUSHS TF@%%retval
+POPFRAME
+RETURN
+LABEL pixel_color
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@lightness
+POPS LF@lightness
+PUSHS LF@lightness
+PUSHS float@0x1.ccccccccccccdp-1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck17_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck17_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck17_1STR
+EXIT int@4
+LABEL $opCheck17_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck17_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck17_1INT2FLT
+EXIT int@4
+LABEL $opCheck17_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck17_End
+EXIT int@4
+LABEL $opCheck17_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck17_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck17_1FLT2INT
+EXIT int@4
+LABEL $opCheck17_1INT2FLT
+INT2FLOATS
+JUMP $opCheck17_End
+LABEL $opCheck17_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck17_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck9_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck9_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck9_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck9_1BOOL
+PUSHS bool@true
+JUMP $ifCheck9_END
+LABEL $ifCheck9_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck9_END
+LABEL $ifCheck9_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck9_FALSE
+PUSHS bool@true
+JUMP $ifCheck9_END
+LABEL $ifCheck9_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck9_FALSE
+PUSHS bool@true
+JUMP $ifCheck9_END
+LABEL $ifCheck9_FALSE
+PUSHS bool@false
+LABEL $ifCheck9_END
+PUSHS bool@false
+JUMPIFEQS $if12_else
+PUSHS string@\035
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if12_end
+LABEL $if12_else
+PUSHS LF@lightness
+PUSHS float@0x1.6666666666666p-1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck18_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck18_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck18_1STR
+EXIT int@4
+LABEL $opCheck18_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck18_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck18_1INT2FLT
+EXIT int@4
+LABEL $opCheck18_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck18_End
+EXIT int@4
+LABEL $opCheck18_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck18_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck18_1FLT2INT
+EXIT int@4
+LABEL $opCheck18_1INT2FLT
+INT2FLOATS
+JUMP $opCheck18_End
+LABEL $opCheck18_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck18_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck10_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck10_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck10_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck10_1BOOL
+PUSHS bool@true
+JUMP $ifCheck10_END
+LABEL $ifCheck10_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck10_END
+LABEL $ifCheck10_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck10_FALSE
+PUSHS bool@true
+JUMP $ifCheck10_END
+LABEL $ifCheck10_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck10_FALSE
+PUSHS bool@true
+JUMP $ifCheck10_END
+LABEL $ifCheck10_FALSE
+PUSHS bool@false
+LABEL $ifCheck10_END
+PUSHS bool@false
+JUMPIFEQS $if13_else
+PUSHS string@*
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if13_end
+LABEL $if13_else
+PUSHS LF@lightness
+PUSHS float@0x1p-1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck19_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck19_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck19_1STR
+EXIT int@4
+LABEL $opCheck19_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck19_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck19_1INT2FLT
+EXIT int@4
+LABEL $opCheck19_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck19_End
+EXIT int@4
+LABEL $opCheck19_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck19_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck19_1FLT2INT
+EXIT int@4
+LABEL $opCheck19_1INT2FLT
+INT2FLOATS
+JUMP $opCheck19_End
+LABEL $opCheck19_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck19_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck11_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck11_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck11_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck11_1BOOL
+PUSHS bool@true
+JUMP $ifCheck11_END
+LABEL $ifCheck11_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck11_END
+LABEL $ifCheck11_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck11_FALSE
+PUSHS bool@true
+JUMP $ifCheck11_END
+LABEL $ifCheck11_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck11_FALSE
+PUSHS bool@true
+JUMP $ifCheck11_END
+LABEL $ifCheck11_FALSE
+PUSHS bool@false
+LABEL $ifCheck11_END
+PUSHS bool@false
+JUMPIFEQS $if14_else
+PUSHS string@+
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if14_end
+LABEL $if14_else
+PUSHS LF@lightness
+PUSHS float@0x1.3333333333333p-2
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck20_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck20_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck20_1STR
+EXIT int@4
+LABEL $opCheck20_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck20_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck20_1INT2FLT
+EXIT int@4
+LABEL $opCheck20_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck20_End
+EXIT int@4
+LABEL $opCheck20_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck20_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck20_1FLT2INT
+EXIT int@4
+LABEL $opCheck20_1INT2FLT
+INT2FLOATS
+JUMP $opCheck20_End
+LABEL $opCheck20_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck20_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck12_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck12_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck12_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck12_1BOOL
+PUSHS bool@true
+JUMP $ifCheck12_END
+LABEL $ifCheck12_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck12_END
+LABEL $ifCheck12_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck12_FALSE
+PUSHS bool@true
+JUMP $ifCheck12_END
+LABEL $ifCheck12_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck12_FALSE
+PUSHS bool@true
+JUMP $ifCheck12_END
+LABEL $ifCheck12_FALSE
+PUSHS bool@false
+LABEL $ifCheck12_END
+PUSHS bool@false
+JUMPIFEQS $if15_else
+PUSHS string@-
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if15_end
+LABEL $if15_else
+PUSHS LF@lightness
+PUSHS float@0x1.999999999999ap-4
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck21_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck21_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck21_1STR
+EXIT int@4
+LABEL $opCheck21_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck21_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck21_1INT2FLT
+EXIT int@4
+LABEL $opCheck21_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck21_End
+EXIT int@4
+LABEL $opCheck21_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck21_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck21_1FLT2INT
+EXIT int@4
+LABEL $opCheck21_1INT2FLT
+INT2FLOATS
+JUMP $opCheck21_End
+LABEL $opCheck21_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck21_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck13_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck13_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck13_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck13_1BOOL
+PUSHS bool@true
+JUMP $ifCheck13_END
+LABEL $ifCheck13_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck13_END
+LABEL $ifCheck13_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck13_FALSE
+PUSHS bool@true
+JUMP $ifCheck13_END
+LABEL $ifCheck13_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck13_FALSE
+PUSHS bool@true
+JUMP $ifCheck13_END
+LABEL $ifCheck13_FALSE
+PUSHS bool@false
+LABEL $ifCheck13_END
+PUSHS bool@false
+JUMPIFEQS $if16_else
+PUSHS string@.
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if16_end
+LABEL $if16_else
+PUSHS string@\032
+POPS LF@%%retval
+POPFRAME
+RETURN
+LABEL $if16_end
+LABEL $if15_end
+LABEL $if14_end
+LABEL $if13_end
+LABEL $if12_end
+POPFRAME
+RETURN
+LABEL abs
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@val
+POPS LF@val
+PUSHS LF@val
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck22_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck22_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck22_1STR
+EXIT int@4
+LABEL $opCheck22_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck22_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck22_1INT2FLT
+EXIT int@4
+LABEL $opCheck22_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck22_End
+EXIT int@4
+LABEL $opCheck22_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck22_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck22_1FLT2INT
+EXIT int@4
+LABEL $opCheck22_1INT2FLT
+INT2FLOATS
+JUMP $opCheck22_End
+LABEL $opCheck22_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck22_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck14_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck14_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck14_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck14_1BOOL
+PUSHS bool@true
+JUMP $ifCheck14_END
+LABEL $ifCheck14_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck14_END
+LABEL $ifCheck14_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck14_FALSE
+PUSHS bool@true
+JUMP $ifCheck14_END
+LABEL $ifCheck14_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck14_FALSE
+PUSHS bool@true
+JUMP $ifCheck14_END
+LABEL $ifCheck14_FALSE
+PUSHS bool@false
+LABEL $ifCheck14_END
+PUSHS bool@false
+JUMPIFEQS $if17_else
+PUSHS int@0
+PUSHS LF@val
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck23_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck23_1FLT
+EXIT int@4
+LABEL $opCheck23_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck23_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck23_1INT2FLT
+EXIT int@4
+LABEL $opCheck23_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck23_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck23_1FLT2INT
+EXIT int@4
+LABEL $opCheck23_1INT2FLT
+INT2FLOATS
+JUMP $opCheck23_End
+LABEL $opCheck23_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck23_End
+SUBS
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if17_end
+LABEL $if17_else
+PUSHS LF@val
+POPS LF@%%retval
+POPFRAME
+RETURN
+LABEL $if17_end
+POPFRAME
+RETURN
+LABEL yiplus1
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@yi
+DEFVAR LF@yip1
+DEFVAR LF@d
+DEFVAR LF@delta
+POPS LF@d
+PUSHS LF@d
+POPS LF@yi
+PUSHS int@1
+POPS LF@delta
+LABEL $while18_beg
+PUSHS LF@delta
+PUSHS float@0x1.a36e2eb1c432dp-14
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck24_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck24_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck24_1STR
+EXIT int@4
+LABEL $opCheck24_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck24_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck24_1INT2FLT
+EXIT int@4
+LABEL $opCheck24_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck24_End
+EXIT int@4
+LABEL $opCheck24_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck24_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck24_1FLT2INT
+EXIT int@4
+LABEL $opCheck24_1INT2FLT
+INT2FLOATS
+JUMP $opCheck24_End
+LABEL $opCheck24_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck24_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $whileCheck2_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $whileCheck2_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $whileCheck2_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $whileCheck2_1BOOL
+PUSHS bool@true
+JUMP $whileCheck2_END
+LABEL $whileCheck2_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $whileCheck2_END
+LABEL $whileCheck2_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $whileCheck2_FALSE
+PUSHS bool@true
+JUMP $whileCheck2_END
+LABEL $whileCheck2_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $whileCheck2_FALSE
+PUSHS bool@true
+JUMP $whileCheck2_END
+LABEL $whileCheck2_FALSE
+PUSHS bool@false
+LABEL $whileCheck2_END
+PUSHS bool@false
+JUMPIFEQS $while18_end
+PUSHS float@0x1p-1
+PUSHS LF@d
+PUSHS LF@yi
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck25_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck25_1FLT
+EXIT int@4
+LABEL $opCheck25_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck25_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck25_1INT2FLT
+EXIT int@4
+LABEL $opCheck25_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck25_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck25_1FLT2INT
+EXIT int@4
+LABEL $opCheck25_1INT2FLT
+INT2FLOATS
+JUMP $opCheck25_End
+LABEL $opCheck25_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck25_End
+LABEL $opCheck25_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck25_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck25_NotZero
+EXIT int@9
+LABEL $opCheck25_NotZero
+PUSHS GF@%%operand1
+DIVS
+PUSHS LF@yi
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck26_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck26_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck26_1STR
+EXIT int@4
+LABEL $opCheck26_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck26_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck26_1INT2FLT
+EXIT int@4
+LABEL $opCheck26_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck26_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck26_1FLT2INT
+EXIT int@4
+LABEL $opCheck26_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck26_STRS
+EXIT int@4
+LABEL $opCheck26_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck26_End
+LABEL $opCheck26_1INT2FLT
+INT2FLOATS
+JUMP $opCheck26_NUMS
+LABEL $opCheck26_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck26_NUMS
+ADDS
+LABEL $opCheck26_End
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck27_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck27_1FLT
+EXIT int@4
+LABEL $opCheck27_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck27_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck27_1INT2FLT
+EXIT int@4
+LABEL $opCheck27_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck27_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck27_1FLT2INT
+EXIT int@4
+LABEL $opCheck27_1INT2FLT
+INT2FLOATS
+JUMP $opCheck27_End
+LABEL $opCheck27_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck27_End
+MULS
+POPS LF@yip1
+PUSHS LF@yip1
+PUSHS LF@yi
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck28_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck28_1FLT
+EXIT int@4
+LABEL $opCheck28_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck28_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck28_1INT2FLT
+EXIT int@4
+LABEL $opCheck28_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck28_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck28_1FLT2INT
+EXIT int@4
+LABEL $opCheck28_1INT2FLT
+INT2FLOATS
+JUMP $opCheck28_End
+LABEL $opCheck28_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck28_End
+SUBS
+POPS LF@delta
+PUSHS LF@delta
+CREATEFRAME
+CALL abs
+PUSHS TF@%%retval
+POPS LF@delta
+PUSHS LF@yip1
+POPS LF@yi
+JUMP $while18_beg
+LABEL $while18_end
+PUSHS LF@yi
+POPS LF@%%retval
+POPFRAME
+RETURN
+POPFRAME
+RETURN
+LABEL is_in_range
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR LF@val
+DEFVAR LF@min
+DEFVAR LF@max
+POPS LF@val
+POPS LF@min
+POPS LF@max
+PUSHS LF@val
+PUSHS LF@min
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck29_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck29_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck29_1STR
+EXIT int@4
+LABEL $opCheck29_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck29_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck29_1INT2FLT
+EXIT int@4
+LABEL $opCheck29_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck29_End
+EXIT int@4
+LABEL $opCheck29_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck29_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck29_1FLT2INT
+EXIT int@4
+LABEL $opCheck29_1INT2FLT
+INT2FLOATS
+JUMP $opCheck29_End
+LABEL $opCheck29_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck29_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck15_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck15_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck15_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck15_1BOOL
+PUSHS bool@true
+JUMP $ifCheck15_END
+LABEL $ifCheck15_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck15_END
+LABEL $ifCheck15_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck15_FALSE
+PUSHS bool@true
+JUMP $ifCheck15_END
+LABEL $ifCheck15_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck15_FALSE
+PUSHS bool@true
+JUMP $ifCheck15_END
+LABEL $ifCheck15_FALSE
+PUSHS bool@false
+LABEL $ifCheck15_END
+PUSHS bool@false
+JUMPIFEQS $if19_else
+PUSHS LF@val
+PUSHS LF@max
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck30_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck30_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck30_1STR
+EXIT int@4
+LABEL $opCheck30_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck30_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck30_1INT2FLT
+EXIT int@4
+LABEL $opCheck30_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck30_End
+EXIT int@4
+LABEL $opCheck30_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck30_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck30_1FLT2INT
+EXIT int@4
+LABEL $opCheck30_1INT2FLT
+INT2FLOATS
+JUMP $opCheck30_End
+LABEL $opCheck30_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck30_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck16_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck16_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck16_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck16_1BOOL
+PUSHS bool@true
+JUMP $ifCheck16_END
+LABEL $ifCheck16_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck16_END
+LABEL $ifCheck16_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck16_FALSE
+PUSHS bool@true
+JUMP $ifCheck16_END
+LABEL $ifCheck16_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck16_FALSE
+PUSHS bool@true
+JUMP $ifCheck16_END
+LABEL $ifCheck16_FALSE
+PUSHS bool@false
+LABEL $ifCheck16_END
+PUSHS bool@false
+JUMPIFEQS $if20_else
+PUSHS int@1
+POPS LF@%%retval
+POPFRAME
+RETURN
+JUMP $if20_end
+LABEL $if20_else
+LABEL $if20_end
+JUMP $if19_end
+LABEL $if19_else
+LABEL $if19_end
+PUSHS int@0
+POPS LF@%%retval
+POPFRAME
+RETURN
+POPFRAME
+RETURN
+LABEL _main
+PUSHFRAME
+DEFVAR LF@%%retval
+MOVE LF@%%retval nil@nil
+DEFVAR GF@resx
+DEFVAR GF@resy
+DEFVAR GF@posx
+DEFVAR GF@posy
+DEFVAR GF@posz
+DEFVAR GF@spherex
+DEFVAR GF@spherey
+DEFVAR GF@spherez
+DEFVAR GF@sphereradius
+DEFVAR GF@lightx
+DEFVAR GF@lighty
+DEFVAR GF@lightz
+DEFVAR GF@line
+DEFVAR GF@x
+DEFVAR GF@y
+DEFVAR GF@tarx
+DEFVAR GF@tary
+DEFVAR GF@tarz
+DEFVAR GF@rayx
+DEFVAR GF@rayy
+DEFVAR GF@rayz
+DEFVAR GF@n
+DEFVAR GF@z
+DEFVAR GF@pixel
+DEFVAR GF@sphereradius2
+DEFVAR GF@ocx
+DEFVAR GF@ocy
+DEFVAR GF@ocz
+DEFVAR GF@a
+DEFVAR GF@b
+DEFVAR GF@c
+DEFVAR GF@d
+DEFVAR GF@t
+DEFVAR GF@in_range
+DEFVAR GF@intersectionx
+DEFVAR GF@intersectiony
+DEFVAR GF@intersectionz
+DEFVAR GF@normalx
+DEFVAR GF@normaly
+DEFVAR GF@normalz
+DEFVAR GF@tolightx
+DEFVAR GF@tolighty
+DEFVAR GF@tolightz
+DEFVAR GF@lightness
+PUSHS string@ifj-raytracer,\032vykresli\0323\032koule
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@%%retval
+POPS LF@%%retval
+PUSHS LF@%%retval
+PUSHS nil@nil
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck31_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck31_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck31_1STR
+JUMP $opCheck31_End
+LABEL $opCheck31_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck31_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck31_1INT2FLT
+PUSHS bool@false
+JUMP $opCheck31_EndResult
+LABEL $opCheck31_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck31_End
+PUSHS bool@false
+JUMP $opCheck31_EndResult
+LABEL $opCheck31_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck31_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck31_1FLT2INT
+PUSHS bool@false
+JUMP $opCheck31_EndResult
+LABEL $opCheck31_1INT2FLT
+INT2FLOATS
+JUMP $opCheck31_End
+LABEL $opCheck31_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck31_End
+EQS
+LABEL $opCheck31_EndResult
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck17_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck17_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck17_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck17_1BOOL
+PUSHS bool@true
+JUMP $ifCheck17_END
+LABEL $ifCheck17_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck17_END
+LABEL $ifCheck17_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck17_FALSE
+PUSHS bool@true
+JUMP $ifCheck17_END
+LABEL $ifCheck17_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck17_FALSE
+PUSHS bool@true
+JUMP $ifCheck17_END
+LABEL $ifCheck17_FALSE
+PUSHS bool@false
+LABEL $ifCheck17_END
+PUSHS bool@false
+JUMPIFEQS $if21_else
+WRITE string@None
+JUMP $if21_end
+LABEL $if21_else
+WRITE LF@%%retval
+LABEL $if21_end
+WRITE string@\010
+MOVE LF@%%retval nil@nil
+POPFRAME
+PUSHS TF@%%retval
+PUSHS float@0x1.18p+6
+POPS GF@resx
+PUSHS float@0x1.ep+5
+POPS GF@resy
+PUSHS float@0x0p+0
+POPS GF@posx
+PUSHS float@0x0p+0
+POPS GF@posy
+PUSHS float@-0x1.4p+4
+POPS GF@posz
+PUSHS float@0x0p+0
+POPS GF@spherex
+PUSHS float@0x0p+0
+POPS GF@spherey
+PUSHS float@0x0p+0
+POPS GF@spherez
+PUSHS float@0x1p+2
+POPS GF@sphereradius
+PUSHS float@-0x1.4p+2
+POPS GF@lightx
+PUSHS float@0x1.4p+2
+POPS GF@lighty
+PUSHS float@-0x1.6p+3
+POPS GF@lightz
+PUSHS string@+
+POPS GF@line
+PUSHS float@0x0p+0
+POPS GF@x
+PUSHS float@0x1.8p+1
+POPS GF@y
+PUSHS GF@resx
+CREATEFRAME
+CALL print_line
+PUSHS TF@%%retval
+LABEL $while22_beg
+PUSHS GF@y
+PUSHS GF@resy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck32_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck32_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck32_1STR
+EXIT int@4
+LABEL $opCheck32_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck32_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck32_1INT2FLT
+EXIT int@4
+LABEL $opCheck32_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck32_End
+EXIT int@4
+LABEL $opCheck32_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck32_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck32_1FLT2INT
+EXIT int@4
+LABEL $opCheck32_1INT2FLT
+INT2FLOATS
+JUMP $opCheck32_End
+LABEL $opCheck32_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck32_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $whileCheck3_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $whileCheck3_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $whileCheck3_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $whileCheck3_1BOOL
+PUSHS bool@true
+JUMP $whileCheck3_END
+LABEL $whileCheck3_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $whileCheck3_END
+LABEL $whileCheck3_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $whileCheck3_FALSE
+PUSHS bool@true
+JUMP $whileCheck3_END
+LABEL $whileCheck3_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $whileCheck3_FALSE
+PUSHS bool@true
+JUMP $whileCheck3_END
+LABEL $whileCheck3_FALSE
+PUSHS bool@false
+LABEL $whileCheck3_END
+PUSHS bool@false
+JUMPIFEQS $while22_end
+PUSHS string@|
+POPS GF@line
+PUSHS float@0x0p+0
+POPS GF@x
+LABEL $while23_beg
+PUSHS GF@x
+PUSHS GF@resx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck33_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck33_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck33_1STR
+EXIT int@4
+LABEL $opCheck33_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck33_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck33_1INT2FLT
+EXIT int@4
+LABEL $opCheck33_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck33_End
+EXIT int@4
+LABEL $opCheck33_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck33_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck33_1FLT2INT
+EXIT int@4
+LABEL $opCheck33_1INT2FLT
+INT2FLOATS
+JUMP $opCheck33_End
+LABEL $opCheck33_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck33_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $whileCheck4_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $whileCheck4_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $whileCheck4_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $whileCheck4_1BOOL
+PUSHS bool@true
+JUMP $whileCheck4_END
+LABEL $whileCheck4_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $whileCheck4_END
+LABEL $whileCheck4_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $whileCheck4_FALSE
+PUSHS bool@true
+JUMP $whileCheck4_END
+LABEL $whileCheck4_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $whileCheck4_FALSE
+PUSHS bool@true
+JUMP $whileCheck4_END
+LABEL $whileCheck4_FALSE
+PUSHS bool@false
+LABEL $whileCheck4_END
+PUSHS bool@false
+JUMPIFEQS $while23_end
+PUSHS float@0x1p+0
+PUSHS GF@x
+PUSHS float@0x1p+1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck34_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck34_1FLT
+EXIT int@4
+LABEL $opCheck34_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck34_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck34_1INT2FLT
+EXIT int@4
+LABEL $opCheck34_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck34_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck34_1FLT2INT
+EXIT int@4
+LABEL $opCheck34_1INT2FLT
+INT2FLOATS
+JUMP $opCheck34_End
+LABEL $opCheck34_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck34_End
+MULS
+PUSHS GF@resx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck35_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck35_1FLT
+EXIT int@4
+LABEL $opCheck35_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck35_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck35_1INT2FLT
+EXIT int@4
+LABEL $opCheck35_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck35_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck35_1FLT2INT
+EXIT int@4
+LABEL $opCheck35_1INT2FLT
+INT2FLOATS
+JUMP $opCheck35_End
+LABEL $opCheck35_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck35_End
+LABEL $opCheck35_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck35_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck35_NotZero
+EXIT int@9
+LABEL $opCheck35_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck36_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck36_1FLT
+EXIT int@4
+LABEL $opCheck36_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck36_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck36_1INT2FLT
+EXIT int@4
+LABEL $opCheck36_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck36_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck36_1FLT2INT
+EXIT int@4
+LABEL $opCheck36_1INT2FLT
+INT2FLOATS
+JUMP $opCheck36_End
+LABEL $opCheck36_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck36_End
+SUBS
+PUSHS float@0x1.cp+2
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck37_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck37_1FLT
+EXIT int@4
+LABEL $opCheck37_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck37_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck37_1INT2FLT
+EXIT int@4
+LABEL $opCheck37_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck37_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck37_1FLT2INT
+EXIT int@4
+LABEL $opCheck37_1INT2FLT
+INT2FLOATS
+JUMP $opCheck37_End
+LABEL $opCheck37_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck37_End
+MULS
+POPS GF@tarx
+PUSHS float@0x1p+0
+PUSHS GF@y
+PUSHS float@0x1p+1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck38_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck38_1FLT
+EXIT int@4
+LABEL $opCheck38_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck38_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck38_1INT2FLT
+EXIT int@4
+LABEL $opCheck38_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck38_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck38_1FLT2INT
+EXIT int@4
+LABEL $opCheck38_1INT2FLT
+INT2FLOATS
+JUMP $opCheck38_End
+LABEL $opCheck38_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck38_End
+MULS
+PUSHS GF@resy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck39_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck39_1FLT
+EXIT int@4
+LABEL $opCheck39_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck39_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck39_1INT2FLT
+EXIT int@4
+LABEL $opCheck39_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck39_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck39_1FLT2INT
+EXIT int@4
+LABEL $opCheck39_1INT2FLT
+INT2FLOATS
+JUMP $opCheck39_End
+LABEL $opCheck39_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck39_End
+LABEL $opCheck39_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck39_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck39_NotZero
+EXIT int@9
+LABEL $opCheck39_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck40_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck40_1FLT
+EXIT int@4
+LABEL $opCheck40_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck40_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck40_1INT2FLT
+EXIT int@4
+LABEL $opCheck40_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck40_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck40_1FLT2INT
+EXIT int@4
+LABEL $opCheck40_1INT2FLT
+INT2FLOATS
+JUMP $opCheck40_End
+LABEL $opCheck40_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck40_End
+SUBS
+PUSHS float@0x1.4p+2
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck41_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck41_1FLT
+EXIT int@4
+LABEL $opCheck41_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck41_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck41_1INT2FLT
+EXIT int@4
+LABEL $opCheck41_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck41_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck41_1FLT2INT
+EXIT int@4
+LABEL $opCheck41_1INT2FLT
+INT2FLOATS
+JUMP $opCheck41_End
+LABEL $opCheck41_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck41_End
+MULS
+POPS GF@tary
+PUSHS float@0x0p+0
+POPS GF@tarz
+PUSHS GF@tarx
+PUSHS GF@posx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck42_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck42_1FLT
+EXIT int@4
+LABEL $opCheck42_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck42_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck42_1INT2FLT
+EXIT int@4
+LABEL $opCheck42_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck42_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck42_1FLT2INT
+EXIT int@4
+LABEL $opCheck42_1INT2FLT
+INT2FLOATS
+JUMP $opCheck42_End
+LABEL $opCheck42_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck42_End
+SUBS
+POPS GF@rayx
+PUSHS GF@tary
+PUSHS GF@posy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck43_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck43_1FLT
+EXIT int@4
+LABEL $opCheck43_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck43_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck43_1INT2FLT
+EXIT int@4
+LABEL $opCheck43_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck43_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck43_1FLT2INT
+EXIT int@4
+LABEL $opCheck43_1INT2FLT
+INT2FLOATS
+JUMP $opCheck43_End
+LABEL $opCheck43_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck43_End
+SUBS
+POPS GF@rayy
+PUSHS GF@tarz
+PUSHS GF@posz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck44_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck44_1FLT
+EXIT int@4
+LABEL $opCheck44_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck44_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck44_1INT2FLT
+EXIT int@4
+LABEL $opCheck44_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck44_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck44_1FLT2INT
+EXIT int@4
+LABEL $opCheck44_1INT2FLT
+INT2FLOATS
+JUMP $opCheck44_End
+LABEL $opCheck44_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck44_End
+SUBS
+POPS GF@rayz
+PUSHS int@0
+POPS GF@n
+PUSHS float@0x1.3878p+13
+POPS GF@z
+PUSHS string@\032
+POPS GF@pixel
+LABEL $while24_beg
+PUSHS GF@n
+PUSHS int@3
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck45_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck45_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck45_1STR
+EXIT int@4
+LABEL $opCheck45_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck45_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck45_1INT2FLT
+EXIT int@4
+LABEL $opCheck45_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck45_End
+EXIT int@4
+LABEL $opCheck45_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck45_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck45_1FLT2INT
+EXIT int@4
+LABEL $opCheck45_1INT2FLT
+INT2FLOATS
+JUMP $opCheck45_End
+LABEL $opCheck45_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck45_End
+LTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $whileCheck5_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $whileCheck5_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $whileCheck5_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $whileCheck5_1BOOL
+PUSHS bool@true
+JUMP $whileCheck5_END
+LABEL $whileCheck5_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $whileCheck5_END
+LABEL $whileCheck5_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $whileCheck5_FALSE
+PUSHS bool@true
+JUMP $whileCheck5_END
+LABEL $whileCheck5_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $whileCheck5_FALSE
+PUSHS bool@true
+JUMP $whileCheck5_END
+LABEL $whileCheck5_FALSE
+PUSHS bool@false
+LABEL $whileCheck5_END
+PUSHS bool@false
+JUMPIFEQS $while24_end
+PUSHS GF@n
+PUSHS int@0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck46_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck46_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck46_1STR
+JUMP $opCheck46_End
+LABEL $opCheck46_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck46_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck46_1INT2FLT
+PUSHS bool@false
+JUMP $opCheck46_EndResult
+LABEL $opCheck46_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck46_End
+PUSHS bool@false
+JUMP $opCheck46_EndResult
+LABEL $opCheck46_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck46_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck46_1FLT2INT
+PUSHS bool@false
+JUMP $opCheck46_EndResult
+LABEL $opCheck46_1INT2FLT
+INT2FLOATS
+JUMP $opCheck46_End
+LABEL $opCheck46_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck46_End
+EQS
+LABEL $opCheck46_EndResult
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck18_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck18_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck18_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck18_1BOOL
+PUSHS bool@true
+JUMP $ifCheck18_END
+LABEL $ifCheck18_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck18_END
+LABEL $ifCheck18_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck18_FALSE
+PUSHS bool@true
+JUMP $ifCheck18_END
+LABEL $ifCheck18_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck18_FALSE
+PUSHS bool@true
+JUMP $ifCheck18_END
+LABEL $ifCheck18_FALSE
+PUSHS bool@false
+LABEL $ifCheck18_END
+PUSHS bool@false
+JUMPIFEQS $if25_else
+PUSHS float@-0x1.4p+2
+POPS GF@spherex
+PUSHS float@-0x1.8p+1
+POPS GF@spherey
+PUSHS float@0x1.8p+2
+POPS GF@spherez
+PUSHS float@0x1.8p+1
+POPS GF@sphereradius
+JUMP $if25_end
+LABEL $if25_else
+PUSHS GF@n
+PUSHS int@1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck47_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck47_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck47_1STR
+JUMP $opCheck47_End
+LABEL $opCheck47_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck47_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck47_1INT2FLT
+PUSHS bool@false
+JUMP $opCheck47_EndResult
+LABEL $opCheck47_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck47_End
+PUSHS bool@false
+JUMP $opCheck47_EndResult
+LABEL $opCheck47_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck47_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck47_1FLT2INT
+PUSHS bool@false
+JUMP $opCheck47_EndResult
+LABEL $opCheck47_1INT2FLT
+INT2FLOATS
+JUMP $opCheck47_End
+LABEL $opCheck47_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck47_End
+EQS
+LABEL $opCheck47_EndResult
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck19_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck19_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck19_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck19_1BOOL
+PUSHS bool@true
+JUMP $ifCheck19_END
+LABEL $ifCheck19_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck19_END
+LABEL $ifCheck19_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck19_FALSE
+PUSHS bool@true
+JUMP $ifCheck19_END
+LABEL $ifCheck19_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck19_FALSE
+PUSHS bool@true
+JUMP $ifCheck19_END
+LABEL $ifCheck19_FALSE
+PUSHS bool@false
+LABEL $ifCheck19_END
+PUSHS bool@false
+JUMPIFEQS $if26_else
+PUSHS float@-0x1p+0
+POPS GF@spherex
+PUSHS float@0x1p+0
+POPS GF@spherey
+PUSHS float@0x1.4p+3
+POPS GF@spherez
+PUSHS float@0x1.4p+2
+POPS GF@sphereradius
+JUMP $if26_end
+LABEL $if26_else
+PUSHS float@0x1.4p+2
+POPS GF@spherex
+PUSHS float@-0x1.8p+1
+POPS GF@spherey
+PUSHS float@0x1.4p+4
+POPS GF@spherez
+PUSHS float@0x1p+3
+POPS GF@sphereradius
+LABEL $if26_end
+LABEL $if25_end
+PUSHS GF@sphereradius
+PUSHS GF@sphereradius
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck48_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck48_1FLT
+EXIT int@4
+LABEL $opCheck48_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck48_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck48_1INT2FLT
+EXIT int@4
+LABEL $opCheck48_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck48_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck48_1FLT2INT
+EXIT int@4
+LABEL $opCheck48_1INT2FLT
+INT2FLOATS
+JUMP $opCheck48_End
+LABEL $opCheck48_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck48_End
+MULS
+POPS GF@sphereradius2
+PUSHS GF@posx
+PUSHS GF@spherex
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck49_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck49_1FLT
+EXIT int@4
+LABEL $opCheck49_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck49_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck49_1INT2FLT
+EXIT int@4
+LABEL $opCheck49_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck49_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck49_1FLT2INT
+EXIT int@4
+LABEL $opCheck49_1INT2FLT
+INT2FLOATS
+JUMP $opCheck49_End
+LABEL $opCheck49_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck49_End
+SUBS
+POPS GF@ocx
+PUSHS GF@posy
+PUSHS GF@spherey
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck50_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck50_1FLT
+EXIT int@4
+LABEL $opCheck50_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck50_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck50_1INT2FLT
+EXIT int@4
+LABEL $opCheck50_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck50_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck50_1FLT2INT
+EXIT int@4
+LABEL $opCheck50_1INT2FLT
+INT2FLOATS
+JUMP $opCheck50_End
+LABEL $opCheck50_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck50_End
+SUBS
+POPS GF@ocy
+PUSHS GF@posz
+PUSHS GF@spherez
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck51_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck51_1FLT
+EXIT int@4
+LABEL $opCheck51_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck51_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck51_1INT2FLT
+EXIT int@4
+LABEL $opCheck51_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck51_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck51_1FLT2INT
+EXIT int@4
+LABEL $opCheck51_1INT2FLT
+INT2FLOATS
+JUMP $opCheck51_End
+LABEL $opCheck51_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck51_End
+SUBS
+POPS GF@ocz
+PUSHS GF@rayx
+PUSHS GF@rayx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck52_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck52_1FLT
+EXIT int@4
+LABEL $opCheck52_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck52_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck52_1INT2FLT
+EXIT int@4
+LABEL $opCheck52_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck52_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck52_1FLT2INT
+EXIT int@4
+LABEL $opCheck52_1INT2FLT
+INT2FLOATS
+JUMP $opCheck52_End
+LABEL $opCheck52_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck52_End
+MULS
+PUSHS GF@rayy
+PUSHS GF@rayy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck53_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck53_1FLT
+EXIT int@4
+LABEL $opCheck53_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck53_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck53_1INT2FLT
+EXIT int@4
+LABEL $opCheck53_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck53_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck53_1FLT2INT
+EXIT int@4
+LABEL $opCheck53_1INT2FLT
+INT2FLOATS
+JUMP $opCheck53_End
+LABEL $opCheck53_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck53_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck54_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck54_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck54_1STR
+EXIT int@4
+LABEL $opCheck54_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck54_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck54_1INT2FLT
+EXIT int@4
+LABEL $opCheck54_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck54_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck54_1FLT2INT
+EXIT int@4
+LABEL $opCheck54_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck54_STRS
+EXIT int@4
+LABEL $opCheck54_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck54_End
+LABEL $opCheck54_1INT2FLT
+INT2FLOATS
+JUMP $opCheck54_NUMS
+LABEL $opCheck54_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck54_NUMS
+ADDS
+LABEL $opCheck54_End
+PUSHS GF@rayz
+PUSHS GF@rayz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck55_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck55_1FLT
+EXIT int@4
+LABEL $opCheck55_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck55_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck55_1INT2FLT
+EXIT int@4
+LABEL $opCheck55_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck55_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck55_1FLT2INT
+EXIT int@4
+LABEL $opCheck55_1INT2FLT
+INT2FLOATS
+JUMP $opCheck55_End
+LABEL $opCheck55_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck55_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck56_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck56_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck56_1STR
+EXIT int@4
+LABEL $opCheck56_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck56_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck56_1INT2FLT
+EXIT int@4
+LABEL $opCheck56_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck56_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck56_1FLT2INT
+EXIT int@4
+LABEL $opCheck56_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck56_STRS
+EXIT int@4
+LABEL $opCheck56_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck56_End
+LABEL $opCheck56_1INT2FLT
+INT2FLOATS
+JUMP $opCheck56_NUMS
+LABEL $opCheck56_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck56_NUMS
+ADDS
+LABEL $opCheck56_End
+POPS GF@a
+PUSHS float@0x1p+1
+PUSHS GF@rayx
+PUSHS GF@ocx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck57_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck57_1FLT
+EXIT int@4
+LABEL $opCheck57_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck57_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck57_1INT2FLT
+EXIT int@4
+LABEL $opCheck57_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck57_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck57_1FLT2INT
+EXIT int@4
+LABEL $opCheck57_1INT2FLT
+INT2FLOATS
+JUMP $opCheck57_End
+LABEL $opCheck57_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck57_End
+MULS
+PUSHS GF@rayy
+PUSHS GF@ocy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck58_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck58_1FLT
+EXIT int@4
+LABEL $opCheck58_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck58_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck58_1INT2FLT
+EXIT int@4
+LABEL $opCheck58_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck58_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck58_1FLT2INT
+EXIT int@4
+LABEL $opCheck58_1INT2FLT
+INT2FLOATS
+JUMP $opCheck58_End
+LABEL $opCheck58_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck58_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck59_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck59_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck59_1STR
+EXIT int@4
+LABEL $opCheck59_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck59_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck59_1INT2FLT
+EXIT int@4
+LABEL $opCheck59_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck59_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck59_1FLT2INT
+EXIT int@4
+LABEL $opCheck59_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck59_STRS
+EXIT int@4
+LABEL $opCheck59_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck59_End
+LABEL $opCheck59_1INT2FLT
+INT2FLOATS
+JUMP $opCheck59_NUMS
+LABEL $opCheck59_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck59_NUMS
+ADDS
+LABEL $opCheck59_End
+PUSHS GF@rayz
+PUSHS GF@ocz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck60_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck60_1FLT
+EXIT int@4
+LABEL $opCheck60_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck60_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck60_1INT2FLT
+EXIT int@4
+LABEL $opCheck60_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck60_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck60_1FLT2INT
+EXIT int@4
+LABEL $opCheck60_1INT2FLT
+INT2FLOATS
+JUMP $opCheck60_End
+LABEL $opCheck60_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck60_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck61_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck61_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck61_1STR
+EXIT int@4
+LABEL $opCheck61_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck61_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck61_1INT2FLT
+EXIT int@4
+LABEL $opCheck61_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck61_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck61_1FLT2INT
+EXIT int@4
+LABEL $opCheck61_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck61_STRS
+EXIT int@4
+LABEL $opCheck61_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck61_End
+LABEL $opCheck61_1INT2FLT
+INT2FLOATS
+JUMP $opCheck61_NUMS
+LABEL $opCheck61_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck61_NUMS
+ADDS
+LABEL $opCheck61_End
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck62_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck62_1FLT
+EXIT int@4
+LABEL $opCheck62_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck62_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck62_1INT2FLT
+EXIT int@4
+LABEL $opCheck62_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck62_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck62_1FLT2INT
+EXIT int@4
+LABEL $opCheck62_1INT2FLT
+INT2FLOATS
+JUMP $opCheck62_End
+LABEL $opCheck62_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck62_End
+MULS
+POPS GF@b
+PUSHS GF@ocx
+PUSHS GF@ocx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck63_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck63_1FLT
+EXIT int@4
+LABEL $opCheck63_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck63_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck63_1INT2FLT
+EXIT int@4
+LABEL $opCheck63_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck63_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck63_1FLT2INT
+EXIT int@4
+LABEL $opCheck63_1INT2FLT
+INT2FLOATS
+JUMP $opCheck63_End
+LABEL $opCheck63_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck63_End
+MULS
+PUSHS GF@ocy
+PUSHS GF@ocy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck64_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck64_1FLT
+EXIT int@4
+LABEL $opCheck64_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck64_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck64_1INT2FLT
+EXIT int@4
+LABEL $opCheck64_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck64_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck64_1FLT2INT
+EXIT int@4
+LABEL $opCheck64_1INT2FLT
+INT2FLOATS
+JUMP $opCheck64_End
+LABEL $opCheck64_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck64_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck65_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck65_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck65_1STR
+EXIT int@4
+LABEL $opCheck65_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck65_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck65_1INT2FLT
+EXIT int@4
+LABEL $opCheck65_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck65_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck65_1FLT2INT
+EXIT int@4
+LABEL $opCheck65_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck65_STRS
+EXIT int@4
+LABEL $opCheck65_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck65_End
+LABEL $opCheck65_1INT2FLT
+INT2FLOATS
+JUMP $opCheck65_NUMS
+LABEL $opCheck65_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck65_NUMS
+ADDS
+LABEL $opCheck65_End
+PUSHS GF@ocz
+PUSHS GF@ocz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck66_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck66_1FLT
+EXIT int@4
+LABEL $opCheck66_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck66_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck66_1INT2FLT
+EXIT int@4
+LABEL $opCheck66_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck66_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck66_1FLT2INT
+EXIT int@4
+LABEL $opCheck66_1INT2FLT
+INT2FLOATS
+JUMP $opCheck66_End
+LABEL $opCheck66_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck66_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck67_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck67_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck67_1STR
+EXIT int@4
+LABEL $opCheck67_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck67_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck67_1INT2FLT
+EXIT int@4
+LABEL $opCheck67_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck67_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck67_1FLT2INT
+EXIT int@4
+LABEL $opCheck67_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck67_STRS
+EXIT int@4
+LABEL $opCheck67_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck67_End
+LABEL $opCheck67_1INT2FLT
+INT2FLOATS
+JUMP $opCheck67_NUMS
+LABEL $opCheck67_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck67_NUMS
+ADDS
+LABEL $opCheck67_End
+PUSHS GF@sphereradius2
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck68_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck68_1FLT
+EXIT int@4
+LABEL $opCheck68_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck68_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck68_1INT2FLT
+EXIT int@4
+LABEL $opCheck68_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck68_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck68_1FLT2INT
+EXIT int@4
+LABEL $opCheck68_1INT2FLT
+INT2FLOATS
+JUMP $opCheck68_End
+LABEL $opCheck68_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck68_End
+SUBS
+POPS GF@c
+PUSHS GF@b
+PUSHS GF@b
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck69_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck69_1FLT
+EXIT int@4
+LABEL $opCheck69_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck69_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck69_1INT2FLT
+EXIT int@4
+LABEL $opCheck69_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck69_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck69_1FLT2INT
+EXIT int@4
+LABEL $opCheck69_1INT2FLT
+INT2FLOATS
+JUMP $opCheck69_End
+LABEL $opCheck69_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck69_End
+MULS
+PUSHS float@0x1p+2
+PUSHS GF@a
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck70_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck70_1FLT
+EXIT int@4
+LABEL $opCheck70_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck70_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck70_1INT2FLT
+EXIT int@4
+LABEL $opCheck70_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck70_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck70_1FLT2INT
+EXIT int@4
+LABEL $opCheck70_1INT2FLT
+INT2FLOATS
+JUMP $opCheck70_End
+LABEL $opCheck70_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck70_End
+MULS
+PUSHS GF@c
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck71_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck71_1FLT
+EXIT int@4
+LABEL $opCheck71_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck71_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck71_1INT2FLT
+EXIT int@4
+LABEL $opCheck71_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck71_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck71_1FLT2INT
+EXIT int@4
+LABEL $opCheck71_1INT2FLT
+INT2FLOATS
+JUMP $opCheck71_End
+LABEL $opCheck71_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck71_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck72_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck72_1FLT
+EXIT int@4
+LABEL $opCheck72_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck72_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck72_1INT2FLT
+EXIT int@4
+LABEL $opCheck72_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck72_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck72_1FLT2INT
+EXIT int@4
+LABEL $opCheck72_1INT2FLT
+INT2FLOATS
+JUMP $opCheck72_End
+LABEL $opCheck72_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck72_End
+SUBS
+POPS GF@d
+PUSHS GF@d
+PUSHS float@0x0p+0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck73_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck73_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck73_1STR
+EXIT int@4
+LABEL $opCheck73_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck73_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck73_1INT2FLT
+EXIT int@4
+LABEL $opCheck73_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck73_End
+EXIT int@4
+LABEL $opCheck73_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck73_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck73_1FLT2INT
+EXIT int@4
+LABEL $opCheck73_1INT2FLT
+INT2FLOATS
+JUMP $opCheck73_End
+LABEL $opCheck73_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck73_End
+GTS
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck20_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck20_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck20_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck20_1BOOL
+PUSHS bool@true
+JUMP $ifCheck20_END
+LABEL $ifCheck20_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck20_END
+LABEL $ifCheck20_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck20_FALSE
+PUSHS bool@true
+JUMP $ifCheck20_END
+LABEL $ifCheck20_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck20_FALSE
+PUSHS bool@true
+JUMP $ifCheck20_END
+LABEL $ifCheck20_FALSE
+PUSHS bool@false
+LABEL $ifCheck20_END
+PUSHS bool@false
+JUMPIFEQS $if27_else
+PUSHS GF@d
+CREATEFRAME
+CALL yiplus1
+PUSHS TF@%%retval
+POPS GF@d
+PUSHS float@0x0p+0
+PUSHS GF@b
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck74_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck74_1FLT
+EXIT int@4
+LABEL $opCheck74_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck74_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck74_1INT2FLT
+EXIT int@4
+LABEL $opCheck74_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck74_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck74_1FLT2INT
+EXIT int@4
+LABEL $opCheck74_1INT2FLT
+INT2FLOATS
+JUMP $opCheck74_End
+LABEL $opCheck74_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck74_End
+SUBS
+PUSHS GF@d
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck75_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck75_1FLT
+EXIT int@4
+LABEL $opCheck75_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck75_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck75_1INT2FLT
+EXIT int@4
+LABEL $opCheck75_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck75_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck75_1FLT2INT
+EXIT int@4
+LABEL $opCheck75_1INT2FLT
+INT2FLOATS
+JUMP $opCheck75_End
+LABEL $opCheck75_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck75_End
+SUBS
+PUSHS float@0x1p+1
+PUSHS GF@a
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck76_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck76_1FLT
+EXIT int@4
+LABEL $opCheck76_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck76_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck76_1INT2FLT
+EXIT int@4
+LABEL $opCheck76_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck76_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck76_1FLT2INT
+EXIT int@4
+LABEL $opCheck76_1INT2FLT
+INT2FLOATS
+JUMP $opCheck76_End
+LABEL $opCheck76_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck76_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck77_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck77_1FLT
+EXIT int@4
+LABEL $opCheck77_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck77_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck77_1INT2FLT
+EXIT int@4
+LABEL $opCheck77_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck77_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck77_1FLT2INT
+EXIT int@4
+LABEL $opCheck77_1INT2FLT
+INT2FLOATS
+JUMP $opCheck77_End
+LABEL $opCheck77_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck77_End
+LABEL $opCheck77_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck77_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck77_NotZero
+EXIT int@9
+LABEL $opCheck77_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@t
+PUSHS GF@z
+PUSHS int@0
+PUSHS GF@t
+CREATEFRAME
+CALL is_in_range
+PUSHS TF@%%retval
+POPS GF@in_range
+PUSHS GF@in_range
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck21_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck21_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck21_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck21_1BOOL
+PUSHS bool@true
+JUMP $ifCheck21_END
+LABEL $ifCheck21_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck21_END
+LABEL $ifCheck21_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck21_FALSE
+PUSHS bool@true
+JUMP $ifCheck21_END
+LABEL $ifCheck21_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck21_FALSE
+PUSHS bool@true
+JUMP $ifCheck21_END
+LABEL $ifCheck21_FALSE
+PUSHS bool@false
+LABEL $ifCheck21_END
+PUSHS bool@false
+JUMPIFEQS $if28_else
+PUSHS GF@t
+POPS GF@z
+PUSHS GF@rayx
+PUSHS GF@t
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck78_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck78_1FLT
+EXIT int@4
+LABEL $opCheck78_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck78_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck78_1INT2FLT
+EXIT int@4
+LABEL $opCheck78_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck78_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck78_1FLT2INT
+EXIT int@4
+LABEL $opCheck78_1INT2FLT
+INT2FLOATS
+JUMP $opCheck78_End
+LABEL $opCheck78_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck78_End
+MULS
+PUSHS GF@posx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck79_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck79_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck79_1STR
+EXIT int@4
+LABEL $opCheck79_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck79_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck79_1INT2FLT
+EXIT int@4
+LABEL $opCheck79_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck79_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck79_1FLT2INT
+EXIT int@4
+LABEL $opCheck79_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck79_STRS
+EXIT int@4
+LABEL $opCheck79_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck79_End
+LABEL $opCheck79_1INT2FLT
+INT2FLOATS
+JUMP $opCheck79_NUMS
+LABEL $opCheck79_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck79_NUMS
+ADDS
+LABEL $opCheck79_End
+POPS GF@intersectionx
+PUSHS GF@rayy
+PUSHS GF@t
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck80_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck80_1FLT
+EXIT int@4
+LABEL $opCheck80_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck80_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck80_1INT2FLT
+EXIT int@4
+LABEL $opCheck80_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck80_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck80_1FLT2INT
+EXIT int@4
+LABEL $opCheck80_1INT2FLT
+INT2FLOATS
+JUMP $opCheck80_End
+LABEL $opCheck80_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck80_End
+MULS
+PUSHS GF@posy
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck81_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck81_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck81_1STR
+EXIT int@4
+LABEL $opCheck81_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck81_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck81_1INT2FLT
+EXIT int@4
+LABEL $opCheck81_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck81_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck81_1FLT2INT
+EXIT int@4
+LABEL $opCheck81_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck81_STRS
+EXIT int@4
+LABEL $opCheck81_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck81_End
+LABEL $opCheck81_1INT2FLT
+INT2FLOATS
+JUMP $opCheck81_NUMS
+LABEL $opCheck81_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck81_NUMS
+ADDS
+LABEL $opCheck81_End
+POPS GF@intersectiony
+PUSHS GF@rayz
+PUSHS GF@t
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck82_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck82_1FLT
+EXIT int@4
+LABEL $opCheck82_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck82_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck82_1INT2FLT
+EXIT int@4
+LABEL $opCheck82_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck82_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck82_1FLT2INT
+EXIT int@4
+LABEL $opCheck82_1INT2FLT
+INT2FLOATS
+JUMP $opCheck82_End
+LABEL $opCheck82_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck82_End
+MULS
+PUSHS GF@posz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck83_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck83_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck83_1STR
+EXIT int@4
+LABEL $opCheck83_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck83_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck83_1INT2FLT
+EXIT int@4
+LABEL $opCheck83_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck83_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck83_1FLT2INT
+EXIT int@4
+LABEL $opCheck83_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck83_STRS
+EXIT int@4
+LABEL $opCheck83_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck83_End
+LABEL $opCheck83_1INT2FLT
+INT2FLOATS
+JUMP $opCheck83_NUMS
+LABEL $opCheck83_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck83_NUMS
+ADDS
+LABEL $opCheck83_End
+POPS GF@intersectionz
+PUSHS GF@intersectionx
+PUSHS GF@spherex
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck84_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck84_1FLT
+EXIT int@4
+LABEL $opCheck84_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck84_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck84_1INT2FLT
+EXIT int@4
+LABEL $opCheck84_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck84_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck84_1FLT2INT
+EXIT int@4
+LABEL $opCheck84_1INT2FLT
+INT2FLOATS
+JUMP $opCheck84_End
+LABEL $opCheck84_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck84_End
+SUBS
+PUSHS GF@sphereradius
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck85_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck85_1FLT
+EXIT int@4
+LABEL $opCheck85_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck85_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck85_1INT2FLT
+EXIT int@4
+LABEL $opCheck85_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck85_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck85_1FLT2INT
+EXIT int@4
+LABEL $opCheck85_1INT2FLT
+INT2FLOATS
+JUMP $opCheck85_End
+LABEL $opCheck85_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck85_End
+LABEL $opCheck85_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck85_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck85_NotZero
+EXIT int@9
+LABEL $opCheck85_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@normalx
+PUSHS GF@intersectiony
+PUSHS GF@spherey
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck86_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck86_1FLT
+EXIT int@4
+LABEL $opCheck86_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck86_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck86_1INT2FLT
+EXIT int@4
+LABEL $opCheck86_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck86_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck86_1FLT2INT
+EXIT int@4
+LABEL $opCheck86_1INT2FLT
+INT2FLOATS
+JUMP $opCheck86_End
+LABEL $opCheck86_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck86_End
+SUBS
+PUSHS GF@sphereradius
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck87_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck87_1FLT
+EXIT int@4
+LABEL $opCheck87_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck87_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck87_1INT2FLT
+EXIT int@4
+LABEL $opCheck87_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck87_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck87_1FLT2INT
+EXIT int@4
+LABEL $opCheck87_1INT2FLT
+INT2FLOATS
+JUMP $opCheck87_End
+LABEL $opCheck87_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck87_End
+LABEL $opCheck87_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck87_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck87_NotZero
+EXIT int@9
+LABEL $opCheck87_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@normaly
+PUSHS GF@intersectionz
+PUSHS GF@spherez
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck88_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck88_1FLT
+EXIT int@4
+LABEL $opCheck88_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck88_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck88_1INT2FLT
+EXIT int@4
+LABEL $opCheck88_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck88_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck88_1FLT2INT
+EXIT int@4
+LABEL $opCheck88_1INT2FLT
+INT2FLOATS
+JUMP $opCheck88_End
+LABEL $opCheck88_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck88_End
+SUBS
+PUSHS GF@sphereradius
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck89_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck89_1FLT
+EXIT int@4
+LABEL $opCheck89_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck89_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck89_1INT2FLT
+EXIT int@4
+LABEL $opCheck89_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck89_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck89_1FLT2INT
+EXIT int@4
+LABEL $opCheck89_1INT2FLT
+INT2FLOATS
+JUMP $opCheck89_End
+LABEL $opCheck89_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck89_End
+LABEL $opCheck89_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck89_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck89_NotZero
+EXIT int@9
+LABEL $opCheck89_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@normalz
+PUSHS GF@lightx
+PUSHS GF@intersectionx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck90_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck90_1FLT
+EXIT int@4
+LABEL $opCheck90_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck90_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck90_1INT2FLT
+EXIT int@4
+LABEL $opCheck90_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck90_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck90_1FLT2INT
+EXIT int@4
+LABEL $opCheck90_1INT2FLT
+INT2FLOATS
+JUMP $opCheck90_End
+LABEL $opCheck90_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck90_End
+SUBS
+POPS GF@tolightx
+PUSHS GF@lighty
+PUSHS GF@intersectiony
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck91_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck91_1FLT
+EXIT int@4
+LABEL $opCheck91_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck91_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck91_1INT2FLT
+EXIT int@4
+LABEL $opCheck91_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck91_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck91_1FLT2INT
+EXIT int@4
+LABEL $opCheck91_1INT2FLT
+INT2FLOATS
+JUMP $opCheck91_End
+LABEL $opCheck91_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck91_End
+SUBS
+POPS GF@tolighty
+PUSHS GF@lightz
+PUSHS GF@intersectionz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck92_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck92_1FLT
+EXIT int@4
+LABEL $opCheck92_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck92_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck92_1INT2FLT
+EXIT int@4
+LABEL $opCheck92_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck92_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck92_1FLT2INT
+EXIT int@4
+LABEL $opCheck92_1INT2FLT
+INT2FLOATS
+JUMP $opCheck92_End
+LABEL $opCheck92_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck92_End
+SUBS
+POPS GF@tolightz
+PUSHS GF@tolightx
+PUSHS GF@tolightx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck93_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck93_1FLT
+EXIT int@4
+LABEL $opCheck93_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck93_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck93_1INT2FLT
+EXIT int@4
+LABEL $opCheck93_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck93_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck93_1FLT2INT
+EXIT int@4
+LABEL $opCheck93_1INT2FLT
+INT2FLOATS
+JUMP $opCheck93_End
+LABEL $opCheck93_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck93_End
+MULS
+PUSHS GF@tolighty
+PUSHS GF@tolighty
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck94_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck94_1FLT
+EXIT int@4
+LABEL $opCheck94_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck94_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck94_1INT2FLT
+EXIT int@4
+LABEL $opCheck94_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck94_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck94_1FLT2INT
+EXIT int@4
+LABEL $opCheck94_1INT2FLT
+INT2FLOATS
+JUMP $opCheck94_End
+LABEL $opCheck94_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck94_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck95_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck95_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck95_1STR
+EXIT int@4
+LABEL $opCheck95_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck95_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck95_1INT2FLT
+EXIT int@4
+LABEL $opCheck95_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck95_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck95_1FLT2INT
+EXIT int@4
+LABEL $opCheck95_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck95_STRS
+EXIT int@4
+LABEL $opCheck95_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck95_End
+LABEL $opCheck95_1INT2FLT
+INT2FLOATS
+JUMP $opCheck95_NUMS
+LABEL $opCheck95_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck95_NUMS
+ADDS
+LABEL $opCheck95_End
+PUSHS GF@tolightz
+PUSHS GF@tolightz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck96_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck96_1FLT
+EXIT int@4
+LABEL $opCheck96_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck96_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck96_1INT2FLT
+EXIT int@4
+LABEL $opCheck96_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck96_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck96_1FLT2INT
+EXIT int@4
+LABEL $opCheck96_1INT2FLT
+INT2FLOATS
+JUMP $opCheck96_End
+LABEL $opCheck96_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck96_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck97_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck97_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck97_1STR
+EXIT int@4
+LABEL $opCheck97_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck97_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck97_1INT2FLT
+EXIT int@4
+LABEL $opCheck97_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck97_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck97_1FLT2INT
+EXIT int@4
+LABEL $opCheck97_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck97_STRS
+EXIT int@4
+LABEL $opCheck97_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck97_End
+LABEL $opCheck97_1INT2FLT
+INT2FLOATS
+JUMP $opCheck97_NUMS
+LABEL $opCheck97_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck97_NUMS
+ADDS
+LABEL $opCheck97_End
+POPS GF@d
+PUSHS GF@d
+CREATEFRAME
+CALL yiplus1
+PUSHS TF@%%retval
+POPS GF@d
+PUSHS GF@normalx
+PUSHS GF@tolightx
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck98_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck98_1FLT
+EXIT int@4
+LABEL $opCheck98_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck98_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck98_1INT2FLT
+EXIT int@4
+LABEL $opCheck98_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck98_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck98_1FLT2INT
+EXIT int@4
+LABEL $opCheck98_1INT2FLT
+INT2FLOATS
+JUMP $opCheck98_End
+LABEL $opCheck98_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck98_End
+MULS
+PUSHS GF@normaly
+PUSHS GF@tolighty
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck99_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck99_1FLT
+EXIT int@4
+LABEL $opCheck99_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck99_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck99_1INT2FLT
+EXIT int@4
+LABEL $opCheck99_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck99_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck99_1FLT2INT
+EXIT int@4
+LABEL $opCheck99_1INT2FLT
+INT2FLOATS
+JUMP $opCheck99_End
+LABEL $opCheck99_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck99_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck100_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck100_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck100_1STR
+EXIT int@4
+LABEL $opCheck100_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck100_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck100_1INT2FLT
+EXIT int@4
+LABEL $opCheck100_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck100_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck100_1FLT2INT
+EXIT int@4
+LABEL $opCheck100_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck100_STRS
+EXIT int@4
+LABEL $opCheck100_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck100_End
+LABEL $opCheck100_1INT2FLT
+INT2FLOATS
+JUMP $opCheck100_NUMS
+LABEL $opCheck100_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck100_NUMS
+ADDS
+LABEL $opCheck100_End
+PUSHS GF@normalz
+PUSHS GF@tolightz
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck101_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck101_1FLT
+EXIT int@4
+LABEL $opCheck101_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck101_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck101_1INT2FLT
+EXIT int@4
+LABEL $opCheck101_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck101_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck101_1FLT2INT
+EXIT int@4
+LABEL $opCheck101_1INT2FLT
+INT2FLOATS
+JUMP $opCheck101_End
+LABEL $opCheck101_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck101_End
+MULS
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck102_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck102_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck102_1STR
+EXIT int@4
+LABEL $opCheck102_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck102_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck102_1INT2FLT
+EXIT int@4
+LABEL $opCheck102_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck102_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck102_1FLT2INT
+EXIT int@4
+LABEL $opCheck102_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck102_STRS
+EXIT int@4
+LABEL $opCheck102_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck102_End
+LABEL $opCheck102_1INT2FLT
+INT2FLOATS
+JUMP $opCheck102_NUMS
+LABEL $opCheck102_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck102_NUMS
+ADDS
+LABEL $opCheck102_End
+PUSHS GF@d
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck103_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck103_1FLT
+EXIT int@4
+LABEL $opCheck103_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck103_1INT2INT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck103_1INT2FLT
+EXIT int@4
+LABEL $opCheck103_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck103_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck103_1FLT2INT
+EXIT int@4
+LABEL $opCheck103_1INT2FLT
+INT2FLOATS
+JUMP $opCheck103_End
+LABEL $opCheck103_1INT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+INT2FLOATS
+JUMP $opCheck103_End
+LABEL $opCheck103_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck103_End
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS float@0x0.0000000000000p+0
+JUMPIFNEQS $opCheck103_NotZero
+EXIT int@9
+LABEL $opCheck103_NotZero
+PUSHS GF@%%operand1
+DIVS
+POPS GF@lightness
+PUSHS GF@lightness
+CREATEFRAME
+CALL pixel_color
+PUSHS TF@%%retval
+POPS GF@pixel
+JUMP $if28_end
+LABEL $if28_else
+LABEL $if28_end
+JUMP $if27_end
+LABEL $if27_else
+LABEL $if27_end
+PUSHS GF@n
+PUSHS int@1
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck104_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck104_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck104_1STR
+EXIT int@4
+LABEL $opCheck104_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck104_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck104_1INT2FLT
+EXIT int@4
+LABEL $opCheck104_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck104_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck104_1FLT2INT
+EXIT int@4
+LABEL $opCheck104_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck104_STRS
+EXIT int@4
+LABEL $opCheck104_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck104_End
+LABEL $opCheck104_1INT2FLT
+INT2FLOATS
+JUMP $opCheck104_NUMS
+LABEL $opCheck104_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck104_NUMS
+ADDS
+LABEL $opCheck104_End
+POPS GF@n
+JUMP $while24_beg
+LABEL $while24_end
+PUSHS GF@line
+PUSHS GF@pixel
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck105_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck105_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck105_1STR
+EXIT int@4
+LABEL $opCheck105_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck105_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck105_1INT2FLT
+EXIT int@4
+LABEL $opCheck105_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck105_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck105_1FLT2INT
+EXIT int@4
+LABEL $opCheck105_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck105_STRS
+EXIT int@4
+LABEL $opCheck105_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck105_End
+LABEL $opCheck105_1INT2FLT
+INT2FLOATS
+JUMP $opCheck105_NUMS
+LABEL $opCheck105_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck105_NUMS
+ADDS
+LABEL $opCheck105_End
+POPS GF@line
+PUSHS GF@x
+PUSHS float@0x1p+0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck106_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck106_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck106_1STR
+EXIT int@4
+LABEL $opCheck106_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck106_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck106_1INT2FLT
+EXIT int@4
+LABEL $opCheck106_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck106_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck106_1FLT2INT
+EXIT int@4
+LABEL $opCheck106_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck106_STRS
+EXIT int@4
+LABEL $opCheck106_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck106_End
+LABEL $opCheck106_1INT2FLT
+INT2FLOATS
+JUMP $opCheck106_NUMS
+LABEL $opCheck106_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck106_NUMS
+ADDS
+LABEL $opCheck106_End
+POPS GF@x
+JUMP $while23_beg
+LABEL $while23_end
+PUSHS GF@line
+PUSHS string@|
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck107_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck107_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck107_1STR
+EXIT int@4
+LABEL $opCheck107_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck107_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck107_1INT2FLT
+EXIT int@4
+LABEL $opCheck107_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck107_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck107_1FLT2INT
+EXIT int@4
+LABEL $opCheck107_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck107_STRS
+EXIT int@4
+LABEL $opCheck107_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck107_End
+LABEL $opCheck107_1INT2FLT
+INT2FLOATS
+JUMP $opCheck107_NUMS
+LABEL $opCheck107_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck107_NUMS
+ADDS
+LABEL $opCheck107_End
+POPS GF@line
+PUSHS GF@line
+CREATEFRAME
+PUSHFRAME
+DEFVAR LF@%%retval
+POPS LF@%%retval
+PUSHS LF@%%retval
+PUSHS nil@nil
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck108_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck108_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck108_1STR
+JUMP $opCheck108_End
+LABEL $opCheck108_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck108_End
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck108_1INT2FLT
+PUSHS bool@false
+JUMP $opCheck108_EndResult
+LABEL $opCheck108_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck108_End
+PUSHS bool@false
+JUMP $opCheck108_EndResult
+LABEL $opCheck108_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck108_End
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck108_1FLT2INT
+PUSHS bool@false
+JUMP $opCheck108_EndResult
+LABEL $opCheck108_1INT2FLT
+INT2FLOATS
+JUMP $opCheck108_End
+LABEL $opCheck108_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck108_End
+EQS
+LABEL $opCheck108_EndResult
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@nil
+JUMPIFEQS $ifCheck22_FALSE
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $ifCheck22_1STR
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $ifCheck22_1INT
+PUSHS GF@%%operand1
+PUSHS string@bool
+JUMPIFEQS $ifCheck22_1BOOL
+PUSHS bool@true
+JUMP $ifCheck22_END
+LABEL $ifCheck22_1BOOL
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+JUMP $ifCheck22_END
+LABEL $ifCheck22_1INT
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS int@0
+JUMPIFEQS $ifCheck22_FALSE
+PUSHS bool@true
+JUMP $ifCheck22_END
+LABEL $ifCheck22_1STR
+POPS GF@%%operand1
+PUSHS GF@%%operand1
+PUSHS string@
+JUMPIFEQS $ifCheck22_FALSE
+PUSHS bool@true
+JUMP $ifCheck22_END
+LABEL $ifCheck22_FALSE
+PUSHS bool@false
+LABEL $ifCheck22_END
+PUSHS bool@false
+JUMPIFEQS $if29_else
+WRITE string@None
+JUMP $if29_end
+LABEL $if29_else
+WRITE LF@%%retval
+LABEL $if29_end
+WRITE string@\010
+MOVE LF@%%retval nil@nil
+POPFRAME
+PUSHS TF@%%retval
+PUSHS GF@y
+PUSHS float@0x1p+0
+POPS GF@%%operand1
+POPS GF@%%operand2
+PUSHS GF@%%operand2
+PUSHS GF@%%operand1
+TYPE GF@%%operand1 GF@%%operand1
+TYPE GF@%%operand2 GF@%%operand2
+PUSHS GF@%%operand1
+PUSHS string@int
+JUMPIFEQS $opCheck109_1INT
+PUSHS GF@%%operand1
+PUSHS string@float
+JUMPIFEQS $opCheck109_1FLT
+PUSHS GF@%%operand1
+PUSHS string@string
+JUMPIFEQS $opCheck109_1STR
+EXIT int@4
+LABEL $opCheck109_1INT
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck109_NUMS
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck109_1INT2FLT
+EXIT int@4
+LABEL $opCheck109_1FLT
+PUSHS GF@%%operand2
+PUSHS string@float
+JUMPIFEQS $opCheck109_NUMS
+PUSHS GF@%%operand2
+PUSHS string@int
+JUMPIFEQS $opCheck109_1FLT2INT
+EXIT int@4
+LABEL $opCheck109_1STR
+PUSHS GF@%%operand2
+PUSHS string@string
+JUMPIFEQS $opCheck109_STRS
+EXIT int@4
+LABEL $opCheck109_STRS
+POPS GF@%%operand1
+POPS GF@%%operand2
+CONCAT GF@%%operand2 GF@%%operand2 GF@%%operand1
+PUSHS GF@%%operand2
+JUMP $opCheck109_End
+LABEL $opCheck109_1INT2FLT
+INT2FLOATS
+JUMP $opCheck109_NUMS
+LABEL $opCheck109_1FLT2INT
+POPS GF@%%operand2
+INT2FLOATS
+PUSHS GF@%%operand2
+LABEL $opCheck109_NUMS
+ADDS
+LABEL $opCheck109_End
+POPS GF@y
+JUMP $while22_beg
+LABEL $while22_end
+PUSHS GF@resx
+CREATEFRAME
+CALL print_line
+PUSHS TF@%%retval
+POPFRAME
+RETURN
