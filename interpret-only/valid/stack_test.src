@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20" name="Stack test">
+    <instruction order="1" opcode="PUSHS">
+        <arg1 type="string">světe</arg1>
+    </instruction>
+    <instruction order="2" opcode="PUSHS">
+        <arg1 type="int">32</arg1>
+    </instruction>
+    <instruction order="3" opcode="PUSHs">
+        <arg1 type="string">ahoj</arg1>
+    </instruction>
+    <instruction order="4" opcode="DEFVAR">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="5" opcode="DEFVAR">
+        <arg1 type="var">GF@space</arg1>
+    </instruction>
+    <instruction order="6" opcode="PopS">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="7" opcode="Write">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="8" opcode="POPS">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="9" opcode="INT2CHAR">
+        <arg1 type="var">GF@space</arg1>
+        <arg2 type="var">GF@val</arg2>
+    </instruction>
+    <instruction order="10" opcode="WRITE">
+        <arg1 type="var">GF@space</arg1>
+    </instruction>
+    <instruction order="11" opcode="POPS">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="12" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+</program>

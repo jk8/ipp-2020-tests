@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+    <instruction order="1" opcode="WRITE">
+        <arg1 type="int">0</arg1>
+    </instruction>
+    <unknown />
+</program>

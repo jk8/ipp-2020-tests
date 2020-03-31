@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="2" opcode="DEFVAR">
+    <arg1 type="var">GF@cau</arg1>
+  </instruction>
+  <instruction order="3" opcode="INT2FLOAT">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="var">GF@cau</arg2>
+  </instruction>
+  <instruction order="4" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+</program>

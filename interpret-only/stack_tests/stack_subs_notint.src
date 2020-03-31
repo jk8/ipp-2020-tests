@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="2" opcode="PUSHS">
+    <arg1 type="string">string</arg1>
+  </instruction>
+  <instruction order="3" opcode="PUSHS">
+    <arg1 type="int">2</arg1>
+  </instruction>
+  <instruction order="4" opcode="SUBS"/>
+</program>

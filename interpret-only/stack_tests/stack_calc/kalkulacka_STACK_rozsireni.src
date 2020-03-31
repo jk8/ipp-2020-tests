@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@operace</arg1>
+  </instruction>
+  <instruction order="2" opcode="DEFVAR">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="3" opcode="DEFVAR">
+    <arg1 type="var">GF@op2</arg1>
+  </instruction>
+  <instruction order="4" opcode="DEFVAR">
+    <arg1 type="var">GF@type</arg1>
+  </instruction>
+  <instruction order="5" opcode="LABEL">
+    <arg1 type="label">start</arg1>
+  </instruction>
+  <instruction order="6" opcode="WRITE">
+    <arg1 type="string">Zadejte\032vaši\032operaci\032(+,-,*,/)\032nebo\032e\032pro\032ukončení:</arg1>
+  </instruction>
+  <instruction order="7" opcode="READ">
+    <arg1 type="var">GF@operace</arg1>
+    <arg2 type="type">string</arg2>
+  </instruction>
+  <instruction order="8" opcode="PUSHS">
+    <arg1 type="var">GF@operace</arg1>
+  </instruction>
+  <instruction order="9" opcode="PUSHS">
+    <arg1 type="string">e</arg1>
+  </instruction>
+  <instruction order="10" opcode="JUMPIFEQS">
+    <arg1 type="label">konec</arg1>
+  </instruction>
+  <instruction order="11" opcode="WRITE">
+    <arg1 type="string">Zadejte\032číslo\0321:\010</arg1>
+  </instruction>
+  <instruction order="12" opcode="READ">
+    <arg1 type="var">GF@op1</arg1>
+    <arg2 type="type">int</arg2>
+  </instruction>
+  <instruction order="13" opcode="WRITE">
+    <arg1 type="string">Zadejte\032číslo\0322:\010</arg1>
+  </instruction>
+  <instruction order="14" opcode="READ">
+    <arg1 type="var">GF@op2</arg1>
+    <arg2 type="type">int</arg2>
+  </instruction>
+  <instruction order="15" opcode="PUSHS">
+    <arg1 type="var">GF@operace</arg1>
+  </instruction>
+  <instruction order="16" opcode="PUSHS">
+    <arg1 type="string">+</arg1>
+  </instruction>
+  <instruction order="17" opcode="JUMPIFEQS">
+    <arg1 type="label">plus</arg1>
+  </instruction>
+  <instruction order="18" opcode="PUSHS">
+    <arg1 type="var">GF@operace</arg1>
+  </instruction>
+  <instruction order="19" opcode="PUSHS">
+    <arg1 type="string">-</arg1>
+  </instruction>
+  <instruction order="20" opcode="JUMPIFEQS">
+    <arg1 type="label">minus</arg1>
+  </instruction>
+  <instruction order="21" opcode="PUSHS">
+    <arg1 type="var">GF@operace</arg1>
+  </instruction>
+  <instruction order="22" opcode="PUSHS">
+    <arg1 type="string">*</arg1>
+  </instruction>
+  <instruction order="23" opcode="JUMPIFEQS">
+    <arg1 type="label">krat</arg1>
+  </instruction>
+  <instruction order="24" opcode="PUSHS">
+    <arg1 type="var">GF@operace</arg1>
+  </instruction>
+  <instruction order="25" opcode="PUSHS">
+    <arg1 type="string">/</arg1>
+  </instruction>
+  <instruction order="26" opcode="JUMPIFEQS">
+    <arg1 type="label">deleno</arg1>
+  </instruction>
+  <instruction order="27" opcode="JUMP">
+    <arg1 type="label">error</arg1>
+  </instruction>
+  <instruction order="28" opcode="LABEL">
+    <arg1 type="label">plus</arg1>
+  </instruction>
+  <instruction order="29" opcode="PUSHS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="30" opcode="PUSHS">
+    <arg1 type="var">GF@op2</arg1>
+  </instruction>
+  <instruction order="31" opcode="ADDS">
+  </instruction>
+  <instruction order="32" opcode="WRITE">
+    <arg1 type="string">Váš\032výsledek:\032</arg1>
+  </instruction>
+  <instruction order="33" opcode="POPS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="34" opcode="WRITE">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="35" opcode="WRITE">
+    <arg1 type="string">\010</arg1>
+  </instruction>
+  <instruction order="36" opcode="JUMP">
+    <arg1 type="label">start</arg1>
+  </instruction>
+  <instruction order="37" opcode="LABEL">
+    <arg1 type="label">minus</arg1>
+  </instruction>
+  <instruction order="38" opcode="PUSHS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="39" opcode="PUSHS">
+    <arg1 type="var">GF@op2</arg1>
+  </instruction>
+  <instruction order="40" opcode="SUBS">
+  </instruction>
+  <instruction order="41" opcode="POPS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="42" opcode="WRITE">
+    <arg1 type="string">Váš\032výsledek:\032</arg1>
+  </instruction>
+  <instruction order="43" opcode="WRITE">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="44" opcode="WRITE">
+    <arg1 type="string">\010</arg1>
+  </instruction>
+  <instruction order="45" opcode="JUMP">
+    <arg1 type="label">start</arg1>
+  </instruction>
+  <instruction order="46" opcode="LABEL">
+    <arg1 type="label">krat</arg1>
+  </instruction>
+  <instruction order="47" opcode="PUSHS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="48" opcode="PUSHS">
+    <arg1 type="var">GF@op2</arg1>
+  </instruction>
+  <instruction order="49" opcode="MULS">
+  </instruction>
+  <instruction order="50" opcode="POPS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="51" opcode="WRITE">
+    <arg1 type="string">Váš\032výsledek:\032</arg1>
+  </instruction>
+  <instruction order="52" opcode="WRITE">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="53" opcode="WRITE">
+    <arg1 type="string">\010</arg1>
+  </instruction>
+  <instruction order="54" opcode="JUMP">
+    <arg1 type="label">start</arg1>
+  </instruction>
+  <instruction order="55" opcode="LABEL">
+    <arg1 type="label">deleno</arg1>
+  </instruction>
+  <instruction order="56" opcode="PUSHS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="57" opcode="PUSHS">
+    <arg1 type="var">GF@op2</arg1>
+  </instruction>
+  <instruction order="58" opcode="IDIVS">
+  </instruction>
+  <instruction order="59" opcode="POPS">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="60" opcode="WRITE">
+    <arg1 type="string">Váš\032výsledek:\032</arg1>
+  </instruction>
+  <instruction order="61" opcode="WRITE">
+    <arg1 type="var">GF@op1</arg1>
+  </instruction>
+  <instruction order="62" opcode="WRITE">
+    <arg1 type="string">\010</arg1>
+  </instruction>
+  <instruction order="63" opcode="JUMP">
+    <arg1 type="label">start</arg1>
+  </instruction>
+  <instruction order="64" opcode="LABEL">
+    <arg1 type="label">error</arg1>
+  </instruction>
+  <instruction order="65" opcode="WRITE">
+    <arg1 type="string">Spatny\032vstupni\032typ!\010</arg1>
+  </instruction>
+  <instruction order="66" opcode="LABEL">
+    <arg1 type="label">konec</arg1>
+  </instruction>
+</program>
