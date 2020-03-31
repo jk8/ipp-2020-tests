@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="2" opcode="DEFVAR">
+    <arg1 type="var">GF@vysledek</arg1>
+  </instruction>
+  <instruction order="3" opcode="DEFVAR">
+    <arg1 type="var">GF@cau</arg1>
+  </instruction>
+  <instruction order="4" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">0x1.2p+0</arg2>
+  </instruction>
+  <instruction order="5" opcode="MOVE">
+    <arg1 type="var">GF@cau</arg1>
+    <arg2 type="int">1</arg2>
+  </instruction>
+  <instruction order="6" opcode="ADD">
+    <arg1 type="var">GF@vysledek</arg1>
+    <arg2 type="var">GF@ahoj</arg2>
+    <arg3 type="var">GF@cau</arg3>
+  </instruction>
+  <instruction order="7" opcode="WRITE">
+    <arg1 type="var">GF@vysledek</arg1>
+  </instruction>
+</program>

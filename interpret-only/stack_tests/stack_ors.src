@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="2" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="3" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="4" opcode="ORS"/>
+  <instruction order="5" opcode="POPS">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="6" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="7" opcode="PUSHS">
+    <arg1 type="bool">false</arg1>
+  </instruction>
+  <instruction order="8" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="9" opcode="ORS"/>
+  <instruction order="10" opcode="POPS">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="11" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="12" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="13" opcode="PUSHS">
+    <arg1 type="bool">false</arg1>
+  </instruction>
+  <instruction order="14" opcode="ORS"/>
+  <instruction order="15" opcode="POPS">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="16" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="17" opcode="PUSHS">
+    <arg1 type="bool">false</arg1>
+  </instruction>
+  <instruction order="18" opcode="PUSHS">
+    <arg1 type="bool">false</arg1>
+  </instruction>
+  <instruction order="19" opcode="ORS"/>
+  <instruction order="20" opcode="POPS">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="21" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+</program>

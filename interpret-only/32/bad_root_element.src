@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<badroot language="IPPcode20">
+    <instruction opcode="WRITE">
+        <arg1 type="int">0</arg1>
+    </instruction>
+</badroot>

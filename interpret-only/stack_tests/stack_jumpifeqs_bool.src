@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="2" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="3" opcode="JUMPIFEQS">
+    <arg1 type="label">noice</arg1>
+  </instruction>
+  <instruction order="4" opcode="JUMP">
+    <arg1 type="label">konec</arg1>
+  </instruction>
+  <instruction order="5" opcode="LABEL">
+    <arg1 type="label">noice</arg1>
+  </instruction>
+  <instruction order="6" opcode="WRITE">
+    <arg1 type="string">noice</arg1>
+  </instruction>
+  <instruction order="7" opcode="LABEL">
+    <arg1 type="label">konec</arg1>
+  </instruction>
+</program>

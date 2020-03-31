@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="2" opcode="DEFVAR">
+    <arg1 type="var">GF@cau</arg1>
+  </instruction>
+  <instruction order="3" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">1</arg2>
+  </instruction>
+  <instruction order="4" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="5" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">-1</arg2>
+  </instruction>
+  <instruction order="6" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="7" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">0x1</arg2>
+  </instruction>
+  <instruction order="8" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="9" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">1.</arg2>
+  </instruction>
+  <instruction order="10" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="11" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">1.0</arg2>
+  </instruction>
+  <instruction order="12" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="13" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">1p+0</arg2>
+  </instruction>
+  <instruction order="14" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="15" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">1p-1</arg2>
+  </instruction>
+  <instruction order="16" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="17" opcode="MOVE">
+    <arg1 type="var">GF@ahoj</arg1>
+    <arg2 type="float">1p0</arg2>
+  </instruction>
+  <instruction order="18" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+</program>

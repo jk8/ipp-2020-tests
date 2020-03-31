@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+  <instruction order="1" opcode="DEFVAR">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="2" opcode="PUSHS">
+    <arg1 type="bool">true</arg1>
+  </instruction>
+  <instruction order="3" opcode="NOTS"/>
+  <instruction order="4" opcode="POPS">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="5" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="6" opcode="PUSHS">
+    <arg1 type="bool">false</arg1>
+  </instruction>
+  <instruction order="7" opcode="NOTS"/>
+  <instruction order="8" opcode="POPS">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+  <instruction order="9" opcode="WRITE">
+    <arg1 type="var">GF@ahoj</arg1>
+  </instruction>
+</program>

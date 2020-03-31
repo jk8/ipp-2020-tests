@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+    <instruction order="4" opcode="WRITE">
+        <arg1 type="int">0</arg1>
+    </instruction>
+    <instruction order="5" opcode="WRITE">
+        <arg1 type="string">ab</arg1>
+    </instruction>
+    <instruction order="1" opcode="WRITE">
+        <arg1 type="int">2</arg1>
+    </instruction>
+    <instruction order="3" opcode="WRITE">
+        <arg1 type="string">cd</arg1>
+    </instruction>
+    <instruction order="2" opcode="WRITE">
+        <arg1 type="int">1</arg1>
+    </instruction>
+    <instruction order="6" opcode="WRITE">
+        <arg1 type="string">f</arg1>
+    </instruction>
+</program>
