@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+	<instruction order="4" opcode="WRITE">
+		<arg1 type="string">didn't\032jump</arg1>
+ 	</instruction>
+	<instruction order="5" opcode="LABEL">
+  		<arg1 type="label">label</arg1>
+ 	</instruction>
+	<instruction order="1" opcode="JUMP">
+  		<arg1 type="label">label</arg1>
+ 	</instruction>
+	 <instruction order="8" opcode="WRITE">
+		<arg1 type="string">did\032jump</arg1>
+ 	</instruction>
+</program>

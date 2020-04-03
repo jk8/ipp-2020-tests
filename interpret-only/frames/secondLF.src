@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+	<instruction order="1" opcode="CREATEFRAME">
+ 	</instruction>
+	<instruction order="2" opcode="DEFVAR">
+  		<arg1 type="var">TF@var</arg1>
+ 	</instruction>
+	<instruction order="3" opcode="MOVE">
+		<arg1 type="var">TF@var</arg1>
+		<arg2 type="int">5</arg2>
+	</instruction>
+	<instruction order="4" opcode="PUSHFRAME">
+ 	</instruction>
+	<instruction order="5" opcode="WRITE">
+  		<arg1 type="var">LF@var</arg1>
+ 	</instruction>
+	<instruction order="10" opcode="CREATEFRAME">
+ 	</instruction>
+	<instruction order="11" opcode="DEFVAR">
+  		<arg1 type="var">TF@var</arg1>
+ 	</instruction>
+	<instruction order="12" opcode="MOVE">
+		<arg1 type="var">TF@var</arg1>
+		<arg2 type="int">10</arg2>
+	</instruction>
+	<instruction order="13" opcode="PUSHFRAME">
+ 	</instruction>
+	<instruction order="14" opcode="WRITE">
+  		<arg1 type="var">LF@var</arg1>
+ 	</instruction>
+	<instruction order="20" opcode="POPFRAME">
+ 	</instruction>
+	<instruction order="21" opcode="WRITE">
+  		<arg1 type="var">LF@var</arg1>
+ 	</instruction>
+	<instruction order="22" opcode="WRITE">
+  		<arg1 type="var">TF@var</arg1>
+ 	</instruction>
+</program>

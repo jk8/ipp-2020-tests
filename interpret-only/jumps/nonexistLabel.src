@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode20">
+	<instruction order="3" opcode="LABEL">
+  		<arg1 type="label">while</arg1>
+ 	</instruction>
+	<instruction order="5" opcode="JUMP">
+  		<arg1 type="label">for</arg1>
+ 	</instruction>
+</program>
