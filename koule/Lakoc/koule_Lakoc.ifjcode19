@@ -1,5 +1,5 @@
 #Start of the program
-.IPPcode20
+.IPPcode21
 JUMP _$main
 LABEL _$inputi
 PUSHFRAME

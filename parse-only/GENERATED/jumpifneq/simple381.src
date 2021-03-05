@@ -1,2 +1,2 @@
-.IPPcode20
+.IPPcode21
 JUMPIFNEQ int@42 string@a nil@nil
