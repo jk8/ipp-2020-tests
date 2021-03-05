@@ -1,2 +1,2 @@
-.IPPcode20
+.IPPcode21
 JUMPIFNEQ GF@var string@a bool@true

@@ -1,4 +1,4 @@
-.IPPcode20
+.IPPcode21
 DEFVAR GF@%%operand1
 DEFVAR GF@%%operand2
 CREATEFRAME
