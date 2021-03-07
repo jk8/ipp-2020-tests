@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<program language="IPPcode20" name="Stack test">
+<program language="IPPcode21" name="Stack test">
     <instruction order="3" opcode="WRITE">
         <arg1 type="var">GF@val</arg1>
     </instruction>
